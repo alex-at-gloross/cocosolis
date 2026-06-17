@@ -5,40 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cocosolis — Design System Catalogue</title>
 <style>
-  @font-face {
-    font-family: "Chopin";
-    src: url("Fonts/ChopinVariable-Trial-Roman.woff2") format("woff2");
-    font-weight: 100 900;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: "Fabric Grotesk";
-    src: url("Fonts/FabricGroteskVariable_Trial-Regular.woff2") format("woff2");
-    font-weight: 100 900;
-    font-style: normal;
-  }
-
   :root {
-    --color-text:        #816C65;
-    --color-bg-warm:      #DEBAA7;
-    --color-bg-light:     #FBF1EB;
-    --color-accent:       #FF8495;
-    --color-accent-hover: #D9607A;
-    --color-white:        #FFFFFF;
-    --color-warm-100:     #F0E4DB;
-    --color-warm-200:     #DEC9BE;
-    --color-warm-400:     #A88A81;
-    --color-warm-600:     #6A574F;
-    --color-dark:         #2A1F1C;
+    --color-black:      #090613;
+    --color-white:      #ffffff;
+    --color-light-grey: #f2f2f2;
+    --color-grey:       #848389;
+    --color-dark-grey:  #322f3a;
+    --color-electric:   #0007ff;
+    --color-cyan:       #00a3ff;
+    --color-orange:     #ff5800;
   }
 
   * { box-sizing: border-box; }
 
   body {
     margin: 0;
-    background: var(--color-bg-light);
-    color: var(--color-text);
-    font-family: "Fabric Grotesk", sans-serif;
+    background: var(--color-white);
+    color: var(--color-dark-grey);
+    font-family: "Nexa", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.5;
   }
 
@@ -49,24 +33,29 @@
   }
 
   header .eyebrow {
-    font-size: 13px;
+    display: inline-block;
+    font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent-hover);
-    margin: 0 0 12px;
-    font-weight: 600;
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-electric) 0%, var(--color-cyan) 100%);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin: 0 0 16px;
+    font-weight: 700;
   }
 
   h1 {
-    font-family: "Chopin", serif;
     font-size: clamp(32px, 5vw, 48px);
-    color: var(--color-dark);
+    font-weight: 700;
+    letter-spacing: -0.02rem;
+    color: var(--color-black);
     margin: 0 0 16px;
   }
 
   header p {
     max-width: 620px;
-    color: var(--color-warm-600);
+    color: var(--color-grey);
     margin: 0;
   }
 
@@ -81,15 +70,15 @@
   }
 
   section h2 {
-    font-family: "Chopin", serif;
-    font-size: 22px;
-    color: var(--color-dark);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-black);
     margin: 0 0 4px;
   }
 
   section .section-note {
     font-size: 13px;
-    color: var(--color-warm-400);
+    color: var(--color-grey);
     margin: 0 0 20px;
   }
 
@@ -102,7 +91,7 @@
   .card {
     display: block;
     background: var(--color-white);
-    border: 1px solid var(--color-warm-200);
+    border: 1px solid var(--color-light-grey);
     border-radius: 12px;
     padding: 20px;
     text-decoration: none;
@@ -111,53 +100,55 @@
   }
 
   .card:hover {
-    border-color: var(--color-accent);
+    border-color: var(--color-electric);
     transform: translateY(-2px);
   }
 
   .card .tag {
     display: inline-block;
     font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-white);
-    background: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-electric) 0%, var(--color-cyan) 100%);
     border-radius: 4px;
     padding: 2px 8px;
     margin-bottom: 10px;
   }
 
   .card .tag.muted {
-    background: var(--color-warm-400);
+    background: var(--color-grey);
   }
 
   .card h3 {
     font-size: 16px;
+    font-weight: 700;
     margin: 0 0 6px;
-    color: var(--color-dark);
+    color: var(--color-black);
   }
 
   .card p {
     font-size: 13px;
-    color: var(--color-warm-600);
+    color: var(--color-grey);
     margin: 0;
   }
 
   .card .path {
     display: block;
     font-size: 11px;
-    color: var(--color-warm-400);
+    color: var(--color-grey);
     margin-top: 10px;
-    font-family: monospace;
+    font-family: "Formular Mono", monospace;
     word-break: break-all;
   }
 
   .empty-card {
     background: transparent;
-    border: 1px dashed var(--color-warm-200);
+    border: 1px dashed var(--color-light-grey);
     border-radius: 12px;
     padding: 20px;
-    color: var(--color-warm-400);
+    color: var(--color-grey);
     font-size: 13px;
   }
 
@@ -166,17 +157,17 @@
     gap: 16px;
     flex-wrap: wrap;
     font-size: 12px;
-    color: var(--color-warm-400);
+    color: var(--color-grey);
     padding: 24px 32px;
     max-width: 980px;
     margin: 0 auto;
-    border-top: 1px solid var(--color-warm-200);
+    border-top: 1px solid var(--color-light-grey);
   }
 
   footer {
     text-align: center;
     font-size: 12px;
-    color: var(--color-warm-400);
+    color: var(--color-grey);
     padding: 24px 32px 64px;
   }
 </style>
@@ -184,7 +175,7 @@
 <body>
 
 <header>
-  <p class="eyebrow">Gloross / Cocosolis — Embrand Studio</p>
+  <span class="eyebrow">Gloross — Cocosolis</span>
   <h1>Design System Catalogue</h1>
   <p>Index of all design system versions, interactive prototypes, and supporting artifacts produced for this project. Open any card below to view the file directly in the browser.</p>
 </header>
@@ -214,7 +205,7 @@
 
   <section>
     <h2>Archive</h2>
-    <p class="section-note">Superseded versions, kept for reference. See <span style="font-family: monospace;">/Archive</span>.</p>
+    <p class="section-note">Superseded versions, kept for reference. See <span style="font-family: 'Formular Mono', monospace;">/Archive</span>.</p>
     <div class="card-grid">
       <div class="empty-card">Archive is currently empty.</div>
     </div>
@@ -223,12 +214,12 @@
 </main>
 
 <div class="legend">
-  <span>🟥 Current — latest approved/working version</span>
-  <span>⬜ Archive — superseded, kept for reference</span>
+  <span>● Current — latest approved/working version</span>
+  <span>○ Archive — superseded, kept for reference</span>
 </div>
 
 <footer>
-  Embrand Studio · Update this page whenever a new version, prototype, or artifact is added to Design-System/
+  Update this page whenever a new version, prototype, or artifact is added to Design-System/
 </footer>
 
 </body>
