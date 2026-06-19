@@ -3,38 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cocosolis — Design System v1 · Direction A</title>
+  <title>Cocosolis — Design System v1 · Direction A — Montserrat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
-    /* ── @font-face — Chopin Trial (Variable) ───────────── */
-    @font-face {
-      font-family: "Chopin";
-      src: url("Fonts/ChopinVariable-Trial-Roman.woff2") format("woff2");
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Chopin";
-      src: url("Fonts/ChopinVariable-Trial-Italic.woff2") format("woff2");
-      font-weight: 100 900;
-      font-style: italic;
-      font-display: swap;
-    }
-
-    /* ── @font-face — Fabric Grotesk Trial (Variable) ───── */
-    @font-face {
-      font-family: "Fabric Grotesk";
-      src: url("Fonts/FabricGroteskVariable_Trial-Regular.woff2") format("woff2");
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    /* ── Design tokens — Direction A · Continuity ──────── */
+    /* ── Design tokens — Direction A · Montserrat ──────── */
     :root {
       /* Brand palette */
       --color-text:        #816C65;
@@ -42,7 +19,7 @@
       --color-bg-light:    #FBF1EB;
       --color-accent:      #FF8495;
       --color-accent-hover:#D9607A;
-      --color-accent-focus:#E06B7D;
+      --color-accent-focus:#DF95A0;
 
       /* Warm neutral scale */
       --color-white:       #FFFFFF;
@@ -81,22 +58,22 @@
       --border-brand:        var(--color-accent);
 
       /* Actions */
-      --action-primary:       var(--color-accent);
-      --action-primary-hover: var(--color-accent-hover);
+      --action-primary:       var(--color-warm-500);
+      --action-primary-hover: var(--color-warm-600);
       --action-primary-text:  var(--color-white);
 
       /* States */
       --state-focus:    var(--color-accent-focus);
-      --state-error:    #E8431A;
-      --state-success:  #2E7D52;
+      --state-error:    #EB5D33;
+      --state-success:  #498D68;
       --state-disabled: var(--color-neutral-300);
 
       /* Typography — Direction A: Montserrat (single system) */
       --font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       --font-display: var(--font-body);
-      --fw-heading: 300;
-      --fw-h3:      400;
-      --fw-h4:      500;
+      --fw-heading: 700;
+      --fw-h3:      700;
+      --fw-h4:      800;
       --fw-body-l:  400;
       --fw-body-m:  400;
       --fw-body-s:  400;
@@ -105,11 +82,11 @@
       /* font-feature-settings: 'locl' 0 — disables cursive BG Cyrillic т/д forms in Montserrat */
 
       /* Type scale */
-      --fs-display: 77px;
-      --fs-h1:      58px;
-      --fs-h2:      43px;
-      --fs-h3:      34px;
-      --fs-h4:      26px;
+      --fs-display: 58px;
+      --fs-h1:      44px;
+      --fs-h2:      32px;
+      --fs-h3:      26px;
+      --fs-h4:      20px;
       --fs-body-l:  22px;
       --fs-body-m:  19px;
       --fs-body-s:  17px;
@@ -123,7 +100,7 @@
       --lh-relaxed: 1.7;
 
       /* Letter spacing */
-      --ls-tight:   -1px;
+      --ls-tight:   -0.7px;
       --ls-caption: 3px;
 
       /* Spacing — 4px base grid */
@@ -157,13 +134,13 @@
       --duration-slow: 360ms;
     }
 
-    /* ── Direction B — Chopin ────────────────────────────── */
+    /* ── Direction B — Nunito Sans ─────────────────────────── */
     [data-direction="b"] {
-      --font-display: "Chopin", Georgia, "Times New Roman", serif;
-      --font-body: "Chopin", Georgia, "Times New Roman", serif;
-      --fw-heading: 700;
-      --fw-h3:      700;
-      --fw-h4:      700;
+      --font-display: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-body: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --fw-heading: 900;
+      --fw-h3:      900;
+      --fw-h4:      1000;
       --fw-body-l:  700;
       --fw-body-m:  600;
       --fw-body-s:  500;
@@ -172,7 +149,7 @@
       /* Deeper, more aspirational palette */
       --color-accent:        #FF7B79;
       --color-accent-hover:  #D96967;
-      --color-accent-focus:  #EB716F;
+      --color-accent-focus:  #E79493;
       --color-bg-warm:       var(--color-warm-200);
       --color-bg-light:      #F8F3F1;
       --bg-dark:             var(--color-warm-600);
@@ -207,6 +184,11 @@
       --radius-2xl:  9999px;  /* 20 → pill */
     }
 
+    /* Direction A — pdp-wrap: no border on container */
+    [data-direction="a"] .pdp-wrap {
+      border: none;
+    }
+
     /* Direction B — pdp-wrap: cap radius at 24px (pill is nonsensical for large layout containers) */
     [data-direction="b"] .pdp-wrap {
       border-radius: 24px;
@@ -233,13 +215,19 @@
 
     /* Direction B — product card title: bold */
     [data-direction="b"] .cs-product-card .card-title {
-      font-weight: 700;
+      font-weight: 900;
     }
 
-    /* Direction B — PDP benefits: white bg, no border */
-    [data-direction="b"] .pdp-benefits {
-      background: var(--color-white);
-      border: none;
+    /* Direction B — button label weight: +2 steps (600 → 800) */
+    [data-direction="b"] .cs-btn {
+      font-weight: 800;
+    }
+
+    /* Direction B — badges: pill shape, wider side padding to balance the rounded ends, +2 steps text weight (700 → 900) */
+    [data-direction="b"] .cs-badge {
+      border-radius: var(--radius-xl);
+      padding: 0 var(--space-3);
+      font-weight: 900;
     }
 
     /* Direction B — qty stepper: white bg on all parts */
@@ -252,10 +240,10 @@
       background: var(--color-white);
     }
 
-    /* ── Direction C — Fabric ────────────────────────────── */
+    /* ── Direction C — Figtree ───────────────────────────────── */
     [data-direction="c"] {
-      --font-display: "Fabric Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      --font-body:    "Fabric Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-display: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-body:    "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 
       /* Warm neutrals — B's richer, +20pp saturation scale */
       --color-text:        #98604E;
@@ -274,7 +262,7 @@
       /* Accent — flamingo, used sparingly (badges/indicators only) */
       --color-accent:        #F0506E;
       --color-accent-hover:  #CB3F5A;
-      --color-accent-focus:  #D84A64;
+      --color-accent-focus:  #D47788;
 
       /* Semantic text — warm-500 register */
       --fg-primary:   var(--color-warm-500);
@@ -318,15 +306,13 @@
       --ls-tight: 0px;
     }
 
-    /* Direction C — cards: transparent bg, no border, no elevation on hover */
+    /* Direction C — cards: separation via tinted background, no border (flush variant stays transparent via higher-specificity rule below) */
     [data-direction="c"] .cs-card {
-      background: transparent;
+      background: var(--color-bg-light);
       border: none;
     }
     [data-direction="c"] .cs-card:hover {
-      box-shadow: none;
       border: none;
-      transform: none;
     }
 
     /* Direction C — pdp-wrap: white bg, no border */
@@ -366,10 +352,15 @@
     [data-direction="c"] .ds-motion-demo,
     [data-direction="c"] .ds-swatch-item,
     [data-direction="c"] .ds-shadow-item,
-    [data-direction="c"] .pdp-benefits,
     [data-direction="c"] .pdp-accordion-item,
     [data-direction="c"] .pdp-ba-strip {
       background: var(--color-bg-light);
+      border: none;
+    }
+
+    /* Direction C — PDP benefits: no bg (matches A/B) */
+    [data-direction="c"] .pdp-benefits {
+      background: transparent;
       border: none;
     }
 
@@ -377,15 +368,6 @@
     [data-direction="c"] .ds-semantic-item {
       background: #FFFFFF;
       border: 1px solid var(--color-warm-500);
-    }
-
-    /* Direction C — product card: flush text, transparent body bg */
-    [data-direction="c"] .cs-product-card .card-title {
-      font-weight: 400;
-    }
-    [data-direction="c"] .cs-product-card .card-body {
-      padding-left: 0;
-      background: transparent;
     }
 
     /* Direction C — badges use accent sparingly; CTAs inherit dark action tokens */
@@ -489,7 +471,7 @@
 
     .cs-btn--secondary {
       background: transparent;
-      color: var(--fg-brand);
+      color: var(--color-warm-500);
       border-color: var(--action-primary);
       box-shadow: inset 0 0 0 0 var(--action-primary);
       transition:
@@ -500,7 +482,7 @@
     .cs-btn--secondary:hover {
       background: transparent;
       border-color: var(--action-primary);
-      color: var(--fg-brand);
+      color: var(--color-warm-500);
       box-shadow: inset 0 0 0 1px var(--action-primary);
     }
     .cs-btn--secondary:disabled {
@@ -522,7 +504,7 @@
 
     .cs-btn--tertiary {
       background: transparent;
-      color: var(--fg-primary);
+      color: var(--color-warm-500);
       border-color: transparent;
       padding: 0 var(--space-2);
       height: 32px;
@@ -530,7 +512,7 @@
       text-underline-offset: 4px;
       text-decoration-color: var(--border-strong);
     }
-    .cs-btn--tertiary:hover { color: var(--fg-brand); text-decoration-color: var(--fg-brand); }
+    .cs-btn--tertiary:hover { color: var(--color-warm-500); text-decoration-color: var(--color-warm-500); }
     .cs-btn--tertiary:disabled { color: var(--state-disabled); cursor: not-allowed; }
 
     .cs-btn--tertiary-inverse {
@@ -597,20 +579,20 @@
     /* ── Badges ──────────────────────────────────────────── */
     .cs-badge {
       display: inline-flex; align-items: center; gap: var(--space-1);
-      height: 22px; padding: 0 var(--space-3);
+      height: 22px; padding: 0 var(--space-1);
       border-radius: var(--radius-sm);
-      font: 600 10px/1 var(--font-body);
+      font: 700 15px/1 var(--font-body);
       font-feature-settings: 'locl' 0;
-      letter-spacing: 1.4px; text-transform: uppercase;
-      background: var(--bg-subtle);
-      color: var(--fg-secondary);
-      border: 1px solid var(--border-default);
+      letter-spacing: 0.7px; text-transform: uppercase;
+      background: var(--color-warm-500);
+      color: #fff;
+      border: none;
     }
-    .cs-badge--sale    { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
-    .cs-badge--new     { background: var(--color-dark); border-color: var(--color-dark); color: #fff; }
-    .cs-badge--gift    { background: var(--color-bg-warm); border-color: var(--color-warm-200); color: var(--fg-secondary); }
-    .cs-badge--bundle  { background: var(--color-warm-700); border-color: var(--color-warm-700); color: #fff; }
-    .cs-badge--organic { background: transparent; border-color: var(--border-strong); color: var(--fg-muted); }
+    .cs-badge--sale    { background: var(--color-accent); color: #fff; }
+    .cs-badge--discount{ background: var(--color-bg-warm); color: #fff; }
+    .cs-badge--new     { background: var(--color-warm-400); color: #fff; }
+    .cs-badge--gift    { background: var(--color-bg-warm); color: #fff; }
+    .cs-badge--bundle  { background: var(--color-warm-700); color: #fff; }
 
     /* ── Cards ───────────────────────────────────────────── */
     .cs-card {
@@ -682,7 +664,7 @@
 
     .ds-main {
       flex: 1; overflow-x: visible;
-      padding: calc(var(--space-16) + 60px) var(--space-12) var(--space-16);
+      padding: calc(var(--space-16) + 60px) var(--space-10) var(--space-16);
       max-width: 980px;
     }
 
@@ -749,6 +731,7 @@
     .ds-palette { display: flex; gap: var(--space-4); flex-wrap: wrap; }
     .ds-swatch-lg {
       flex: 1; min-width: 120px;
+      display: flex; flex-direction: column;
       border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid var(--border-default);
@@ -763,8 +746,10 @@
       border-color: transparent;
       transform: translateY(-2px);
     }
-    .ds-swatch-lg .swatch-color { height: 100px; }
+    .ds-swatch-lg .swatch-color { height: 100px; flex-shrink: 0; }
     .ds-swatch-lg .swatch-info {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
       padding: var(--space-3) var(--space-4);
       background: var(--color-white);
     }
@@ -925,7 +910,7 @@
     /* Product card internals */
     .cs-product-card { cursor: pointer; display: flex; flex-direction: column; }
     .cs-product-card .card-image {
-      aspect-ratio: 3/4;
+      aspect-ratio: 1/1;
       background: var(--color-cream);
       position: relative; overflow: hidden;
     }
@@ -938,14 +923,8 @@
       width: 100%; height: 100%;
     }
     .cs-product-card .card-body { padding: var(--space-4) var(--space-4) var(--space-5); display: flex; flex-direction: column; flex: 1; }
-    .cs-product-card .card-eyebrow {
-      font: 500 var(--fs-caption)/1 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--fg-muted); margin-bottom: var(--space-2);
-    }
     .cs-product-card .card-title {
-      font: 500 var(--fs-body-m)/var(--lh-snug) var(--font-body);
+      font: var(--fw-heading) var(--fs-body-m)/var(--lh-snug) var(--font-body);
       font-feature-settings: 'locl' 0;
       color: var(--fg-primary); margin-bottom: var(--space-2);
     }
@@ -975,11 +954,21 @@
       font-feature-settings: 'locl' 0;
       color: var(--fg-primary); margin-bottom: var(--space-4);
     }
-    .cs-product-card .card-price-bgn {
+    .cs-product-card .card-price-bgn-current {
+      font: 600 var(--fs-caption)/1 var(--font-body);
+      color: var(--fg-primary);
+    }
+    .cs-product-card .card-price-bgn-old {
       font: var(--fw-body-s) var(--fs-caption)/1 var(--font-body);
-      color: var(--fg-muted); margin-left: var(--space-1);
+      color: var(--fg-muted); text-decoration: line-through; margin-left: var(--space-2);
     }
     .cs-product-card .card-bottom { margin-top: auto; }
+
+    /* Product card — flush variant: no card bg/border, body flush-left, image rounded on all sides (works in any direction, incl. B's bordered-card override) */
+    .cs-card.cs-product-card--flush { background: transparent; border: none; }
+    .cs-card.cs-product-card--flush:hover { box-shadow: none; border: none; transform: none; }
+    .cs-product-card--flush .card-body { padding-left: 0; background: transparent; }
+    .cs-product-card--flush .card-image { border-radius: var(--radius-lg); overflow: hidden; }
 
     /* State indicators */
     .ds-state-row { display: flex; gap: var(--space-5); align-items: center; flex-wrap: wrap; }
@@ -1039,7 +1028,7 @@
       background: var(--color-white);
       border: 1px solid var(--border-default);
       border-radius: var(--radius-xl);
-      padding: var(--space-8);
+      padding: 0;
     }
     .pdp-gallery { display: flex; flex-direction: column; gap: var(--space-4); }
     .pdp-main-image-wrap {
@@ -1063,6 +1052,28 @@
     .pdp-ingredient-desc {
       font: var(--fw-body-xs) var(--fs-caption)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
       color: var(--fg-muted);
+    }
+    /* Mobile swipe gallery — hidden by default, shown ≤900px in place of main image + thumbs */
+    .pdp-mobile-gallery { display: none; }
+    .pdp-mobile-gallery-track {
+      display: flex; gap: var(--space-2); overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .pdp-mobile-gallery-track::-webkit-scrollbar { display: none; }
+    .pdp-mobile-slide {
+      flex: 0 0 92%; scroll-snap-align: start; aspect-ratio: 1/1;
+      position: relative; background: var(--color-cream); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .pdp-mobile-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pdp-mobile-scrollbar {
+      height: 3px; margin-top: var(--space-3); border-radius: 2px;
+      background: var(--border-default); position: relative; overflow: hidden;
+    }
+    .pdp-mobile-scrollbar-thumb {
+      position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px;
+      background: var(--fg-muted); will-change: transform, width;
     }
     .pdp-thumbs { display: flex; gap: var(--space-2); }
     .pdp-thumb {
@@ -1096,14 +1107,9 @@
       font: var(--fw-body-s) 14px/1 var(--font-body); color: var(--fg-muted);
     }
     .pdp-info { display: flex; flex-direction: column; padding-top: var(--space-2); }
-    .pdp-eyebrow {
-      font: 500 var(--fs-caption)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--fg-muted); margin-bottom: var(--space-3);
-    }
     .pdp-title {
       font: var(--fw-heading) var(--fs-h2)/1.1 var(--font-body); font-feature-settings: 'locl' 0;
-      letter-spacing: -0.5px; color: var(--fg-primary);
+      letter-spacing: -0.35px; color: var(--fg-primary);
       margin: 0 0 var(--space-4);
     }
     .pdp-stars {
@@ -1117,12 +1123,12 @@
       color: var(--fg-secondary); margin: 0 0 var(--space-5);
     }
     .pdp-benefits {
-      list-style: none; margin: 0 0 var(--space-5); padding: var(--space-4) var(--space-5);
-      background: transparent; border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+      list-style: none; margin: 0 0 var(--space-5); padding: 0;
+      background: transparent; border: none; border-radius: var(--radius-md);
       display: flex; flex-direction: column; gap: var(--space-3);
     }
     .pdp-benefits li {
-      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      font: var(--fw-body-xs) var(--fs-body-xs)/0.7 var(--font-body); font-feature-settings: 'locl' 0;
       color: var(--fg-secondary); display: flex; align-items: flex-start; gap: var(--space-3);
     }
     .pdp-benefits li::before {
@@ -1164,7 +1170,7 @@
     }
     .pdp-atc-row {
       display: flex; align-items: center; gap: var(--space-3);
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-2);
     }
 .pdp-atc-btn { flex: 1; }
     .pdp-wish-btn {
@@ -1178,12 +1184,59 @@
     .pdp-service-strip {
       display: flex; align-items: center; gap: var(--space-3);
       padding: var(--space-3) 0; border-bottom: 1px solid var(--border-default);
-      font: var(--fw-body-s) var(--fs-body-s)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
       color: var(--fg-secondary);
     }
     .pdp-service-strip:last-child { border-bottom: none; }
     .pdp-service-strip svg { flex-shrink: 0; color: var(--fg-muted); }
     .pdp-service-strip strong { color: var(--fg-primary); font-weight: 600; }
+
+    /* ── PDP Bundle variant ──────────────────────────── */
+    .pdp-bundle-list strong { color: var(--fg-primary); font-weight: 600; }
+    .pdp-price-row--promo { margin-bottom: var(--space-2); }
+    .pdp-price-row--promo .pdp-price-old {
+      font: var(--fw-body-m) var(--fs-body-m)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); text-decoration: line-through;
+    }
+    .pdp-price-row--bgn { margin-bottom: var(--space-5); }
+    .pdp-price-bgn {
+      font: 600 var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-primary);
+    }
+    .pdp-price-old-bgn {
+      font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); text-decoration: line-through;
+    }
+    .pdp-omnibus-note {
+      display: flex; align-items: center; gap: var(--space-2);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); margin: 0 0 var(--space-5);
+    }
+    .pdp-omnibus-note strong { color: var(--fg-secondary); }
+    .pdp-omnibus-note svg { flex-shrink: 0; }
+    .pdp-club-banner {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: var(--color-bg-light); border-radius: var(--radius-md);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); margin-bottom: var(--space-5);
+    }
+    .pdp-club-banner svg { flex-shrink: 0; color: var(--color-accent); margin-top: 1px; }
+    .pdp-club-link { color: var(--fg-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    .pdp-service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .pdp-service-strip--col {
+      flex-direction: row; align-items: center; text-align: left;
+      gap: var(--space-3); border-bottom: none; padding: 0;
+    }
+    .pdp-service-strip--col svg,
+    .pdp-service-strip--col .pdp-free-badge { width: 24px; height: 24px; flex-shrink: 0; }
+    .pdp-free-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      font: 700 8px/1 var(--font-body); letter-spacing: 0.3px;
+      color: var(--fg-primary);
+    }
 
     /* ── Rating ──────────────────────────────────────── */
     .cs-rating { display: inline-flex; align-items: center; gap: var(--space-2); }
@@ -1319,6 +1372,8 @@
       }
 
       .pdp-wrap { grid-template-columns: 1fr; padding: var(--space-5); gap: var(--space-6); }
+      .pdp-main-image-wrap, .pdp-thumbs { display: none; }
+      .pdp-mobile-gallery { display: block; }
       .ds-card-row { grid-template-columns: 1fr; }
       .ds-inputs-row { grid-template-columns: 1fr; }
       .ds-onDark-grid { grid-template-columns: 1fr; }
@@ -1339,6 +1394,11 @@
       .pdp-atc-row { flex-wrap: wrap; }
       .pdp-volume-options { flex-wrap: wrap; }
     }
+
+    /* ── Desktop breakpoint — ≥1440px ─────────────────────── */
+    @media (min-width: 1440px) {
+      .ds-main { margin: 0 auto; }
+    }
   </style>
 </head>
 <body>
@@ -1358,7 +1418,7 @@
       <button class="ds-dir-btn" data-dir="b" onclick="csSetDir('b')">B</button>
       <button class="ds-dir-btn" data-dir="c" onclick="csSetDir('c')">C</button>
     </div>
-    <div class="ds-dir-label" id="ds-dir-label">Continuity</div>
+    <div class="ds-dir-label" id="ds-dir-label">Montserrat</div>
 
     <div class="ds-sidebar-nav">
       <div class="ds-sidebar-group">Mockup</div>
@@ -1397,7 +1457,7 @@
       <button class="ds-hamburger" aria-label="Отвори навигация" onclick="csToggleSidebar()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
-      <div class="ds-cover-title">Design System · <span class="ds-cover-title-dir" id="ds-cover-dir-inline">Direction A — Continuity</span></div>
+      <div class="ds-cover-title">Design System · <span class="ds-cover-title-dir" id="ds-cover-dir-inline">Direction A — Montserrat</span></div>
       <div class="ds-cover-meta">
         <span class="ds-cover-ver">v1 · June 2026</span>
       </div>
@@ -1417,8 +1477,8 @@
         <div class="pdp-gallery">
 
           <div class="pdp-main-image-wrap">
-            <span class="cs-badge cs-badge--new pdp-best-badge">Best Seller</span>
-            <img src="P1931635.webp" alt="Cocosolis ORGANIC Sun Tan Oil" class="pdp-main-image">
+            <span class="cs-badge cs-badge--sale pdp-best-badge">-30%</span>
+            <img src="P1931635.webp" alt="Cocosolis Next-Gen Body Serums" class="pdp-main-image">
           </div>
 
           <!-- Thumbnails -->
@@ -1428,6 +1488,23 @@
             <div class="pdp-thumb"><img src="P1920734.webp" alt=""></div>
             <div class="pdp-thumb"><img src="P1931382.webp" alt=""></div>
             <div class="pdp-thumb"><img src="P1931635.webp" alt=""></div>
+          </div>
+
+          <!-- Mobile swipe gallery: side-swipe with visible horizontal scrollbar -->
+          <div class="pdp-mobile-gallery">
+            <div class="pdp-mobile-gallery-track" id="pdpMobileTrack">
+              <div class="pdp-mobile-slide">
+                <span class="cs-badge cs-badge--sale pdp-best-badge">-30%</span>
+                <img src="P1931635.webp" alt="Cocosolis Next-Gen Body Serums">
+              </div>
+              <div class="pdp-mobile-slide"><img src="P1920577.webp" alt=""></div>
+              <div class="pdp-mobile-slide"><img src="P1920734.webp" alt=""></div>
+              <div class="pdp-mobile-slide"><img src="P1931382.webp" alt=""></div>
+              <div class="pdp-mobile-slide"><img src="P1931635.webp" alt=""></div>
+            </div>
+            <div class="pdp-mobile-scrollbar">
+              <div class="pdp-mobile-scrollbar-thumb" id="pdpMobileScrollbarThumb"></div>
+            </div>
           </div>
 
           <!-- Before/after strip -->
@@ -1441,30 +1518,27 @@
         <!-- Right: Product info -->
         <div class="pdp-info">
 
-          <span class="pdp-eyebrow">ORGANIC</span>
-          <h1 class="pdp-title">Sun Tan Oil<br>Dark</h1>
+          <h1 class="pdp-title">Next-Gen Body Serums</h1>
 
-          <div class="pdp-stars">
-            <span class="pdp-stars-icons">★★★★★</span>
-            <span class="pdp-stars-count">1 247 отзива</span>
-          </div>
+          <p class="pdp-desc">Трансформирайте тялото си със силата на натурални активни съставки с клинично доказан ефект. HOT+ топи мазнините и намалява обиколките на дупето и бедрата, а SKIN+ видимо намалява целулита, изглажда и оформя. SLIM+ намалява обиколките, стяга и оформя корема и ръцете. LIFT+ повдига бюста, стяга и изглажда шията и деколтето.</p>
 
-          <p class="pdp-desc">Интензивен тен с грижа за кожата. Формулата с натурални масла ускорява потъмняването, хидратира дълбоко и оставя коприненото усещане на плажна кожа — без изкуствени съставки.</p>
-
-          <!-- Key benefits -->
-          <ul class="pdp-benefits">
-            <li><span class="pdp-benefit-label">+80% интензивност на тена</span><span class="pdp-benefit-note"> — клинично тествано</span></li>
-            <li><span class="pdp-benefit-label">72H хидратация</span></li>
-            <li><span class="pdp-benefit-label">100% натурални съставки</span></li>
-            <li><span class="pdp-benefit-label">Cruelty free · Vegan</span></li>
+          <!-- Bundle contents -->
+          <ul class="pdp-bundle-list pdp-benefits">
+            <li>1x <strong>LIFT+</strong> Anti-aging Serum, 50 ML</li>
+            <li>1x <strong>HOT+</strong> Fat-burning Serum, 100 ML</li>
+            <li>1x <strong>SLIM+</strong> Shaping Serum, 100 ML</li>
+            <li>1x <strong>SKIN+</strong> Anti-cellulite Serum, 100 ML</li>
           </ul>
 
-          <div class="pdp-divider"></div>
-
           <!-- Price -->
-          <div class="pdp-price-row">
-            <span class="pdp-price">49,90 €</span>
-            <span class="pdp-price-per">/ 110 ml</span>
+          <div class="pdp-price-row pdp-price-row--promo">
+            <span class="pdp-price">83,75 €</span>
+            <span class="pdp-price-old">119,64 €</span>
+            <span class="cs-badge cs-badge--sale">-30%</span>
+          </div>
+          <div class="pdp-price-row pdp-price-row--bgn">
+            <span class="pdp-price-bgn">163,80 лв.</span>
+            <span class="pdp-price-old-bgn">234,00 лв.</span>
           </div>
 
           <!-- Volume selector -->
@@ -1490,20 +1564,27 @@
             </button>
           </div>
 
-          <div class="pdp-divider"></div>
+          <p class="pdp-omnibus-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            Най-ниска цена за последните 30 дни: <strong>119,64 € (234,00 лв.)</strong>
+          </p>
+
+          <!-- Club / loyalty banner -->
+          <div class="pdp-club-banner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l4 3 6-7 6 7 4-3-2 13H4L2 7z"></path></svg>
+            <span>Не пропускайте точките! <a href="#" class="pdp-club-link">Влезте в клуба</a>, събирайте точки и пазарувайте с отстъпка.</span>
+          </div>
 
           <!-- Service strips -->
-          <div class="pdp-service-strip">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-            <span>Спечели <strong>50 точки</strong> с тази поръчка</span>
-          </div>
-          <div class="pdp-service-strip">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-            <span>Безплатна доставка при поръчка над <strong>80 €</strong></span>
-          </div>
-          <div class="pdp-service-strip">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            <span>Сигурно плащане · SSL защита</span>
+          <div class="pdp-service-grid">
+            <div class="pdp-service-strip pdp-service-strip--col">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Върнете в рамките на <strong>30 дни</strong>, ако не сте доволни</span>
+            </div>
+            <div class="pdp-service-strip pdp-service-strip--col">
+              <span class="pdp-free-badge">FREE</span>
+              <span><strong>Бърза и безплатна</strong> доставка</span>
+            </div>
           </div>
 
         </div>
@@ -1518,27 +1599,23 @@
         <p class="ds-section-desc">Collection grid — product card в пълен контекст: rating, описание, употреба, EUR/BGN цена и пълноширинен ATC. 3 колони desktop, 1 колона mobile (90% от трафика).</p>
       </div>
 
+      <div class="ds-subsection-title" style="margin-bottom:var(--space-3);">With background</div>
       <div class="ds-card-row">
 
         <div class="cs-card cs-product-card" style="cursor:default;">
           <div class="card-image">
             <div class="card-image-inner">
-              <img src="P1920577.webp" alt="Sun Tan Oil Dark" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <img src="P1920577.webp" alt="Full Glow" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
           </div>
           <div class="card-body">
-            <div class="card-eyebrow">ORGANIC</div>
-            <div class="card-title">Sun Tan Oil Dark</div>
-            <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-3);">
-              <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
-              <span class="cs-rating-count" style="text-decoration:none;">1 247 отзива</span>
-            </div>
-            <p class="card-desc">Интензивен тен с грижа за кожата. Ускорява потъмняването, хидратира дълбоко.</p>
-            <p class="card-zone">Употреба: тяло и лице</p>
+            <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
+            <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
             <div class="card-bottom">
-              <div class="cs-price" style="margin-bottom:var(--space-4);">
-                <span class="cs-price-current">49,90 €</span>
-                <span class="card-price-bgn">/ 97,60 лв.</span>
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
+                <div><span class="card-price-bgn-current">107,77 лв.</span> <span class="card-price-bgn-old">134,72 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
               </div>
               <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
             </div>
@@ -1548,24 +1625,17 @@
         <div class="cs-card cs-product-card" style="cursor:default;">
           <div class="card-image">
             <div class="card-image-inner">
-              <img src="P1920734.webp" alt="Body Shimmer Oil" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <img src="P1920734.webp" alt="Summer Crush" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
-            <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
           </div>
           <div class="card-body">
-            <div class="card-eyebrow">GLOW</div>
-            <div class="card-title">Body Shimmer Oil</div>
-            <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-3);">
-              <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
-              <span class="cs-rating-count" style="text-decoration:none;">312 отзива</span>
-            </div>
-            <p class="card-desc">Озаряващо масло с розово злато и арган. Лек блясък, без омазняване.</p>
-            <p class="card-zone">Употреба: тяло</p>
+            <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
+            <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
             <div class="card-bottom">
-              <div class="cs-price" style="margin-bottom:var(--space-4);">
-                <span class="cs-price-current">39,90 €</span>
-                <span class="cs-price-original">49,90 €</span>
-                <span class="card-price-bgn">/ 78,00 лв.</span>
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
+                <div><span class="card-price-bgn-current">108,01 лв.</span> <span class="card-price-bgn-old">144,01 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
               </div>
               <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
             </div>
@@ -1575,24 +1645,82 @@
         <div class="cs-card cs-product-card" style="cursor:default;">
           <div class="card-image">
             <div class="card-image-inner">
-              <img src="P1931382.webp" alt="Summer Ritual Set" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <img src="P1931382.webp" alt="Next-Gen Body Serums" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
-            <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
           </div>
           <div class="card-body">
-            <div class="card-eyebrow">BUNDLE</div>
-            <div class="card-title">Summer Ritual Set</div>
-            <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-3);">
-              <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
-              <span class="cs-rating-count" style="text-decoration:none;">89 отзива</span>
-            </div>
-            <p class="card-desc">3 продукта в лимитирана серия за пълен летен ритуал.</p>
-            <p class="card-zone">Комплект: 3 продукта</p>
+            <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
+            <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
             <div class="card-bottom">
-              <div class="cs-price" style="margin-bottom:var(--space-4);">
-                <span class="cs-price-current">89,90 €</span>
-                <span class="cs-price-original">119,70 €</span>
-                <span class="card-price-bgn">/ 175,75 лв.</span>
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
+                <div><span class="card-price-bgn-current">163,80 лв.</span> <span class="card-price-bgn-old">234,00 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ds-subsection-title" style="margin:var(--space-6) 0 var(--space-3);">Without background</div>
+      <div class="ds-card-row">
+
+        <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920577.webp" alt="Full Glow" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
+            <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
+                <div><span class="card-price-bgn-current">107,77 лв.</span> <span class="card-price-bgn-old">134,72 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920734.webp" alt="Summer Crush" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
+            <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
+                <div><span class="card-price-bgn-current">108,01 лв.</span> <span class="card-price-bgn-old">144,01 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1931382.webp" alt="Next-Gen Body Serums" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
+            <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
+                <div><span class="card-price-bgn-current">163,80 лв.</span> <span class="card-price-bgn-old">234,00 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
               </div>
               <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
             </div>
@@ -1736,19 +1864,19 @@
         <div class="ds-subsection-title">Semantic Tokens — States</div>
         <div class="ds-state-row">
           <div class="ds-state-item">
-            <div class="ds-state-dot" data-dir-bg="accentFocus" style="background:#E06B7D;">!</div>
+            <div class="ds-state-dot" data-dir-bg="accentFocus" style="background:#DF95A0;">!</div>
             <div class="ds-state-label">state/focus</div>
-            <div data-dir-hex="accentFocus" style="font: 400 11px/1 monospace; color: var(--fg-muted);">#E06B7D</div>
+            <div data-dir-hex="accentFocus" style="font: 400 11px/1 monospace; color: var(--fg-muted);">#DF95A0</div>
           </div>
           <div class="ds-state-item">
-            <div class="ds-state-dot" style="background:#E8431A;">✕</div>
+            <div class="ds-state-dot" style="background:#EB5D33;">✕</div>
             <div class="ds-state-label">state/error</div>
-            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#E8431A</div>
+            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#EB5D33</div>
           </div>
           <div class="ds-state-item">
-            <div class="ds-state-dot" style="background:#2E7D52;">✓</div>
+            <div class="ds-state-dot" style="background:#498D68;">✓</div>
             <div class="ds-state-label">state/success</div>
-            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#2E7D52</div>
+            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#498D68</div>
           </div>
           <div class="ds-state-item">
             <div class="ds-state-dot" style="background:#C8C8C8;">–</div>
@@ -1768,7 +1896,7 @@
       </div>
 
       <div class="ds-font-card">
-        <div class="ds-font-specimen" style="font: var(--fw-heading) 52px/1.1 var(--font-display); font-feature-settings: 'locl' 0; color: var(--fg-primary); letter-spacing: -1px;" id="ds-typo-specimen">Cocosolis</div>
+        <div class="ds-font-specimen" style="font: var(--fw-heading) 52px/1.1 var(--font-display); font-feature-settings: 'locl' 0; color: var(--fg-primary); letter-spacing: -0.7px;" id="ds-typo-specimen">Cocosolis</div>
         <div style="font: 400 18px/1.5 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-muted); margin-bottom: var(--space-4);">Естествена красота от природата — Natural beauty from nature</div>
         <div style="display:flex; gap: var(--space-8); flex-wrap:wrap;">
           <div>
@@ -1790,7 +1918,7 @@
         <div class="ds-type-scale">
 
           <div class="ds-type-row">
-            <div style="font: var(--fw-heading) var(--fs-display)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-1px; color:var(--fg-primary); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">Display</div>
+            <div style="font: var(--fw-heading) var(--fs-display)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">Display</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-display</span>
               <div class="ds-type-detail ds-type-detail--display">300 · 77px · lh 1.15 · ls −1px</div>
@@ -1798,7 +1926,7 @@
           </div>
 
           <div class="ds-type-row">
-            <div style="font: var(--fw-heading) var(--fs-h1)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-1px; color:var(--fg-primary);">Heading 1</div>
+            <div style="font: var(--fw-heading) var(--fs-h1)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary);">Heading 1</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-h1</span>
               <div class="ds-type-detail ds-type-detail--display">300 · 58px · lh 1.15 · ls −1px</div>
@@ -1806,7 +1934,7 @@
           </div>
 
           <div class="ds-type-row">
-            <div style="font: var(--fw-heading) var(--fs-h2)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-1px; color:var(--fg-primary);">Heading 2</div>
+            <div style="font: var(--fw-heading) var(--fs-h2)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary);">Heading 2</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-h2</span>
               <div class="ds-type-detail ds-type-detail--display">300 · 43px · lh 1.15 · ls −1px</div>
@@ -2094,7 +2222,7 @@
             <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center;">
               <div class="ds-row-label">Tertiary</div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm">Детайли</button></div>
-              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="color:var(--fg-brand);">Детайли</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="color:var(--color-warm-500);">Детайли</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="transform:scale(.98);">Детайли</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Детайли</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" disabled>Детайли</button></div>
@@ -2191,10 +2319,6 @@
             <span class="cs-badge cs-badge--bundle">Bundle</span>
             <div class="ds-badge-label">--bundle</div>
           </div>
-          <div class="ds-badge-item">
-            <span class="cs-badge cs-badge--organic">100% Natural</span>
-            <div class="ds-badge-label">--organic · trust signal</div>
-          </div>
         </div>
 
         <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top:1px solid var(--border-default);">
@@ -2222,7 +2346,7 @@
       <div class="ds-section-header">
         <span class="ds-section-label">12 — Components</span>
         <div class="ds-section-title">Cards</div>
-        <p class="ds-section-desc">Product cards с 3:4 aspect ratio (skincare context). Hover → translateY lift + shadow. Hover за live interaction.</p>
+        <p class="ds-section-desc">Product cards с 1:1 (square) aspect ratio. Hover → translateY lift + shadow. Hover за live interaction.</p>
       </div>
 
       <div class="ds-card-row">
@@ -2235,7 +2359,6 @@
             <div class="card-badges"><span class="cs-badge cs-badge--new">New</span></div>
           </div>
           <div class="card-body">
-            <div class="card-eyebrow">ORGANIC</div>
             <div class="card-title">Sun Tan Oil Dark</div>
             <div class="card-subtitle">Баобаб · Какао · Папая</div>
             <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
@@ -2252,7 +2375,6 @@
             <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
           </div>
           <div class="card-body">
-            <div class="card-eyebrow">GLOW</div>
             <div class="card-title">Body Shimmer Oil</div>
             <div class="card-subtitle">Розово злато · Арган</div>
             <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
@@ -2270,7 +2392,6 @@
             <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
           </div>
           <div class="card-body">
-            <div class="card-eyebrow">BUNDLE</div>
             <div class="card-title">Summer Ritual Set</div>
             <div class="card-subtitle">3 продукта · Limited edition</div>
             <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
@@ -2288,13 +2409,81 @@
           <thead><tr><th>Element</th><th>Token</th><th>Value</th></tr></thead>
           <tbody>
             <tr><td>Background</td><td>--color-white</td><td>#FFFFFF</td></tr>
-            <tr><td>Image aspect ratio</td><td>—</td><td>3:4 (skincare/portrait)</td></tr>
+            <tr><td>Image aspect ratio</td><td>—</td><td>1:1 (square)</td></tr>
             <tr><td>Border (default)</td><td>--border-default</td><td>#DEC9BE · 1px</td></tr>
             <tr><td>Border Radius</td><td>--radius-lg</td><td>10px</td></tr>
             <tr><td>Border (hover)</td><td>transparent</td><td>—</td></tr>
             <tr><td>Shadow (hover)</td><td>--shadow-md</td><td>0 4px 12px rgba(168,138,129,.10)</td></tr>
             <tr><td>Lift (hover)</td><td>translateY</td><td>−2px</td></tr>
             <tr><td>Transition duration</td><td>--duration-base</td><td>220ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: var(--space-8);">
+        <div class="ds-subsection-title">Variant — No Background (Flush)</div>
+        <p class="ds-section-desc" style="margin-bottom:var(--space-5);">Modifier class <code>.cs-product-card--flush</code> — card container loses background, border and hover shadow/lift. Image keeps its own radius on all four corners (independent of the card frame), and the body text sits flush left (no left padding). Apply alongside <code>.cs-card .cs-product-card</code> in any direction, including Direction B where the base card normally gets a 1px border.</p>
+
+        <div class="ds-card-row">
+          <div class="cs-card cs-product-card cs-product-card--flush">
+            <div class="card-image">
+              <div class="card-image-inner">
+                <img src="P1920577.webp" alt="Sun Tan Oil Dark" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div class="card-badges"><span class="cs-badge cs-badge--new">New</span></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Sun Tan Oil Dark</div>
+              <div class="card-subtitle">Баобаб · Какао · Папая</div>
+              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+                <span class="card-price">49,90 €</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-card cs-product-card cs-product-card--flush">
+            <div class="card-image">
+              <div class="card-image-inner">
+                <img src="P1920734.webp" alt="Body Shimmer Oil" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Body Shimmer Oil</div>
+              <div class="card-subtitle">Розово злато · Арган</div>
+              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+                <span class="card-price">39,90 €</span>
+                <span class="card-price-old">49,90 €</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-card cs-product-card cs-product-card--flush">
+            <div class="card-image">
+              <div class="card-image-inner">
+                <img src="P1931382.webp" alt="Summer Ritual Set" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Summer Ritual Set</div>
+              <div class="card-subtitle">3 продукта · Limited edition</div>
+              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+                <span class="card-price">89,90 €</span>
+                <span class="card-price-old">119,70 €</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="ds-motion-table" style="margin-top:var(--space-5);">
+          <thead><tr><th>Element</th><th>Token</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Container background</td><td>—</td><td>transparent</td></tr>
+            <tr><td>Container border</td><td>—</td><td>none (all directions, incl. B)</td></tr>
+            <tr><td>Container shadow/lift (hover)</td><td>—</td><td>none</td></tr>
+            <tr><td>Image border radius</td><td>--radius-lg</td><td>10px · all 4 corners</td></tr>
+            <tr><td>Body left padding</td><td>—</td><td>0 (flush with image edge)</td></tr>
           </tbody>
         </table>
       </div>
@@ -2346,7 +2535,6 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="card-eyebrow">ORGANIC</div>
                   <div class="card-title">Sun Tan Oil Dark</div>
                   <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-2);">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
@@ -2472,7 +2660,7 @@
         <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
 
           <div class="cs-toast cs-toast--success">
-            <svg class="cs-toast-icon" style="color:#2E7D52;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg class="cs-toast-icon" style="color:#498D68;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <div class="cs-toast-body">
               <div class="cs-toast-title">Добавено в количката</div>
               <div class="cs-toast-msg">Sun Tan Oil Dark · 110 ml</div>
@@ -2481,7 +2669,7 @@
           </div>
 
           <div class="cs-toast cs-toast--success">
-            <svg class="cs-toast-icon" style="color:#2E7D52;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 12v10H4V12"></path><path d="M22 7H2v5h20V7z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+            <svg class="cs-toast-icon" style="color:#498D68;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 12v10H4V12"></path><path d="M22 7H2v5h20V7z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
             <div class="cs-toast-body">
               <div class="cs-toast-title">Подаръкът е добавен!</div>
               <div class="cs-toast-msg">Gelato Bag е в количката ти безплатно</div>
@@ -2654,6 +2842,23 @@
     });
   }
 
+  // PDP mobile swipe gallery — sync custom scrollbar thumb to track scroll
+  (function () {
+    const track = document.getElementById('pdpMobileTrack');
+    const thumb = document.getElementById('pdpMobileScrollbarThumb');
+    if (!track || !thumb) return;
+    function syncThumb() {
+      const ratio = track.clientWidth / track.scrollWidth;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const progress = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+      thumb.style.width = (ratio * 100) + '%';
+      thumb.style.transform = `translateX(${progress * (100 / ratio - 100)}%)`;
+    }
+    track.addEventListener('scroll', syncThumb, { passive: true });
+    window.addEventListener('resize', syncThumb);
+    syncThumb();
+  })();
+
   function csToggleSidebar() {
     document.body.classList.toggle('ds-sidebar-open');
   }
@@ -2687,8 +2892,8 @@
   /* ── Direction switcher ────────────────────────────────── */
   const DS_DIR = {
     a: {
-      label:       'Continuity',
-      cover:       'Direction A — Continuity',
+      label:       'Montserrat',
+      cover:       'Direction A — Montserrat',
       fontDisplay: 'Montserrat',
       fontDetail:  'Display + Body · Single system<br>Weights: 300 · 400 · 500 · 600 · 700<br>Google Fonts · BG Cyrillic с locl fix',
       detailDisplay: 'Montserrat',
@@ -2700,27 +2905,27 @@
       colors: {
         accent:      { bg: '#FF8495', name: 'Accent / Coral' },
         accentHover: { bg: '#D9607A' },
-        accentFocus: { bg: '#E06B7D' },
+        accentFocus: { bg: '#DF95A0' },
         bgWarm:      { bg: '#DEBAA7', name: 'Warm Beige' },
         bgLight:     { bg: '#FBF1EB', name: 'Cream' },
         warmCream:   { bg: '#FBF1EB' },
       },
     },
     b: {
-      label:       'Chopin',
-      cover:       'Direction B — Chopin',
-      fontDisplay: 'Chopin',
-      fontDetail:  'Display + Body · Single system<br>Chopin Trial · Variable · 100–900<br>Headings: 700 · Body: 700→600→500',
-      detailDisplay: 'Chopin',
-      detailBody:    'Chopin',
-      headingWeight: '700',
+      label:       'Nunito Sans',
+      cover:       'Direction B — Nunito Sans',
+      fontDisplay: 'Nunito Sans',
+      fontDetail:  'Display + Body · Single system<br>Nunito Sans · Variable · Google Fonts<br>Headings: 900 · Body: 700→600→500',
+      detailDisplay: 'Nunito Sans',
+      detailBody:    'Nunito Sans',
+      headingWeight: '900',
       bodyWeights: { l: 700, m: 600, s: 500, xs: 500 },
-      typoDesc: 'Direction B използва Chopin като единна типографска система — serif display и body от едно семейство. Weight 700 за heading и display. Body weight се увеличава с размера: 700 (18px) → 600 (16px) → 500 (11–14px).',
-      emphasisRule: 'Използвай <em>italic</em> за inline emphasis. Headings са 700 (Bold) — запазвай bold само за heading-level hierarchy, не за inline emphasis в body текст.',
+      typoDesc: 'Direction B използва Nunito Sans като единна типографска система — sans-serif display и body от едно семейство. Weight 900 за heading и display. Body weight се увеличава с размера: 700 (18px) → 600 (16px) → 500 (11–14px).',
+      emphasisRule: 'Използвай <em>italic</em> за inline emphasis. Headings са 900 (Black) — запазвай bold само за heading-level hierarchy, не за inline emphasis в body текст.',
       colors: {
         accent:      { bg: '#FF7B79', name: 'Accent / Coral' },
         accentHover: { bg: '#D96967' },
-        accentFocus: { bg: '#EB716F' },
+        accentFocus: { bg: '#E79493' },
         bgWarm:      { bg: '#E8C6B4', name: 'Warm Mist' },
         bgLight:     { bg: '#F8F3F1', name: 'Parchment' },
         bgDark:      { bg: '#7D4F3D', name: 'Mocha' },
@@ -2728,20 +2933,20 @@
       },
     },
     c: {
-      label:       'Fabric',
-      cover:       'Direction C — Fabric',
-      fontDisplay: 'Fabric Grotesk',
-      fontDetail:  'Display + Body · Single system<br>Fabric Grotesk Trial · Variable · 100–900<br>Fontfabric · BG Cyrillic нативно (без locl fix)',
-      detailDisplay: 'Fabric Grotesk',
-      detailBody:    'Fabric Grotesk',
+      label:       'Figtree',
+      cover:       'Direction C — Figtree',
+      fontDisplay: 'Figtree',
+      fontDetail:  'Display + Body · Single system<br>Figtree · Variable · Google Fonts<br>BG Cyrillic нативно (без locl fix)',
+      detailDisplay: 'Figtree',
+      detailBody:    'Figtree',
       headingWeight: '300',
       bodyWeights: { l: 400, m: 400, s: 400 },
-      typoDesc: 'Direction C използва Fabric Grotesk като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. BG Cyrillic нативно.',
-      emphasisRule: 'Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Fabric Grotesk и конфликтира с brand weight (300) на display текстове.',
+      typoDesc: 'Direction C използва Figtree като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. BG Cyrillic нативно.',
+      emphasisRule: 'Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Figtree и конфликтира с brand weight (300) на display текстове.',
       colors: {
         accent:      { bg: '#F0506E', name: 'Accent / Flamingo' },
         accentHover: { bg: '#CB3F5A' },
-        accentFocus: { bg: '#D84A64' },
+        accentFocus: { bg: '#D47788' },
         bgWarm:      { bg: '#E8C6B4', name: 'Warm Mist' },
         bgLight:     { bg: '#F8F3F1', name: 'Parchment' },
         bgDark:      { bg: '#311B15', name: 'Espresso' },
