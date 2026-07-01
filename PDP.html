@@ -1253,6 +1253,12 @@
     /* Load more */
     .pdp-reviews__load-more { text-align: center; margin-top: var(--space-8); }
 
+    @media (max-width: 767px) {
+      .review-card__layout { flex-direction: column-reverse; }
+      .review-card__meta { width: 100%; flex-direction: row; align-items: center; gap: var(--space-3); flex-wrap: wrap; padding-top: var(--space-3); border-top: 1px solid var(--border-default); }
+      .review-card__reviewing { margin-left: auto; text-align: right; }
+    }
+
     @media (min-width: 768px) {
       .pdp-reviews__inner { padding: 0 var(--space-6); }
       .pdp-reviews__head { flex-direction: row; align-items: flex-start; gap: var(--space-10); }
