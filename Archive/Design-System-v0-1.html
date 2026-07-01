@@ -1,0 +1,3031 @@
+<!DOCTYPE html>
+<html lang="bg" data-direction="a">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cocosolis — Design System v1 · Direction A — Montserrat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design tokens — Direction A · Montserrat ──────── */
+    :root {
+      /* Brand palette */
+      --color-text:        #816C65;
+      --color-bg-warm:     #DEBAA7;
+      --color-bg-light:    #FBF1EB;
+      --color-accent:      #FF8495;
+      --color-accent-hover:#D9607A;
+      --color-accent-focus:#DF95A0;
+
+      /* Warm neutral scale */
+      --color-white:       #FFFFFF;
+      --color-cream:       #FBF1EB;
+      --color-warm-100:    #F0E4DB;
+      --color-warm-200:    #DEC9BE;
+      --color-warm-300:    #C4A89C;
+      --color-warm-400:    #A88A81;
+      --color-warm-500:    #816C65;
+      --color-warm-600:    #6A574F;
+      --color-warm-700:    #4D3D38;
+      --color-dark:        #2A1F1C;
+
+      /* True neutral scale */
+      --color-neutral-300: #C8C8C8;
+
+      /* Semantic — backgrounds */
+      --bg-primary:  var(--color-white);
+      --bg-subtle:   var(--color-warm-100);
+      --bg-muted:    var(--color-warm-200);
+      --bg-warm:     var(--color-bg-warm);
+      --bg-dark:     var(--color-dark);
+      --bg-brand:    var(--color-accent);
+
+      /* Semantic — text */
+      --fg-primary:   var(--color-warm-500);
+      --fg-secondary: var(--color-warm-600);
+      --fg-muted:     var(--color-warm-400);
+      --fg-inverse:   var(--color-white);
+      --fg-brand:     var(--color-accent);
+
+      /* Semantic — borders */
+      --border-default:      var(--color-cream);
+      --border-interactive:  var(--color-warm-200);
+      --border-strong:       var(--color-warm-400);
+      --border-brand:        var(--color-accent);
+
+      /* Actions */
+      --action-primary:       var(--color-warm-500);
+      --action-primary-hover: var(--color-warm-600);
+      --action-primary-text:  var(--color-white);
+
+      /* States */
+      --state-focus:    var(--color-accent-focus);
+      --state-error:    #EB5D33;
+      --state-success:  #498D68;
+      --state-disabled: var(--color-neutral-300);
+
+      /* Typography — Direction A: Montserrat (single system) */
+      --font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-display: var(--font-body);
+      --fw-heading: 700;
+      --fw-h3:      700;
+      --fw-h4:      800;
+      --fw-body-l:  400;
+      --fw-body-m:  400;
+      --fw-body-s:  400;
+      --fw-body-xs: 400;
+
+      /* font-feature-settings: 'locl' 0 — disables cursive BG Cyrillic т/д forms in Montserrat */
+
+      /* Type scale */
+      --fs-display: 58px;
+      --fs-h1:      44px;
+      --fs-h2:      32px;
+      --fs-h3:      26px;
+      --fs-h4:      20px;
+      --fs-body-l:  22px;
+      --fs-body-m:  19px;
+      --fs-body-s:  17px;
+      --fs-body-xs: 14px;
+      --fs-caption: 14px;
+
+      /* Line heights */
+      --lh-tight:   1.15;
+      --lh-snug:    1.3;
+      --lh-body:    1.55;
+      --lh-relaxed: 1.7;
+
+      /* Letter spacing */
+      --ls-tight:   -0.7px;
+      --ls-caption: 3px;
+
+      /* Spacing — 4px base grid */
+      --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+      --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
+      --space-8: 32px;  --space-10: 40px; --space-12: 48px;
+      --space-16: 64px; --space-20: 80px; --space-24: 96px;
+      --space-32: 128px;
+
+      /* Border radius — rectangular base, subtle rounding */
+      --radius-none: 0;
+      --radius-sm:   3px;
+      --radius-md:   6px;
+      --radius-lg:   10px;
+      --radius-xl:   14px;
+      --radius-2xl:  20px;
+      --radius-pill: 9999px;
+
+      /* Shadows — warm-tinted */
+      --shadow-xs: 0 1px 2px  0 rgba(168,138,129,.05);
+      --shadow-sm: 0 2px 4px  0 rgba(168,138,129,.07);
+      --shadow-md: 0 4px 12px 0 rgba(168,138,129,.10);
+      --shadow-lg: 0 8px 24px 0 rgba(168,138,129,.12);
+      --shadow-xl: 0 16px 48px 0 rgba(168,138,129,.16);
+
+      /* Motion */
+      --ease-out:      cubic-bezier(.22, 1, .36, 1);
+      --ease-in-out:   cubic-bezier(.65, 0, .35, 1);
+      --duration-fast: 150ms;
+      --duration-base: 220ms;
+      --duration-slow: 360ms;
+    }
+
+    /* ── Direction B — Nunito Sans ─────────────────────────── */
+    [data-direction="b"] {
+      --font-display: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-body: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --fw-heading: 900;
+      --fw-h3:      900;
+      --fw-h4:      1000;
+      --fw-body-l:  700;
+      --fw-body-m:  600;
+      --fw-body-s:  500;
+      --fw-body-xs: 500;
+
+      /* Deeper, more aspirational palette */
+      --color-accent:        #FF7B79;
+      --color-accent-hover:  #D96967;
+      --color-accent-focus:  #E79493;
+      --color-bg-warm:       var(--color-warm-200);
+      --color-bg-light:      #F8F3F1;
+      --bg-dark:             var(--color-warm-600);
+
+      /* Layered background system: cream page bg + white cards pop forward */
+      --bg-primary:          #FDF0E9;
+      --color-cream:         #FFFFFF;
+      --border-default:      rgba(130,108,101,0.15);
+
+      /* Warm neutrals — +20pp saturation for richer, warmer feel */
+      --color-text:        #98604E;
+      --color-warm-100:    #F5E3D6;
+      --color-warm-200:    #E8C6B4;
+      --color-warm-300:    #D4A28C;
+      --color-warm-400:    #BD7F6C;
+      --color-warm-500:    #98604E;
+      --color-warm-600:    #7D4F3D;
+      --color-warm-700:    #5A362B;
+      --color-dark:        #311B15;
+      --color-neutral-300: #D3BDBD;
+      --shadow-xs: 0 1px 2px  0 rgba(189,127,108,.05);
+      --shadow-sm: 0 2px 4px  0 rgba(189,127,108,.07);
+      --shadow-md: 0 4px 12px 0 rgba(189,127,108,.10);
+      --shadow-lg: 0 8px 24px 0 rgba(189,127,108,.12);
+      --shadow-xl: 0 16px 48px 0 rgba(189,127,108,.16);
+
+      /* Radius — all rounded elements shift +2 steps */
+      --radius-sm:   10px;    /* 3  → lg  */
+      --radius-md:   14px;    /* 6  → xl  */
+      --radius-lg:   20px;    /* 10 → 2xl */
+      --radius-xl:   9999px;  /* 14 → pill */
+      --radius-2xl:  9999px;  /* 20 → pill */
+    }
+
+    /* Direction A — pdp-wrap: no border on container */
+    [data-direction="a"] .pdp-wrap {
+      border: none;
+    }
+
+    /* Direction B — pdp-wrap: cap radius at 24px (pill is nonsensical for large layout containers) */
+    [data-direction="b"] .pdp-wrap {
+      border-radius: 24px;
+      background: transparent;
+      border: none;
+    }
+
+    /* Direction B — no borders on containers, only horizontal section dividers */
+    [data-direction="b"] .cs-threshold,
+    [data-direction="b"] .pdp-accordion-item,
+    [data-direction="b"] .ds-swatch-item,
+    [data-direction="b"] .ds-shadow-item,
+    [data-direction="b"] .ds-components-canvas {
+      border: none;
+    }
+
+    /* Direction B — product cards use default border, static on hover */
+    [data-direction="b"] .cs-card {
+      border: 1px solid var(--border-default);
+    }
+    [data-direction="b"] .cs-card:hover {
+      border-color: var(--border-default);
+    }
+
+    /* Direction B — product card title: bold */
+    [data-direction="b"] .cs-product-card .card-title {
+      font-weight: 900;
+    }
+
+    /* Direction B — button label weight: +2 steps (600 → 800) */
+    [data-direction="b"] .cs-btn {
+      font-weight: 800;
+    }
+
+    /* Direction B — badges: pill shape, wider side padding to balance the rounded ends, +2 steps text weight (700 → 900) */
+    [data-direction="b"] .cs-badge {
+      border-radius: var(--radius-xl);
+      padding: 0 var(--space-3);
+      font-weight: 900;
+    }
+
+    /* Direction B — qty stepper: white bg on all parts */
+    [data-direction="b"] .cs-qty-btn,
+    [data-direction="b"] .cs-qty-val { background: #FFFFFF; }
+    [data-direction="b"] .cs-qty-btn:hover:not(:disabled) { background: var(--bg-subtle); }
+
+    /* Direction B — PDP before/after: white bg (border/hover inherit accordion defaults) */
+    [data-direction="b"] .pdp-ba-strip {
+      background: var(--color-white);
+    }
+
+    /* ── Direction C — Figtree ───────────────────────────────── */
+    [data-direction="c"] {
+      --font-display: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-body:    "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+
+      /* Warm neutrals — B's richer, +20pp saturation scale */
+      --color-text:        #98604E;
+      --color-warm-100:    #F5E3D6;
+      --color-warm-200:    #E8C6B4;
+      --color-warm-300:    #D4A28C;
+      --color-warm-400:    #BD7F6C;
+      --color-warm-500:    #98604E;
+      --color-warm-600:    #7D4F3D;
+      --color-warm-700:    #5A362B;
+      --color-dark:        #311B15;
+      --color-neutral-300: #D3BDBD;
+      --color-bg-warm:     var(--color-warm-200);
+      --color-bg-light:    #F8F3F1;
+
+      /* Accent — flamingo, used sparingly (badges/indicators only) */
+      --color-accent:        #F0506E;
+      --color-accent-hover:  #CB3F5A;
+      --color-accent-focus:  #D47788;
+
+      /* Semantic text — warm-500 register */
+      --fg-primary:   var(--color-warm-500);
+      --fg-secondary: var(--color-warm-600);
+      --fg-muted:     var(--color-warm-400);
+
+      /* Backgrounds — white primary, warm-scale subtle/muted */
+      --bg-primary:  #FFFFFF;
+      --bg-subtle:   var(--color-warm-100);
+      --bg-muted:    var(--color-warm-200);
+      --color-cream: #FFFFFF;
+
+      /* Borders — warm-500, 2px structural weight */
+      --border-default:     var(--color-warm-500);
+      --border-interactive: var(--color-warm-500);
+      --border-strong:      var(--color-warm-700);
+
+      /* Actions — warm-600 button */
+      --action-primary:       var(--color-warm-600);
+      --action-primary-hover: var(--color-warm-700);
+      --action-primary-text:  #FFFFFF;
+
+      /* Links */
+      --fg-brand: var(--color-warm-600);
+
+      /* Shadows — warm-tinted (B's hue), tighter opacity */
+      --shadow-xs: 0 1px 2px  0 rgba(189,127,108,.04);
+      --shadow-sm: 0 2px 4px  0 rgba(189,127,108,.06);
+      --shadow-md: 0 4px 12px 0 rgba(189,127,108,.08);
+      --shadow-lg: 0 8px 24px 0 rgba(189,127,108,.10);
+      --shadow-xl: 0 16px 48px 0 rgba(189,127,108,.14);
+
+      /* Radius — small, noticeably sharper than Direction A */
+      --radius-sm:   2px;
+      --radius-md:   4px;
+      --radius-lg:   6px;
+      --radius-xl:   8px;
+      --radius-2xl:  10px;
+
+      /* Letter spacing — open display for neo-grotesk breathing room */
+      --ls-tight: 0px;
+    }
+
+    /* Direction C — cards: separation via tinted background, no border (flush variant stays transparent via higher-specificity rule below) */
+    [data-direction="c"] .cs-card {
+      background: var(--color-bg-light);
+      border: none;
+    }
+    [data-direction="c"] .cs-card:hover {
+      border: none;
+    }
+
+    /* Direction C — pdp-wrap: white bg, no border */
+    [data-direction="c"] .pdp-wrap {
+      background: #FFFFFF;
+      border: none;
+    }
+
+    /* Direction C — threshold: white bg, 1px border */
+    [data-direction="c"] .cs-threshold {
+      background: #FFFFFF;
+      border-width: 1px;
+      border-color: var(--color-warm-500);
+    }
+
+    /* Direction C — accordion: background primary, 1px border */
+    [data-direction="c"] .cs-accordion-item {
+      background: var(--color-bg-light);
+      border-width: 1px;
+      border-color: var(--color-warm-500);
+    }
+
+    /* Direction A/B — threshold track: white unfilled area */
+    [data-direction="a"] .cs-threshold-track,
+    [data-direction="b"] .cs-threshold-track {
+      background: #FFFFFF;
+    }
+
+    /* Direction C — threshold track: subtle unfilled area */
+    [data-direction="c"] .cs-threshold-track {
+      background: var(--bg-subtle);
+    }
+
+    /* Direction C — spec containers, canvases, and PDP sub-sections: cream bg, no border */
+    [data-direction="c"] .ds-components-canvas,
+    [data-direction="c"] .ds-font-card,
+    [data-direction="c"] .ds-motion-demo,
+    [data-direction="c"] .ds-swatch-item,
+    [data-direction="c"] .ds-shadow-item,
+    [data-direction="c"] .pdp-accordion-item,
+    [data-direction="c"] .pdp-ba-strip {
+      background: var(--color-bg-light);
+      border: none;
+    }
+
+    /* Direction C — PDP benefits: no bg (matches A/B) */
+    [data-direction="c"] .pdp-benefits {
+      background: transparent;
+      border: none;
+    }
+
+    /* Direction C — semantic token chips: white bg, dark border */
+    [data-direction="c"] .ds-semantic-item {
+      background: #FFFFFF;
+      border: 1px solid var(--color-warm-500);
+    }
+
+    /* Direction C — badges use accent sparingly; CTAs inherit dark action tokens */
+    [data-direction="c"] .cs-badge-promo,
+    [data-direction="c"] .cs-threshold-badge {
+      background: var(--color-accent);
+      color: #FFFFFF;
+    }
+
+    /* ── Direction switcher ──────────────────────────────── */
+    .ds-dir-switch {
+      display: flex;
+      gap: 6px;
+      padding: 16px 20px 8px;
+    }
+    .ds-dir-btn {
+      flex: 1;
+      padding: 7px 4px;
+      border: 1px solid var(--border-interactive);
+      background: transparent;
+      border-radius: var(--radius-sm);
+      font: 600 10px/1 var(--font-body);
+      letter-spacing: 1.5px;
+      color: var(--fg-muted);
+      cursor: pointer;
+      transition: background var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out);
+    }
+    .ds-dir-btn.active {
+      background: var(--action-primary);
+      border-color: var(--action-primary);
+      color: var(--action-primary-text);
+    }
+    .ds-dir-btn:hover:not(.active) {
+      border-color: var(--border-strong);
+      color: var(--fg-primary);
+    }
+    .ds-dir-label {
+      padding: 0 20px 12px;
+      font: 500 11px/1 var(--font-body);
+      letter-spacing: .5px;
+      color: var(--fg-muted);
+    }
+
+    /* ── Resets ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-feature-settings: 'locl' 0; /* disable cursive BG Cyrillic forms in Montserrat */
+      font-size: var(--fs-body-m);
+      line-height: var(--lh-body);
+      color: var(--fg-primary);
+      background: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1,h2,h3,h4,h5,h6,p { margin: 0; }
+    a { color: var(--fg-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Buttons ─────────────────────────────────────────── */
+    .cs-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--space-2);
+      height: 48px; padding: 0 var(--space-6);
+      font: 600 var(--fs-body-s)/1 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      letter-spacing: .85px; text-transform: uppercase;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      cursor: pointer; white-space: nowrap;
+      transition:
+        background var(--duration-base) var(--ease-out),
+        color var(--duration-base) var(--ease-out),
+        border-color var(--duration-base) var(--ease-out),
+        box-shadow var(--duration-base) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+      user-select: none; text-decoration: none;
+    }
+    .cs-btn:focus-visible { outline: 2px solid var(--state-focus); outline-offset: 2px; }
+    .cs-btn:active { transform: scale(.98); }
+
+    .cs-btn--primary {
+      background: var(--action-primary);
+      color: var(--action-primary-text);
+      border-color: var(--action-primary);
+    }
+    .cs-btn--primary:hover {
+      background: var(--action-primary-hover);
+      border-color: var(--action-primary-hover);
+    }
+    .cs-btn--primary:disabled {
+      background: var(--state-disabled);
+      border-color: var(--state-disabled);
+      color: var(--fg-inverse);
+      cursor: not-allowed; transform: none;
+    }
+
+    .cs-btn--secondary {
+      background: transparent;
+      color: var(--color-warm-500);
+      border-color: var(--action-primary);
+      box-shadow: inset 0 0 0 0 var(--action-primary);
+      transition:
+        box-shadow var(--duration-fast) var(--ease-out),
+        color var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+    }
+    .cs-btn--secondary:hover {
+      background: transparent;
+      border-color: var(--action-primary);
+      color: var(--color-warm-500);
+      box-shadow: inset 0 0 0 1px var(--action-primary);
+    }
+    .cs-btn--secondary:disabled {
+      color: var(--state-disabled);
+      border-color: var(--state-disabled);
+      cursor: not-allowed;
+    }
+
+    .cs-btn--secondary-inverse {
+      color: #fff;
+      border-color: #fff;
+      box-shadow: inset 0 0 0 0 #fff;
+    }
+    .cs-btn--secondary-inverse:hover {
+      color: #fff;
+      border-color: #fff;
+      box-shadow: inset 0 0 0 1px #fff;
+    }
+
+    .cs-btn--tertiary {
+      background: transparent;
+      color: var(--color-warm-500);
+      border-color: transparent;
+      padding: 0 var(--space-2);
+      height: 32px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--border-strong);
+    }
+    .cs-btn--tertiary:hover { color: var(--color-warm-500); text-decoration-color: var(--color-warm-500); }
+    .cs-btn--tertiary:disabled { color: var(--state-disabled); cursor: not-allowed; }
+
+    .cs-btn--tertiary-inverse {
+      color: #fff;
+      text-decoration-color: rgba(255,255,255,.5);
+    }
+    .cs-btn--tertiary-inverse:hover { color: #fff; text-decoration-color: #fff; }
+
+    .cs-btn--sm  { height: 36px; padding: 0 var(--space-4); font-size: var(--fs-caption); }
+    .cs-btn--lg  { height: 56px; padding: 0 var(--space-8); font-size: var(--fs-body-s); }
+    .cs-btn--full { width: 100%; }
+
+    /* ── Form inputs ─────────────────────────────────────── */
+    .cs-field { display: flex; flex-direction: column; gap: var(--space-2); }
+    .cs-field-label {
+      font: 500 var(--fs-caption)/1 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+    .cs-input {
+      height: 48px; padding: 0 var(--space-4);
+      border: 1px solid var(--border-interactive);
+      border-radius: var(--radius-md);
+      background: var(--color-white);
+      font: var(--fw-body-m) var(--fs-body-m)/1.5 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-primary);
+      transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .cs-input::placeholder { color: var(--fg-muted); }
+    .cs-input:hover { border-color: var(--border-strong); }
+    .cs-input:focus {
+      outline: none;
+      border-color: var(--state-focus);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 12px 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
+    }
+    .cs-input--error { border-color: var(--state-error); }
+    .cs-input--error:focus { box-shadow: 0 0 0 1px color-mix(in srgb, var(--state-error) 40%, transparent), 0 0 12px 2px color-mix(in srgb, var(--state-error) 15%, transparent); }
+    .cs-help { font: var(--fw-body-xs) var(--fs-caption)/1.4 var(--font-body); color: var(--fg-muted); }
+    .cs-help--error { color: var(--state-error); }
+
+    .cs-check {
+      display: inline-flex; align-items: center; gap: var(--space-3);
+      font: var(--fw-body-s) var(--fs-body-s)/1.4 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-primary); cursor: pointer;
+    }
+    .cs-check input {
+      appearance: none; width: 20px; height: 20px;
+      border: 1px solid var(--border-interactive); border-radius: var(--radius-sm);
+      display: inline-grid; place-content: center; cursor: pointer; flex-shrink: 0;
+      transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+      background: var(--color-white);
+    }
+    .cs-check input:checked { background: var(--action-primary); border-color: var(--action-primary); }
+    .cs-check input:checked::after {
+      content: "";
+      width: 10px; height: 6px;
+      border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    /* ── Badges ──────────────────────────────────────────── */
+    .cs-badge {
+      display: inline-flex; align-items: center; gap: var(--space-1);
+      height: 22px; padding: 0 var(--space-1);
+      border-radius: var(--radius-sm);
+      font: 700 15px/1 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      letter-spacing: 0.7px; text-transform: uppercase;
+      background: var(--color-warm-500);
+      color: #fff;
+      border: none;
+    }
+    .cs-badge--sale    { background: var(--color-accent); color: #fff; }
+    .cs-badge--discount{ background: var(--color-bg-warm); color: #fff; }
+    .cs-badge--new     { background: var(--color-warm-400); color: #fff; }
+    .cs-badge--gift    { background: var(--color-bg-warm); color: #fff; }
+    .cs-badge--bundle  { background: var(--color-warm-700); color: #fff; }
+
+    /* ── Cards ───────────────────────────────────────────── */
+    .cs-card {
+      background: var(--color-cream);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition:
+        box-shadow var(--duration-base) var(--ease-out),
+        border-color var(--duration-base) var(--ease-out),
+        transform var(--duration-base) var(--ease-out);
+    }
+    .cs-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+
+    /* ── Design system page layout ───────────────────────── */
+    .ds-layout { display: flex; min-height: 100vh; }
+
+    .ds-sidebar {
+      position: sticky; top: 0; height: 100vh;
+      width: 224px; min-width: 224px;
+      background: var(--color-cream);
+      color: var(--fg-primary);
+      display: flex; flex-direction: column;
+      overflow-y: auto; padding-bottom: var(--space-8);
+      z-index: 10;
+    }
+    .ds-sidebar-brand {
+      padding: var(--space-6) var(--space-6) var(--space-5);
+      border-bottom: 1px solid rgba(77,61,56,.12);
+    }
+    .ds-sidebar-logo {
+      display: block;
+      width: 148px;
+      height: auto;
+    }
+    .ds-sidebar-nav { padding: var(--space-5) 0; flex: 1; }
+    .ds-sidebar-group {
+      font: 500 9px/1 var(--font-body);
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(77,61,56,.45);
+      padding: var(--space-4) var(--space-6) var(--space-2);
+    }
+    .ds-sidebar-nav a {
+      display: block;
+      padding: 9px var(--space-6);
+      font: 400 13px/1 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--color-warm-600);
+      text-decoration: none;
+      transition: color var(--duration-fast), background var(--duration-fast);
+      border-left: 2px solid transparent;
+    }
+    .ds-sidebar-nav a:hover,
+    .ds-sidebar-nav a.active {
+      color: var(--color-dark);
+      background: rgba(77,61,56,.08);
+      border-left-color: var(--color-accent);
+    }
+    .ds-sidebar-footer {
+      padding: var(--space-4) var(--space-6);
+      border-top: 1px solid rgba(77,61,56,.12);
+      font: 400 10px/1.6 var(--font-body);
+      color: rgba(77,61,56,.45);
+    }
+
+    .ds-main {
+      flex: 1; overflow-x: visible;
+      padding: calc(var(--space-16) + 60px) var(--space-10) var(--space-16);
+      max-width: 980px;
+    }
+
+    /* ── Sections ────────────────────────────────────────── */
+    .ds-section {
+      padding-bottom: var(--space-20);
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: var(--space-20);
+    }
+    .ds-section:last-child { border-bottom: none; }
+
+    .ds-section-header { margin-bottom: var(--space-10); }
+    .ds-section-label {
+      font: 500 10px/1 var(--font-body);
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--fg-muted); display: block;
+      margin-bottom: var(--space-2);
+    }
+    .ds-section-title {
+      font: var(--fw-heading) var(--fs-h2)/var(--lh-tight) var(--font-display);
+      letter-spacing: var(--ls-tight);
+      color: var(--fg-primary);
+    }
+    .ds-section-desc {
+      margin-top: var(--space-3);
+      font: 400 var(--fs-body-m)/var(--lh-relaxed) var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); max-width: 560px;
+    }
+
+    .ds-subsection { margin-bottom: var(--space-10); }
+    .ds-subsection-title {
+      font: 500 11px/1 var(--font-body);
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    /* ── Token pill ──────────────────────────────────────── */
+    .ds-token {
+      display: inline-block;
+      font: 500 11px/1.5 "SFMono-Regular", "Consolas", "Menlo", monospace;
+      color: var(--fg-muted);
+      white-space: nowrap;
+    }
+
+    /* ── Copy toast ─────────────────────────────────────── */
+    #cs-copy-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(12px);
+      background: var(--color-dark); color: var(--color-white);
+      font: 500 12px/1 "SFMono-Regular", monospace;
+      padding: 8px 16px; border-radius: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 9999; white-space: nowrap;
+    }
+    #cs-copy-toast.visible {
+      opacity: 1; transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── Color swatches ──────────────────────────────────── */
+    .ds-palette { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+    .ds-swatch-lg {
+      flex: 1; min-width: 120px;
+      display: flex; flex-direction: column;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-default);
+      cursor: pointer;
+      transition:
+        box-shadow var(--duration-base) var(--ease-out),
+        border-color var(--duration-base) var(--ease-out),
+        transform var(--duration-base) var(--ease-out);
+    }
+    .ds-swatch-lg:hover {
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+    .ds-swatch-lg .swatch-color { height: 100px; flex-shrink: 0; }
+    .ds-swatch-lg .swatch-info {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-white);
+    }
+    .ds-swatch-lg .swatch-name { font: 600 13px/1.2 var(--font-body); color: var(--fg-primary); }
+    .ds-swatch-lg .swatch-hex  { font: 400 12px/1.5 "SFMono-Regular", monospace; color: var(--fg-muted); }
+
+    .ds-neutral-row { display: flex; gap: 0; border-radius: var(--radius-md); }
+    .ds-neutral-step {
+      flex: 1; text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition:
+        box-shadow var(--duration-base) var(--ease-out),
+        transform var(--duration-base) var(--ease-out);
+    }
+    .ds-neutral-step:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      z-index: 1;
+    }
+    .ds-neutral-step .swatch-color { height: 56px; }
+    .ds-neutral-step .swatch-label {
+      padding: var(--space-2) 0 var(--space-3);
+      font: 400 10px/1 "SFMono-Regular", monospace; color: var(--fg-muted);
+      background: var(--color-white);
+    }
+
+    .ds-semantic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: var(--space-3);
+    }
+    .ds-semantic-item {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-default);
+    }
+    .ds-semantic-dot {
+      width: 32px; height: 32px; border-radius: var(--radius-sm);
+      flex-shrink: 0; border: 1px solid rgba(168,138,129,.08);
+    }
+    .ds-semantic-info { min-width: 0; }
+    .ds-semantic-name { font: 500 11px/1.2 var(--font-body); color: var(--fg-primary); }
+    .ds-semantic-hex  { font: 400 11px/1.5 "SFMono-Regular", monospace; color: var(--fg-muted); }
+
+    /* ── Typography ──────────────────────────────────────── */
+    .ds-type-scale { display: flex; flex-direction: column; }
+    .ds-type-row {
+      display: grid; grid-template-columns: 1fr 240px;
+      gap: var(--space-6); align-items: center;
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .ds-type-row:first-child { border-top: 1px solid var(--border-default); }
+    .ds-type-meta { display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-end; }
+    .ds-type-meta .ds-token { margin-bottom: var(--space-1); }
+    .ds-type-detail { font: 400 11px/1.7 "SFMono-Regular", monospace; color: var(--fg-muted); text-align: right; }
+
+    .ds-font-card {
+      padding: var(--space-8);
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-default);
+      margin-bottom: var(--space-10);
+    }
+    .ds-font-specimen { margin-bottom: var(--space-4); }
+    .ds-font-name { font: 600 13px/1 var(--font-body); color: var(--fg-primary); }
+    .ds-font-detail { font: 400 12px/1.5 var(--font-body); color: var(--fg-muted); margin-top: var(--space-1); }
+
+    /* ── Spacing ─────────────────────────────────────────── */
+    .ds-spacing-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .ds-spacing-row { display: flex; align-items: center; gap: var(--space-5); }
+    .ds-spacing-bar-wrap { flex: 1; }
+    .ds-spacing-bar { height: 24px; background: var(--color-accent); border-radius: var(--radius-sm); opacity: .6; }
+    .ds-spacing-meta { width: 180px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .ds-spacing-token { font: 500 12px/1 "SFMono-Regular", monospace; color: var(--fg-secondary); }
+    .ds-spacing-value { font: 400 12px/1 "SFMono-Regular", monospace; color: var(--fg-muted); }
+
+    /* ── Radius ──────────────────────────────────────────── */
+    .ds-radius-row { display: flex; gap: var(--space-6); flex-wrap: wrap; align-items: flex-end; }
+    .ds-radius-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+    .ds-radius-box {
+      width: 80px; height: 80px;
+      background: var(--color-warm-200);
+      border: 2px solid var(--color-warm-300);
+    }
+    .ds-radius-label { font: 500 11px/1 "SFMono-Regular", monospace; color: var(--fg-muted); text-align: center; }
+    .ds-radius-value { font: 400 11px/1 "SFMono-Regular", monospace; color: var(--fg-muted); }
+
+    /* ── Shadows ─────────────────────────────────────────── */
+    .ds-shadow-row { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+    .ds-shadow-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); }
+    .ds-shadow-card {
+      width: 100px; height: 80px;
+      background: var(--bg-warm);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ds-shadow-label { font: 500 11px/1 "SFMono-Regular", monospace; color: var(--fg-muted); text-align: center; }
+
+    /* ── Motion ──────────────────────────────────────────── */
+    .ds-motion-table { width: 100%; border-collapse: collapse; }
+    .ds-motion-table th {
+      text-align: left; padding: var(--space-3) var(--space-4);
+      font: 500 10px/1 var(--font-body); letter-spacing: 2px;
+      text-transform: uppercase; color: var(--fg-muted);
+      border-bottom: 1px solid var(--border-default);
+    }
+    .ds-motion-table td {
+      padding: var(--space-4) var(--space-4);
+      font: 400 13px/1.5 "SFMono-Regular", monospace; color: var(--fg-secondary);
+      border-bottom: 1px solid var(--border-default);
+    }
+    .ds-motion-table tr:last-child td { border-bottom: none; }
+    .ds-motion-demo {
+      margin-top: var(--space-8);
+      padding: var(--space-8);
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-default);
+      display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start;
+    }
+    .ds-motion-hint { font: 400 12px/1.5 var(--font-body); color: var(--fg-muted); }
+
+    /* ── Components layout ───────────────────────────────── */
+    .ds-components-canvas {
+      padding: var(--space-8);
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-default);
+    }
+    .ds-col-label {
+      font: 500 10px/1 var(--font-body);
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--fg-muted); text-align: center;
+    }
+    .ds-row-label {
+      font: 500 11px/1 var(--font-body);
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--fg-muted);
+      display: flex; align-items: center;
+    }
+    .ds-btn-cell { display: flex; justify-content: center; }
+
+    .ds-badge-row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+    .ds-badge-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+    .ds-badge-label { font: 400 11px/1 var(--font-body); color: var(--fg-muted); text-align: center; margin-top: var(--space-1); }
+
+    .ds-inputs-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    .ds-card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+
+    /* Product card internals */
+    .cs-product-card { cursor: pointer; display: flex; flex-direction: column; }
+    .cs-product-card .card-image {
+      aspect-ratio: 1/1;
+      background: var(--color-cream);
+      position: relative; overflow: hidden;
+    }
+    .cs-product-card .card-image-inner {
+      position: absolute; inset: 0;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .cs-product-card:hover .card-image-inner { transform: scale(1.03); }
+    .cs-product-card .card-image-ph {
+      width: 100%; height: 100%;
+    }
+    .cs-product-card .card-body { padding: var(--space-4) var(--space-4) var(--space-5); display: flex; flex-direction: column; flex: 1; }
+    .cs-product-card .card-title {
+      font: var(--fw-heading) var(--fs-body-m)/var(--lh-snug) var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-primary); margin-bottom: var(--space-2);
+    }
+    .cs-product-card .card-subtitle {
+      font: var(--fw-body-s) var(--fs-body-s)/1.4 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); margin-bottom: var(--space-3);
+    }
+    .cs-product-card .card-price {
+      font: 600 var(--fs-body-m)/1 var(--font-body); color: var(--fg-primary);
+    }
+    .cs-product-card .card-price-old {
+      font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted);
+      text-decoration: line-through; margin-left: var(--space-2);
+    }
+    .cs-product-card .card-badges {
+      position: absolute; top: var(--space-3); left: var(--space-3); z-index: 2;
+      display: flex; gap: var(--space-2);
+    }
+    .cs-product-card .card-desc {
+      font: var(--fw-body-s) var(--fs-caption)/1.5 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); margin-bottom: var(--space-3);
+    }
+    .cs-product-card .card-zone {
+      font: 500 var(--fs-caption)/1 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-primary); margin-bottom: var(--space-4);
+    }
+    .cs-product-card .card-price-bgn-current {
+      font: 600 var(--fs-caption)/1 var(--font-body);
+      color: var(--fg-primary);
+    }
+    .cs-product-card .card-price-bgn-old {
+      font: var(--fw-body-s) var(--fs-caption)/1 var(--font-body);
+      color: var(--fg-muted); text-decoration: line-through; margin-left: var(--space-2);
+    }
+    .cs-product-card .card-bottom { margin-top: auto; }
+
+    /* Product card — flush variant: no card bg/border, body flush-left, image rounded on all sides (works in any direction, incl. B's bordered-card override) */
+    .cs-card.cs-product-card--flush { background: transparent; border: none; }
+    .cs-card.cs-product-card--flush:hover { box-shadow: none; border: none; transform: none; }
+    .cs-product-card--flush .card-body { padding-left: 0; background: transparent; }
+    .cs-product-card--flush .card-image { border-radius: var(--radius-lg); overflow: hidden; }
+
+    /* State indicators */
+    .ds-state-row { display: flex; gap: var(--space-5); align-items: center; flex-wrap: wrap; }
+    .ds-state-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+    .ds-state-label { font: 400 11px/1 var(--font-body); color: var(--fg-muted); }
+    .ds-state-dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font: 600 14px/1 var(--font-body); color: var(--fg-inverse);
+    }
+
+    /* Cover strip — fixed title bar */
+    .ds-cover {
+      position: fixed;
+      top: 0; left: 224px; right: 0;
+      z-index: 100;
+      background: var(--color-white);
+      padding: var(--space-4) var(--space-12);
+      display: flex; align-items: center;
+      gap: 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .ds-cover-title {
+      font: var(--fw-heading) var(--fs-h3)/var(--lh-tight) var(--font-display);
+      letter-spacing: var(--ls-tight);
+      color: var(--fg-primary);
+      flex-shrink: 0;
+    }
+    .ds-cover-title-dir {
+      font-weight: 400;
+      opacity: 0.55;
+    }
+    .ds-cover-meta {
+      margin-left: auto;
+      display: flex; align-items: center; gap: var(--space-4);
+    }
+    .ds-cover-ver {
+      font: 500 10px/1 var(--font-body); letter-spacing: 2px;
+      text-transform: uppercase; color: var(--fg-muted);
+    }
+    .ds-cover-direction {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(255,132,149,.15);
+      border: 1px solid rgba(255,132,149,.3);
+      border-radius: var(--radius-sm);
+      font: 500 10px/1.6 var(--font-body);
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    /* ── PDP Mockup ──────────────────────────────────────── */
+    .pdp-wrap {
+      display: grid;
+      grid-template-columns: 56fr 44fr;
+      gap: var(--space-10);
+      background: var(--color-white);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      padding: 0;
+    }
+    .pdp-gallery { display: flex; flex-direction: column; gap: var(--space-4); }
+    .pdp-main-image-wrap {
+      position: relative; border-radius: var(--radius-lg);
+      overflow: hidden; background: var(--color-cream); aspect-ratio: 4/5;
+    }
+    .pdp-main-image { width:100%; height:100%; object-fit:cover; display:block; }
+    .pdp-best-badge {
+      position: absolute; top: var(--space-4); left: var(--space-4); z-index: 2;
+    }
+    .pdp-ingredients {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: var(--space-3); padding: var(--space-4);
+      background: var(--color-cream); border-radius: var(--radius-md);
+    }
+    .pdp-ingredient { text-align: center; }
+    .pdp-ingredient-name {
+      font: 600 var(--fs-caption)/1.2 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-primary); margin-bottom: var(--space-1);
+    }
+    .pdp-ingredient-desc {
+      font: var(--fw-body-xs) var(--fs-caption)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted);
+    }
+    /* Mobile swipe gallery — hidden by default, shown ≤900px in place of main image + thumbs */
+    .pdp-mobile-gallery { display: none; }
+    .pdp-mobile-gallery-track {
+      display: flex; gap: var(--space-2); overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .pdp-mobile-gallery-track::-webkit-scrollbar { display: none; }
+    .pdp-mobile-slide {
+      flex: 0 0 92%; scroll-snap-align: start; aspect-ratio: 1/1;
+      position: relative; background: var(--color-cream); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .pdp-mobile-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pdp-mobile-scrollbar {
+      height: 3px; margin-top: var(--space-3); border-radius: 2px;
+      background: var(--border-default); position: relative; overflow: hidden;
+    }
+    .pdp-mobile-scrollbar-thumb {
+      position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px;
+      background: var(--fg-muted); will-change: transform, width;
+    }
+    .pdp-thumbs { display: flex; gap: var(--space-2); }
+    .pdp-thumb {
+      flex: 1; aspect-ratio: 1; border-radius: var(--radius-md);
+      overflow: hidden; border: 2px solid transparent; cursor: pointer;
+      transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .pdp-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pdp-thumb--active {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 12px 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
+    }
+    .pdp-thumb:hover { border-color: var(--border-strong); }
+    .pdp-ba-strip {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      background: transparent; border: 1px solid var(--border-interactive);
+      border-radius: var(--radius-md);
+      font: 500 var(--fs-caption)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); cursor: pointer;
+      transition: border-color var(--duration-fast), color var(--duration-fast), box-shadow var(--duration-fast);
+    }
+    .pdp-ba-strip:hover { border-color: var(--border-strong); color: var(--fg-primary); }
+    .pdp-ba-strip:focus-visible,
+    .pdp-vol-btn:focus-visible,
+    .pdp-qty-btn:focus-visible,
+    .pdp-wish-btn:focus-visible { outline: 2px solid var(--state-focus); outline-offset: 2px; }
+    .pdp-ba-plus {
+      width: 22px; height: 22px; border: 1px solid var(--border-strong);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font: var(--fw-body-s) 14px/1 var(--font-body); color: var(--fg-muted);
+    }
+    .pdp-info { display: flex; flex-direction: column; padding-top: var(--space-2); }
+    .pdp-title {
+      font: var(--fw-heading) var(--fs-h2)/1.1 var(--font-body); font-feature-settings: 'locl' 0;
+      letter-spacing: -0.35px; color: var(--fg-primary);
+      margin: 0 0 var(--space-4);
+    }
+    .pdp-stars {
+      display: flex; align-items: center; gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+    .pdp-stars-icons { color: var(--color-accent); font-size: 15px; letter-spacing: 1px; }
+    .pdp-stars-count { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); }
+    .pdp-desc {
+      font: var(--fw-body-s) var(--fs-body-s)/1.7 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); margin: 0 0 var(--space-5);
+    }
+    .pdp-benefits {
+      list-style: none; margin: 0 0 var(--space-5); padding: 0;
+      background: transparent; border: none; border-radius: var(--radius-md);
+      display: flex; flex-direction: column; gap: var(--space-3);
+    }
+    .pdp-benefits li {
+      font: var(--fw-body-xs) var(--fs-body-xs)/0.7 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); display: flex; align-items: flex-start; gap: var(--space-3);
+    }
+    .pdp-benefits li::before {
+      content: ''; flex-shrink: 0; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--color-accent); margin-top: 4px;
+    }
+    .pdp-benefit-label { font-weight: 600; color: var(--fg-primary); }
+    .pdp-benefit-note { color: var(--fg-muted); }
+    .pdp-divider { height: 1px; background: transparent; margin: var(--space-5) 0; }
+    .pdp-price-row {
+      display: flex; align-items: baseline; gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+    .pdp-price {
+      font: 600 var(--fs-h3)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-primary);
+    }
+    .pdp-price-per { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); }
+    .pdp-volume { margin-bottom: var(--space-5); }
+    .pdp-volume-label {
+      font: 500 var(--fs-caption)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--fg-muted); margin-bottom: var(--space-3);
+    }
+    .pdp-volume-options { display: flex; gap: var(--space-2); }
+    .pdp-vol-btn {
+      padding: 0 var(--space-4); height: 38px;
+      border: 1px solid var(--border-interactive); border-radius: var(--radius-md);
+      background: var(--bg-primary);
+      font: 500 var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); cursor: pointer;
+      transition: border-color var(--duration-fast), color var(--duration-fast), box-shadow var(--duration-fast);
+    }
+    .pdp-vol-btn:hover { border-color: var(--border-strong); color: var(--fg-primary); }
+
+    .pdp-vol-btn--active {
+      border-color: var(--color-accent); color: var(--fg-primary);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 12px 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
+    }
+    .pdp-atc-row {
+      display: flex; align-items: center; gap: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+.pdp-atc-btn { flex: 1; }
+    .pdp-wish-btn {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border: 1px solid var(--border-default); border-radius: var(--radius-md);
+      background: var(--bg-primary); color: var(--fg-muted);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--duration-fast), color var(--duration-fast);
+    }
+    .pdp-wish-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .pdp-service-strip {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) 0; border-bottom: 1px solid var(--border-default);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary);
+    }
+    .pdp-service-strip:last-child { border-bottom: none; }
+    .pdp-service-strip svg { flex-shrink: 0; color: var(--fg-muted); }
+    .pdp-service-strip strong { color: var(--fg-primary); font-weight: 600; }
+
+    /* ── PDP Bundle variant ──────────────────────────── */
+    .pdp-bundle-list strong { color: var(--fg-primary); font-weight: 600; }
+    .pdp-price-row--promo { margin-bottom: var(--space-2); }
+    .pdp-price-row--promo .pdp-price-old {
+      font: var(--fw-body-m) var(--fs-body-m)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); text-decoration: line-through;
+    }
+    .pdp-price-row--bgn { margin-bottom: var(--space-5); }
+    .pdp-price-bgn {
+      font: 600 var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-primary);
+    }
+    .pdp-price-old-bgn {
+      font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); text-decoration: line-through;
+    }
+    .pdp-omnibus-note {
+      display: flex; align-items: center; gap: var(--space-2);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted); margin: 0 0 var(--space-5);
+    }
+    .pdp-omnibus-note strong { color: var(--fg-secondary); }
+    .pdp-omnibus-note svg { flex-shrink: 0; }
+    .pdp-club-banner {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: var(--color-bg-light); border-radius: var(--radius-md);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); margin-bottom: var(--space-5);
+    }
+    .pdp-club-banner svg { flex-shrink: 0; color: var(--color-accent); margin-top: 1px; }
+    .pdp-club-link { color: var(--fg-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    .pdp-service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .pdp-service-strip--col {
+      flex-direction: row; align-items: center; text-align: left;
+      gap: var(--space-3); border-bottom: none; padding: 0;
+    }
+    .pdp-service-strip--col svg,
+    .pdp-service-strip--col .pdp-free-badge { width: 24px; height: 24px; flex-shrink: 0; }
+    .pdp-free-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      font: 700 8px/1 var(--font-body); letter-spacing: 0.3px;
+      color: var(--fg-primary);
+    }
+
+    /* ── Rating ──────────────────────────────────────── */
+    .cs-rating { display: inline-flex; align-items: center; gap: var(--space-2); }
+    .cs-rating-stars { color: var(--color-accent); font-size: 14px; letter-spacing: 2px; }
+    .cs-rating-stars--sm { font-size: 12px; letter-spacing: 1px; }
+    .cs-rating-score { font: 600 var(--fs-body-s)/1 var(--font-body); color: var(--fg-primary); }
+    .cs-rating-count { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); text-decoration: underline; text-underline-offset: 2px; }
+    .cs-rating--sm .cs-rating-count { font-size: var(--fs-caption); text-decoration: none; }
+
+    /* ── Price Display ───────────────────────────────── */
+    .cs-price { display: inline-flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+    .cs-price-current { font: 600 var(--fs-h4)/1 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-primary); }
+    .cs-price-original { font: var(--fw-body-m) var(--fs-body-m)/1 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-muted); text-decoration: line-through; }
+    .cs-omnibus { font: var(--fw-body-xs) var(--fs-caption)/1.4 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-muted); margin: var(--space-1) 0 0; }
+
+    /* ── Accordion ───────────────────────────────────── */
+    .cs-accordion-item {
+      background: var(--color-white);
+      border: 1px solid var(--border-interactive);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .cs-accordion-item:has([aria-expanded="true"]) { border-color: var(--border-strong); }
+    .cs-accordion-item:hover { border-color: var(--border-strong); box-shadow: inset 0 0 0 1px var(--border-strong); }
+    .cs-accordion-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4); padding: var(--space-5) var(--space-6);
+      background: transparent; border: none; cursor: pointer;
+      font: 500 var(--fs-body-s)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-primary); text-align: left;
+    }
+    .cs-accordion-icon { width: 18px; height: 18px; flex-shrink: 0; transition: transform var(--duration-base) var(--ease-out); }
+    .cs-accordion-trigger[aria-expanded="true"] .cs-accordion-icon { transform: rotate(45deg); }
+    .cs-accordion-panel { overflow: hidden; max-height: 0; transition: max-height var(--duration-slow) var(--ease-in-out); }
+    .cs-accordion-panel--open { max-height: 500px; }
+    .cs-accordion-body { padding: 0 var(--space-6) var(--space-5); font: var(--fw-body-s) var(--fs-body-s)/1.7 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-secondary); }
+
+    /* ── Toast Notification ──────────────────────────── */
+    .cs-toast {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      border-radius: var(--radius-md); border: 1px solid;
+      box-shadow: var(--shadow-lg);
+    }
+    .cs-toast--success { background: rgba(168, 213, 181, 0.15); border-color: #A8D5B5; }
+    .cs-toast--error   { background: rgba(245, 169, 164, 0.15); border-color: #F5A9A4; }
+    .cs-toast--info    { background: var(--color-white); border-color: var(--border-interactive); }
+    .cs-toast-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+    .cs-toast-body { flex: 1; min-width: 0; }
+    .cs-toast-title { font: 600 var(--fs-body-s)/1.3 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-primary); margin-bottom: 3px; }
+    .cs-toast-msg { font: var(--fw-body-s) var(--fs-body-s)/1.5 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-secondary); }
+    .cs-toast-close {
+      background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;
+      font: 300 22px/1 var(--font-body); color: var(--fg-muted); line-height: 1;
+      transition: color var(--duration-fast);
+    }
+    .cs-toast-close:hover { color: var(--fg-primary); }
+
+    /* ── Threshold Progress Bar ──────────────────────── */
+    .cs-threshold { padding: var(--space-4) var(--space-5); background: var(--color-bg-light); border: 1px solid var(--border-default); border-radius: var(--radius-md); }
+    .cs-threshold-msg { font: 500 var(--fs-body-s)/1.5 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-secondary); margin: 0 0 var(--space-3); }
+    .cs-threshold-msg strong { color: var(--fg-primary); }
+    .cs-threshold-track { height: 4px; background: var(--border-interactive); border-radius: var(--radius-pill); overflow: hidden; }
+    .cs-threshold-fill { height: 100%; background: var(--color-accent); border-radius: var(--radius-pill); transition: width var(--duration-slow) var(--ease-out); }
+    .cs-threshold--complete .cs-threshold-msg { color: var(--state-success); }
+    .cs-threshold--complete .cs-threshold-msg strong { color: var(--state-success); }
+    .cs-threshold--complete .cs-threshold-fill { background: var(--state-success); }
+
+    /* ── Quantity Stepper ────────────────────────────── */
+    .cs-qty { display: inline-flex; align-items: center; border: 1px solid var(--border-interactive); border-radius: var(--radius-md); overflow: hidden; flex-shrink: 0; }
+    .cs-qty-btn {
+      width: 44px; height: 48px; flex-shrink: 0;
+      background: var(--bg-primary); border: none; cursor: pointer;
+      font: 300 22px/1 var(--font-body); color: var(--fg-secondary);
+      transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+    }
+    .cs-qty-btn:hover:not(:disabled) { background: var(--bg-subtle); color: var(--fg-primary); }
+    .cs-qty-btn:disabled { color: var(--state-disabled); cursor: not-allowed; }
+    .cs-qty-val {
+      min-width: 44px; text-align: center;
+      font: 500 var(--fs-body-m)/48px var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-primary); user-select: none;
+      background: var(--bg-primary);
+      border-left: 1px solid var(--border-interactive);
+      border-right: 1px solid var(--border-interactive);
+    }
+    .cs-qty--sm .cs-qty-btn { width: 36px; height: 36px; font-size: 18px; }
+    .cs-qty--sm .cs-qty-val { min-width: 36px; font-size: var(--fs-body-s); line-height: 36px; }
+
+    /* ── Mobile sidebar drawer (controls) ────────────────── */
+    .ds-hamburger {
+      display: none;
+      width: 36px; height: 36px; flex-shrink: 0; margin-right: var(--space-3);
+      align-items: center; justify-content: center;
+      background: transparent; border: 1px solid var(--border-interactive);
+      border-radius: var(--radius-sm); color: var(--fg-primary); cursor: pointer;
+    }
+    .ds-sidebar-backdrop {
+      display: none;
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(42,31,28,.45);
+    }
+    body.ds-sidebar-open .ds-sidebar-backdrop { display: block; }
+
+    /* ── Mobile breakpoint — ≤900px ──────────────────────── */
+    @media (max-width: 900px) {
+      .ds-hamburger { display: flex; }
+
+      html, body { overflow-x: hidden; }
+
+      .ds-sidebar {
+        position: fixed; top: 0; left: 0; height: 100vh;
+        width: min(280px, 80vw); min-width: 0;
+        transform: translateX(-100%);
+        transition: transform var(--duration-base) var(--ease-out);
+        box-shadow: var(--shadow-xl);
+        z-index: 200;
+      }
+      body.ds-sidebar-open .ds-sidebar { transform: translateX(0); }
+
+      .ds-cover {
+        left: 0;
+        padding: var(--space-3) var(--space-4);
+        flex-wrap: wrap; row-gap: var(--space-2);
+      }
+      .ds-cover-title { font-size: var(--fs-body-l); }
+      .ds-cover-meta { margin-left: 0; }
+
+      .ds-main {
+        padding: calc(var(--space-16) + 84px) var(--space-4) var(--space-12);
+        max-width: 100%;
+      }
+
+      .pdp-wrap { grid-template-columns: 1fr; padding: var(--space-5); gap: var(--space-6); }
+      .pdp-main-image-wrap, .pdp-thumbs { display: none; }
+      .pdp-mobile-gallery { display: block; }
+      .ds-card-row { grid-template-columns: 1fr; }
+      .ds-inputs-row { grid-template-columns: 1fr; }
+      .ds-onDark-grid { grid-template-columns: 1fr; }
+      .ds-price-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+
+      .ds-type-row { grid-template-columns: 1fr; gap: var(--space-2); }
+      .ds-type-meta { align-items: flex-start; }
+      .ds-type-detail { text-align: left; }
+
+      .ds-spacing-meta { width: 130px; }
+      .ds-semantic-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    }
+
+    @media (max-width: 480px) {
+      .ds-cover-ver { display: none; }
+      .ds-cover-title { font-size: var(--fs-body-m); }
+      .ds-main { padding-top: calc(var(--space-16) + 64px); }
+      .pdp-atc-row { flex-wrap: wrap; }
+      .pdp-volume-options { flex-wrap: wrap; }
+    }
+
+    /* ── Desktop breakpoint — ≥1440px ─────────────────────── */
+    @media (min-width: 1440px) {
+      .ds-main { margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ds-layout">
+
+  <!-- Mobile sidebar backdrop -->
+  <div class="ds-sidebar-backdrop" onclick="csToggleSidebar()"></div>
+
+  <!-- Sidebar -->
+  <nav class="ds-sidebar">
+    <div class="ds-sidebar-brand">
+      <svg class="ds-sidebar-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="310" height="119" viewBox="0 0 310 119"><defs><clipPath id="cs-logo-clip"><rect width="303.234" height="118.361" transform="translate(0 0)" fill="none"></rect></clipPath></defs><g transform="translate(-2202 -453)"><rect width="310" height="119" transform="translate(2202 453)" fill="rgba(255,255,255,0)"></rect><g transform="translate(2203 453)"><g clip-path="url(#cs-logo-clip)"><path d="M84.64,110.27a6.206,6.206,0,0,0,6.449-6.5,6.45,6.45,0,1,0-12.9,0,6.2,6.2,0,0,0,6.447,6.5m0-1.231a5.016,5.016,0,0,1-5.215-5.269,5.22,5.22,0,1,1,10.432,0,5.019,5.019,0,0,1-5.217,5.269M104.205,97.4v12.687h1.26v-7.4a4.214,4.214,0,0,1,4.187-4.239,4.072,4.072,0,0,1,2.158.59l.564-1.026a4.964,4.964,0,0,0-2.722-.746,4.462,4.462,0,0,0-4.212,2.39l-.051-2.26Zm29.251.924a6.448,6.448,0,0,0-3.6-1.156c-3.288,0-5.959,2.234-5.959,6.192a5.819,5.819,0,0,0,5.959,6.137c2.365,0,4.805,1.082,4.805,3.8,0,2.7-2.262,3.828-4.805,3.828s-4.751-1.233-4.751-3.828h-1.26c0,3.21,2.647,5.06,6.011,5.06s6.037-1.645,6.037-5.06a4.654,4.654,0,0,0-3.466-4.548,6.245,6.245,0,0,0,1.846-9.71l1.236-1.438-.824-.718Zm-3.6.1a4.564,4.564,0,0,1,4.754,4.933,4.871,4.871,0,0,1-4.754,4.881,4.653,4.653,0,0,1-4.7-4.881c0-3.316,2.108-4.933,4.7-4.933M159.6,97.4v2.771a5.756,5.756,0,0,0-5.19-2.924,6.524,6.524,0,0,0,0,13.047,5.928,5.928,0,0,0,5.19-2.9v2.7h1.26V97.4Zm-5.19,1.052c7.063,0,7.063,10.609,0,10.609a5.306,5.306,0,0,1,0-10.609m20.08-1.052v12.687h1.259v-7.063a4.411,4.411,0,0,1,4.446-4.624c2.746-.024,4.521,1.517,4.521,4.394v7.293h1.256v-7.317c0-3.523-2.338-5.6-5.726-5.6a5.055,5.055,0,0,0-4.524,2.492V97.4Zm26.245,12.687h-1.26V97.347h1.26Zm-1.616-16.825a1.014,1.014,0,0,0,2.027,0,1.014,1.014,0,0,0-2.027,0M224.1,107.469a5.377,5.377,0,0,1-3.775,1.57,5.293,5.293,0,1,1,0-10.586,5.376,5.376,0,0,1,3.8,1.516l.822-.8a6.6,6.6,0,0,0-4.624-1.9,6.474,6.474,0,1,0,0,12.948,6.5,6.5,0,0,0,4.624-1.9Z" fill="#4D3D38"></path><path d="M27.725,78.028a14.982,14.982,0,0,1-10.486,4.263c-9.673,0-14.654-6.8-14.746-14.653C2.441,59.592,7.47,52.7,17.239,52.7a14.661,14.661,0,0,1,10.438,4.259l1.772-1.531A17.25,17.25,0,0,0,17.239,50.4C5.747,50.4-.095,58.779,0,67.733c.048,9.049,5.938,16.951,17.238,16.951a17.26,17.26,0,0,0,12.21-5.03ZM54.1,50.256c-11.3,0-16.9,8.234-16.9,17.238,0,8.859,5.65,17.381,16.9,17.381S70.95,76.4,71,67.589c.044-9.05-5.6-17.333-16.9-17.333m0,2.4c9.621,0,14.409,7.133,14.409,14.891,0,7.565-4.835,14.938-14.409,14.938-9.528,0-14.317-7.373-14.365-14.938-.047-7.9,4.741-14.891,14.365-14.891m52.129,25.377A14.984,14.984,0,0,1,95.74,82.291c-9.673,0-14.65-6.8-14.746-14.653C80.946,59.592,85.972,52.7,95.74,52.7a14.668,14.668,0,0,1,10.439,4.259l1.77-1.531A17.248,17.248,0,0,0,95.74,50.4c-11.492,0-17.334,8.379-17.238,17.333.048,9.049,5.938,16.951,17.238,16.951a17.258,17.258,0,0,0,12.209-5.03ZM132.6,50.256c-11.3,0-16.905,8.234-16.905,17.238,0,8.859,5.653,17.381,16.905,17.381s16.853-8.477,16.9-17.286c.048-9.05-5.6-17.333-16.9-17.333m0,2.4c9.625,0,14.413,7.133,14.413,14.891,0,7.565-4.836,14.938-14.413,14.938-9.528,0-14.316-7.373-14.365-14.938-.048-7.9,4.74-14.891,14.365-14.891M183.581,56c-3.3-4.929-7.473-5.7-12.261-5.7-5.506,0-12.878,2.2-12.734,9.289,0,6.179,6.271,7.421,12.4,8.619,5.505,1.054,11.059,2.155,11.012,7.181,0,5.938-6.56,7.088-10.679,7.088s-9.384-2.011-11.444-6.082l-2.3,1.149c2.586,5.125,8.524,7.281,13.741,7.281,5.6,0,13.215-1.823,13.263-9.385,0-7.232-6.7-8.382-13.166-9.624-5.651-1.054-10.247-2.06-10.247-6.32,0-5.365,6.223-6.8,10.15-6.8,3.783.047,7.709.62,10.153,4.547Zm25.078-5.746c-11.3,0-16.9,8.234-16.9,17.238,0,8.859,5.649,17.381,16.9,17.381s16.853-8.477,16.9-17.286c.047-9.05-5.606-17.333-16.9-17.333m0,2.4c9.62,0,14.409,7.133,14.409,14.891,0,7.565-4.836,14.938-14.409,14.938-9.529,0-14.317-7.373-14.365-14.938-.048-7.9,4.74-14.891,14.365-14.891m26.176-1.915V84.3h21.453V81.858H237.423V50.736Zm32.07,0h-2.536V84.3H266.9ZM302.228,56c-3.3-4.929-7.468-5.7-12.257-5.7-5.509,0-12.882,2.2-12.738,9.289,0,6.179,6.275,7.421,12.4,8.619,5.505,1.054,11.063,2.155,11.015,7.181,0,5.938-6.56,7.088-10.679,7.088s-9.384-2.011-11.444-6.082l-2.3,1.149c2.585,5.125,8.523,7.281,13.744,7.281,5.6,0,13.216-1.823,13.263-9.385,0-7.232-6.7-8.382-13.167-9.624-5.649-1.054-10.25-2.06-10.25-6.32,0-5.365,6.227-6.8,10.154-6.8,3.783.047,7.709.62,10.15,4.547Z" fill="#4D3D38"></path><path d="M154.028,23.6c-2.656-9.958-13.98-11.78-18.522-16.033a20.281,20.281,0,0,0,1.1,13.229" fill="none" stroke="#ecceb1" stroke-miterlimit="22.926" stroke-width="2.126"></path><path d="M153.843,33.041c-3.655-12.988-20.828-12.123-29.306-14.76.7,18.5,29.975,21.57,29.993,20.726M148.55,15.33c1-6.728,3.584-9.265,5.472-13.023,2.324,4.335,6.219,6.669,6.628,12.435" fill="none" stroke="#ecceb1" stroke-linecap="round" stroke-miterlimit="22.926" stroke-width="2.126"></path><path d="M152.635,30.029c2.657-17.684,15.374-18.209,19.915-22.458a20.31,20.31,0,0,1-1.1,13.229m-18.11,18.209c-.38-19.247,20.386-17.735,29.993-20.729C182.631,36.781,153.356,39.853,153.338,39.009Z" fill="none" stroke="#ecceb1" stroke-miterlimit="22.926" stroke-width="2.126"></path></g></g></g></svg>
+    </div>
+    <div class="ds-dir-switch">
+      <button class="ds-dir-btn active" data-dir="a" onclick="csSetDir('a')">A</button>
+      <button class="ds-dir-btn" data-dir="b" onclick="csSetDir('b')">B</button>
+      <button class="ds-dir-btn" data-dir="c" onclick="csSetDir('c')">C</button>
+    </div>
+    <div class="ds-dir-label" id="ds-dir-label">Montserrat</div>
+
+    <div class="ds-sidebar-nav">
+      <div class="ds-sidebar-group">Mockup</div>
+      <a href="#pdp">PDP Mockup</a>
+      <a href="#product-grid">Product Grid Mockup</a>
+      <div class="ds-sidebar-group">Foundations</div>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#radius">Border Radius</a>
+      <a href="#shadows">Elevation</a>
+      <a href="#motion">Motion</a>
+      <div class="ds-sidebar-group">Components</div>
+      <a href="#buttons">Buttons</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#badges">Badges</a>
+      <a href="#cards">Cards</a>
+      <a href="#rating">Rating</a>
+      <a href="#price">Price Display</a>
+      <a href="#accordion">Accordion</a>
+      <a href="#toast">Toast</a>
+      <a href="#progress">Progress Bar</a>
+      <a href="#stepper">Qty Stepper</a>
+    </div>
+    <div class="ds-sidebar-footer">
+      Cocosolis · Shopify Custom Theme<br>
+      Embrand Studio · June 2026
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="ds-main">
+
+    <!-- Cover — fixed title bar -->
+    <div class="ds-cover">
+      <button class="ds-hamburger" aria-label="Отвори навигация" onclick="csToggleSidebar()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="ds-cover-title">Design System · <span class="ds-cover-title-dir" id="ds-cover-dir-inline">Direction A — Montserrat</span></div>
+      <div class="ds-cover-meta">
+        <span class="ds-cover-ver">v1 · June 2026</span>
+      </div>
+    </div>
+
+    <!-- ── PDP MOCKUP ─────────────────────────────────── -->
+    <section class="ds-section" id="pdp">
+      <div class="ds-section-header">
+        <span class="ds-section-label">01 — Mockup</span>
+        <div class="ds-section-title">PDP Mockup</div>
+        <p class="ds-section-desc">Product Detail Page — компонентите в контекст. Desktop layout: gallery ляво, product info дясно. Mobile-first реалният прототип ще инвертира стека.</p>
+      </div>
+
+      <div class="pdp-wrap">
+
+        <!-- Left: Gallery -->
+        <div class="pdp-gallery">
+
+          <div class="pdp-main-image-wrap">
+            <span class="cs-badge cs-badge--sale pdp-best-badge">-30%</span>
+            <img src="P1931635.webp" alt="Cocosolis Next-Gen Body Serums" class="pdp-main-image">
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="pdp-thumbs">
+            <div class="pdp-thumb pdp-thumb--active"><img src="P1931635.webp" alt=""></div>
+            <div class="pdp-thumb"><img src="P1920577.webp" alt=""></div>
+            <div class="pdp-thumb"><img src="P1920734.webp" alt=""></div>
+            <div class="pdp-thumb"><img src="P1931382.webp" alt=""></div>
+            <div class="pdp-thumb"><img src="P1931635.webp" alt=""></div>
+          </div>
+
+          <!-- Mobile swipe gallery: side-swipe with visible horizontal scrollbar -->
+          <div class="pdp-mobile-gallery">
+            <div class="pdp-mobile-gallery-track" id="pdpMobileTrack">
+              <div class="pdp-mobile-slide">
+                <span class="cs-badge cs-badge--sale pdp-best-badge">-30%</span>
+                <img src="P1931635.webp" alt="Cocosolis Next-Gen Body Serums">
+              </div>
+              <div class="pdp-mobile-slide"><img src="P1920577.webp" alt=""></div>
+              <div class="pdp-mobile-slide"><img src="P1920734.webp" alt=""></div>
+              <div class="pdp-mobile-slide"><img src="P1931382.webp" alt=""></div>
+              <div class="pdp-mobile-slide"><img src="P1931635.webp" alt=""></div>
+            </div>
+            <div class="pdp-mobile-scrollbar">
+              <div class="pdp-mobile-scrollbar-thumb" id="pdpMobileScrollbarThumb"></div>
+            </div>
+          </div>
+
+          <!-- Before/after strip -->
+          <button class="pdp-ba-strip">
+            <span>Виж преди и след</span>
+            <span class="pdp-ba-plus">+</span>
+          </button>
+
+        </div>
+
+        <!-- Right: Product info -->
+        <div class="pdp-info">
+
+          <h1 class="pdp-title">Next-Gen Body Serums</h1>
+
+          <p class="pdp-desc">Трансформирайте тялото си със силата на натурални активни съставки с клинично доказан ефект. HOT+ топи мазнините и намалява обиколките на дупето и бедрата, а SKIN+ видимо намалява целулита, изглажда и оформя. SLIM+ намалява обиколките, стяга и оформя корема и ръцете. LIFT+ повдига бюста, стяга и изглажда шията и деколтето.</p>
+
+          <!-- Bundle contents -->
+          <ul class="pdp-bundle-list pdp-benefits">
+            <li>1x <strong>LIFT+</strong> Anti-aging Serum, 50 ML</li>
+            <li>1x <strong>HOT+</strong> Fat-burning Serum, 100 ML</li>
+            <li>1x <strong>SLIM+</strong> Shaping Serum, 100 ML</li>
+            <li>1x <strong>SKIN+</strong> Anti-cellulite Serum, 100 ML</li>
+          </ul>
+
+          <!-- Price -->
+          <div class="pdp-price-row pdp-price-row--promo">
+            <span class="pdp-price">83,75 €</span>
+            <span class="pdp-price-old">119,64 €</span>
+            <span class="cs-badge cs-badge--sale">-30%</span>
+          </div>
+          <div class="pdp-price-row pdp-price-row--bgn">
+            <span class="pdp-price-bgn">163,80 лв.</span>
+            <span class="pdp-price-old-bgn">234,00 лв.</span>
+          </div>
+
+          <!-- Volume selector -->
+          <div class="pdp-volume">
+            <div class="pdp-volume-label">Размер</div>
+            <div class="pdp-volume-options">
+              <button class="pdp-vol-btn pdp-vol-btn--active">110 ml</button>
+              <button class="pdp-vol-btn">50 ml</button>
+              <button class="pdp-vol-btn">Sample</button>
+            </div>
+          </div>
+
+          <!-- ATC row -->
+          <div class="pdp-atc-row">
+            <div class="cs-qty">
+              <button class="cs-qty-btn" disabled>−</button>
+              <span class="cs-qty-val">1</span>
+              <button class="cs-qty-btn">+</button>
+            </div>
+            <button class="cs-btn cs-btn--primary cs-btn--lg pdp-atc-btn">Добави в количката</button>
+            <button class="pdp-wish-btn" aria-label="Wishlist">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+          </div>
+
+          <p class="pdp-omnibus-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            Най-ниска цена за последните 30 дни: <strong>119,64 € (234,00 лв.)</strong>
+          </p>
+
+          <!-- Club / loyalty banner -->
+          <div class="pdp-club-banner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l4 3 6-7 6 7 4-3-2 13H4L2 7z"></path></svg>
+            <span>Не пропускайте точките! <a href="#" class="pdp-club-link">Влезте в клуба</a>, събирайте точки и пазарувайте с отстъпка.</span>
+          </div>
+
+          <!-- Service strips -->
+          <div class="pdp-service-grid">
+            <div class="pdp-service-strip pdp-service-strip--col">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Върнете в рамките на <strong>30 дни</strong>, ако не сте доволни</span>
+            </div>
+            <div class="pdp-service-strip pdp-service-strip--col">
+              <span class="pdp-free-badge">FREE</span>
+              <span><strong>Бърза и безплатна</strong> доставка</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRODUCT GRID MOCKUP ───────────────────────── -->
+    <section class="ds-section" id="product-grid">
+      <div class="ds-section-header">
+        <span class="ds-section-label">02 — Mockup</span>
+        <div class="ds-section-title">Product Grid Mockup</div>
+        <p class="ds-section-desc">Collection grid — product card в пълен контекст: rating, описание, употреба, EUR/BGN цена и пълноширинен ATC. 3 колони desktop, 1 колона mobile (90% от трафика).</p>
+      </div>
+
+      <div class="ds-subsection-title" style="margin-bottom:var(--space-3);">With background</div>
+      <div class="ds-card-row">
+
+        <div class="cs-card cs-product-card" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920577.webp" alt="Full Glow" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
+            <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
+                <div><span class="card-price-bgn-current">107,77 лв.</span> <span class="card-price-bgn-old">134,72 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920734.webp" alt="Summer Crush" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
+            <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
+                <div><span class="card-price-bgn-current">108,01 лв.</span> <span class="card-price-bgn-old">144,01 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1931382.webp" alt="Next-Gen Body Serums" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
+            <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
+                <div><span class="card-price-bgn-current">163,80 лв.</span> <span class="card-price-bgn-old">234,00 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ds-subsection-title" style="margin:var(--space-6) 0 var(--space-3);">Without background</div>
+      <div class="ds-card-row">
+
+        <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920577.webp" alt="Full Glow" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
+            <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
+                <div><span class="card-price-bgn-current">107,77 лв.</span> <span class="card-price-bgn-old">134,72 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920734.webp" alt="Summer Crush" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
+            <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
+                <div><span class="card-price-bgn-current">108,01 лв.</span> <span class="card-price-bgn-old">144,01 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1931382.webp" alt="Next-Gen Body Serums" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
+            <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
+                <div><span class="card-price-bgn-current">163,80 лв.</span> <span class="card-price-bgn-old">234,00 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ── COLORS ─────────────────────────────────────── -->
+    <section class="ds-section" id="colors">
+      <div class="ds-section-header">
+        <span class="ds-section-label">03 — Foundations</span>
+        <div class="ds-section-title">Colors</div>
+        <p class="ds-section-desc">Четири брандови цвята в топла, натурална гама — одобрени от клиента (FigJam, 2026-06-15). Семантичните токени абстрахират стойностите от компонентите — никога не реферирай hex директно.</p>
+      </div>
+
+      <!-- Brand palette -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Brand Palette</div>
+        <div class="ds-palette">
+          <div class="ds-swatch-lg" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:#816C65;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Text / Taupe</div>
+              <div class="swatch-hex">#816C65 · Primary text</div>
+            </div>
+          </div>
+          <div class="ds-swatch-lg" onclick="csCopyColor(this)">
+            <div class="swatch-color" data-dir-bg="bgWarm" style="background:#DEBAA7;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name" data-dir-name="bgWarm">Warm Beige</div>
+              <div class="swatch-hex" data-dir-hex="bgWarm" data-dir-label="Cards, secondary bg">#DEBAA7 · Cards, secondary bg</div>
+            </div>
+          </div>
+          <div class="ds-swatch-lg" onclick="csCopyColor(this)">
+            <div class="swatch-color" data-dir-bg="bgLight" style="background:#FBF1EB;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name" data-dir-name="bgLight">Cream</div>
+              <div class="swatch-hex" data-dir-hex="bgLight" data-dir-label="Page background">#FBF1EB · Page background</div>
+            </div>
+          </div>
+          <div class="ds-swatch-lg" onclick="csCopyColor(this)">
+            <div class="swatch-color" data-dir-bg="accent" style="background:#FF8495;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name" data-dir-name="accent">Accent / Coral</div>
+              <div class="swatch-hex" data-dir-hex="accent" data-dir-label="CTA, badges, highlights">#FF8495 · CTA, badges, highlights</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warm neutral scale -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Warm Neutral Scale</div>
+        <div class="ds-neutral-row">
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-white); outline: 1px solid var(--color-warm-100);"></div>
+            <div class="swatch-label">White</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" data-dir-bg="warmCream" style="background:#FBF1EB;"></div>
+            <div class="swatch-label">Cream</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-100);"></div>
+            <div class="swatch-label">100</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-200);"></div>
+            <div class="swatch-label">200</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-300);"></div>
+            <div class="swatch-label">300</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-400);"></div>
+            <div class="swatch-label">400</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-500);"></div>
+            <div class="swatch-label">500</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-600);"></div>
+            <div class="swatch-label">600</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-warm-700);"></div>
+            <div class="swatch-label">700</div>
+          </div>
+          <div class="ds-neutral-step" onclick="csCopyColor(this)">
+            <div class="swatch-color" style="background:var(--color-dark);"></div>
+            <div class="swatch-label">Dark</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semantic — backgrounds -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Semantic Tokens — Backgrounds</div>
+        <div class="ds-semantic-grid">
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#FBF1EB; border:1px solid #DEC9BE;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">background/primary</div><div class="ds-semantic-hex">#FBF1EB · Cream page bg</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#F0E4DB;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">background/subtle</div><div class="ds-semantic-hex">#F0E4DB</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#DEC9BE;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">background/muted</div><div class="ds-semantic-hex">#DEC9BE</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="bgWarm" style="background:#DEBAA7;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">background/warm</div><div class="ds-semantic-hex" data-dir-hex="bgWarm" data-dir-label="Cards, promo strips">#DEBAA7 · Cards, promo strips</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="bgDark" style="background:#2A1F1C;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">background/dark</div><div class="ds-semantic-hex" data-dir-hex="bgDark">#2A1F1C</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="accent" style="background:#FF8495;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">background/brand</div><div class="ds-semantic-hex" data-dir-hex="accent">#FF8495</div></div></div>
+        </div>
+      </div>
+
+      <!-- Semantic — text -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Semantic Tokens — Text</div>
+        <div class="ds-semantic-grid">
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#816C65;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">text/primary</div><div class="ds-semantic-hex">#816C65</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#6A574F;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">text/secondary</div><div class="ds-semantic-hex">#6A574F</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#A88A81;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">text/muted</div><div class="ds-semantic-hex">#A88A81</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#FFFFFF; border:1px solid #DEC9BE;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">text/inverse</div><div class="ds-semantic-hex">#FFFFFF</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="accent" style="background:#FF8495;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">text/brand</div><div class="ds-semantic-hex" data-dir-hex="accent">#FF8495</div></div></div>
+        </div>
+      </div>
+
+      <!-- Semantic — borders & actions -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Semantic Tokens — Borders &amp; Actions</div>
+        <div class="ds-semantic-grid">
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#FBF1EB; border: 1px solid #DEC9BE;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">border/default</div><div class="ds-semantic-hex">#FBF1EB · декоративна</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#DEC9BE;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">border/interactive</div><div class="ds-semantic-hex">#DEC9BE · интерактивен default</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" style="background:#A88A81;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">border/strong</div><div class="ds-semantic-hex">#A88A81 · hover / focus</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="accent" style="background:#FF8495;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">border/brand</div><div class="ds-semantic-hex" data-dir-hex="accent">#FF8495</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="accent" style="background:#FF8495;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">action/primary</div><div class="ds-semantic-hex" data-dir-hex="accent">#FF8495</div></div></div>
+          <div class="ds-semantic-item" onclick="csCopyColor(this)"><div class="ds-semantic-dot" data-dir-bg="accentHover" style="background:#D9607A;"></div><div class="ds-semantic-info"><div class="ds-semantic-name">action/primary-hover</div><div class="ds-semantic-hex" data-dir-hex="accentHover">#D9607A</div></div></div>
+        </div>
+      </div>
+
+      <!-- States -->
+      <div class="ds-subsection" style="margin-bottom:0;">
+        <div class="ds-subsection-title">Semantic Tokens — States</div>
+        <div class="ds-state-row">
+          <div class="ds-state-item">
+            <div class="ds-state-dot" data-dir-bg="accentFocus" style="background:#DF95A0;">!</div>
+            <div class="ds-state-label">state/focus</div>
+            <div data-dir-hex="accentFocus" style="font: 400 11px/1 monospace; color: var(--fg-muted);">#DF95A0</div>
+          </div>
+          <div class="ds-state-item">
+            <div class="ds-state-dot" style="background:#EB5D33;">✕</div>
+            <div class="ds-state-label">state/error</div>
+            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#EB5D33</div>
+          </div>
+          <div class="ds-state-item">
+            <div class="ds-state-dot" style="background:#498D68;">✓</div>
+            <div class="ds-state-label">state/success</div>
+            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#498D68</div>
+          </div>
+          <div class="ds-state-item">
+            <div class="ds-state-dot" style="background:#C8C8C8;">–</div>
+            <div class="ds-state-label">state/disabled</div>
+            <div style="font: 400 11px/1 monospace; color: var(--fg-muted);">#C8C8C8</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TYPOGRAPHY ─────────────────────────────────── -->
+    <section class="ds-section" id="typography">
+      <div class="ds-section-header">
+        <span class="ds-section-label">04 — Foundations</span>
+        <div class="ds-section-title">Typography</div>
+        <p class="ds-section-desc" id="ds-typo-desc">Direction A използва Montserrat като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. Кирилица fix: <span class="ds-token">font-feature-settings: 'locl' 0</span> деактивира ръкописните BG форми.</p>
+      </div>
+
+      <div class="ds-font-card">
+        <div class="ds-font-specimen" style="font: var(--fw-heading) 52px/1.1 var(--font-display); font-feature-settings: 'locl' 0; color: var(--fg-primary); letter-spacing: -0.7px;" id="ds-typo-specimen">Cocosolis</div>
+        <div style="font: 400 18px/1.5 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-muted); margin-bottom: var(--space-4);">Естествена красота от природата — Natural beauty from nature</div>
+        <div style="display:flex; gap: var(--space-8); flex-wrap:wrap;">
+          <div>
+            <div class="ds-font-name" id="ds-font-name-display">Montserrat</div>
+            <div class="ds-font-detail" id="ds-font-detail-display">Display + Body · Single system<br>Weights: 300 · 400 · 500 · 600 · 700<br>Google Fonts · BG Cyrillic с locl fix</div>
+          </div>
+          <div style="display:flex; gap: var(--space-4); flex-wrap:wrap; align-items:center;">
+            <span style="font: 300 24px/1 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Light</span>
+            <span style="font: 400 24px/1 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Regular</span>
+            <span style="font: 500 24px/1 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Medium</span>
+            <span style="font: 600 24px/1 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">SemiBold</span>
+            <span style="font: 700 24px/1 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Bold</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Type Scale</div>
+        <div class="ds-type-scale">
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-heading) var(--fs-display)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">Display</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-display</span>
+              <div class="ds-type-detail ds-type-detail--display">300 · 77px · lh 1.15 · ls −1px</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-heading) var(--fs-h1)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary);">Heading 1</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-h1</span>
+              <div class="ds-type-detail ds-type-detail--display">300 · 58px · lh 1.15 · ls −1px</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-heading) var(--fs-h2)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary);">Heading 2</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-h2</span>
+              <div class="ds-type-detail ds-type-detail--display">300 · 43px · lh 1.15 · ls −1px</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-h3) var(--fs-h3)/1.3 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Heading 3</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-h3</span>
+              <div class="ds-type-detail ds-type-detail--display">400 · 34px · lh 1.3</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-h4) var(--fs-h4)/1.3 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Heading 4</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-h4</span>
+              <div class="ds-type-detail ds-type-detail--display">500 · 26px · lh 1.3</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-body-l) var(--fs-body-l)/1.7 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-primary);">Body Large — за editorial leads и product description intros. Натурални съставки, грижа за кожата.</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-body-l</span>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="l">400 · 22px · lh 1.7</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-body-m) var(--fs-body-m)/1.55 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-primary);">Body Medium — основен размер за всички описания, UI текст, продуктови мета данни из целия магазин.</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-body-m</span>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="m">400 · 19px · lh 1.55</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-body-s) var(--fs-body-s)/1.55 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">Body Small — помощни текстове, метаданни, form helper text и вторична информация.</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-body-s</span>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="s">400 · 17px · lh 1.55</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: var(--fw-body-xs) var(--fs-body-xs)/1.55 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">Body XSmall — компактни списъци, продуктови ползи, legal copy и secondary detail text в тесни контексти.</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-body-xs</span>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="xs">400 · 14px · lh 1.55</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: 500 var(--fs-caption)/1.5 var(--font-body); font-feature-settings:'locl' 0; letter-spacing:3px; text-transform:uppercase; color:var(--fg-muted);">Caption / Eyebrow Label</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-caption</span>
+              <div class="ds-type-detail ds-type-detail--body">500 · 14px · ls 3px · uppercase</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ds-subsection" style="margin-bottom:0;">
+        <div class="ds-subsection-title">Emphasis Rule</div>
+        <div id="ds-emphasis-rule" style="display:inline-flex; align-items:center; gap:var(--space-3); padding:var(--space-4) var(--space-5); background:var(--color-white); border-left:3px solid var(--color-accent); border-radius:0 var(--radius-md) var(--radius-md) 0; font:400 var(--fs-body-m)/var(--lh-body) var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">
+          Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Montserrat и конфликтира с brand weight (300) на display текстове.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SPACING ────────────────────────────────────── -->
+    <section class="ds-section" id="spacing">
+      <div class="ds-section-header">
+        <span class="ds-section-label">05 — Foundations</span>
+        <div class="ds-section-title">Spacing</div>
+        <p class="ds-section-desc">4px base grid. Всички gaps, padding и margin използват тези токени — никога произволни pixel стойности.</p>
+      </div>
+
+      <div class="ds-spacing-list">
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-1</span><span class="ds-spacing-value">4px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:4px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-2</span><span class="ds-spacing-value">8px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:8px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-3</span><span class="ds-spacing-value">12px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:12px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-4</span><span class="ds-spacing-value">16px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:16px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-5</span><span class="ds-spacing-value">20px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:20px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-6</span><span class="ds-spacing-value">24px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:24px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-8</span><span class="ds-spacing-value">32px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:32px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-10</span><span class="ds-spacing-value">40px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:40px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-12</span><span class="ds-spacing-value">48px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:48px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-16</span><span class="ds-spacing-value">64px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:64px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-20</span><span class="ds-spacing-value">80px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:80px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-24</span><span class="ds-spacing-value">96px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:96px;"></div></div></div>
+        <div class="ds-spacing-row"><div class="ds-spacing-meta"><span class="ds-spacing-token">--space-32</span><span class="ds-spacing-value">128px</span></div><div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width:128px;"></div></div></div>
+      </div>
+    </section>
+
+    <!-- ── BORDER RADIUS ──────────────────────────────── -->
+    <section class="ds-section" id="radius">
+      <div class="ds-section-header">
+        <span class="ds-section-label">06 — Foundations</span>
+        <div class="ds-section-title">Border Radius</div>
+        <p class="ds-section-desc"><span class="ds-token">--radius-md</span> (6px) е дефолтът за бутони, inputs и cards. Rectangular base — без pill форми в multi-column layouts. <span class="ds-token">--radius-pill</span> само за малки standalone chips.</p>
+      </div>
+
+      <div class="ds-radius-row">
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:0;"></div>
+          <div class="ds-radius-label">--radius-none</div>
+          <div class="ds-radius-value">0</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:3px;"></div>
+          <div class="ds-radius-label">--radius-sm</div>
+          <div class="ds-radius-value">3px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:6px; outline: 2px solid var(--color-accent); outline-offset: 3px;"></div>
+          <div class="ds-radius-label">--radius-md ★</div>
+          <div class="ds-radius-value">6px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:10px;"></div>
+          <div class="ds-radius-label">--radius-lg</div>
+          <div class="ds-radius-value">10px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:14px;"></div>
+          <div class="ds-radius-label">--radius-xl</div>
+          <div class="ds-radius-value">14px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:20px;"></div>
+          <div class="ds-radius-label">--radius-2xl</div>
+          <div class="ds-radius-value">20px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:9999px;"></div>
+          <div class="ds-radius-label">--radius-pill</div>
+          <div class="ds-radius-value">9999px</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ELEVATION ──────────────────────────────────── -->
+    <section class="ds-section" id="shadows">
+      <div class="ds-section-header">
+        <span class="ds-section-label">07 — Foundations</span>
+        <div class="ds-section-title">Elevation</div>
+        <p class="ds-section-desc">Пет нива на сянка — всички от <span class="ds-token">#2A1F1C</span> (топло тъмно) при нарастваща прозрачност. Избирай най-ниското ниво, което предава нужната дълбочина.</p>
+      </div>
+
+      <div style="padding: var(--space-10); background: var(--color-white); border-radius: var(--radius-lg); border: 1px solid var(--border-default);">
+        <div class="ds-shadow-row">
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-card" style="box-shadow:0 1px 2px 0 rgba(168,138,129,.05);"></div>
+            <div class="ds-shadow-label">--shadow-xs</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-card" style="box-shadow:0 2px 4px 0 rgba(168,138,129,.07);"></div>
+            <div class="ds-shadow-label">--shadow-sm</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-card" style="box-shadow:0 4px 12px 0 rgba(168,138,129,.10);"></div>
+            <div class="ds-shadow-label">--shadow-md</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-card" style="box-shadow:0 8px 24px 0 rgba(168,138,129,.12);"></div>
+            <div class="ds-shadow-label">--shadow-lg</div>
+          </div>
+          <div class="ds-shadow-item">
+            <div class="ds-shadow-card" style="box-shadow:0 16px 48px 0 rgba(168,138,129,.16);"></div>
+            <div class="ds-shadow-label">--shadow-xl</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-6); overflow-x:auto;">
+        <table class="ds-motion-table">
+          <thead><tr><th>Token</th><th>Y</th><th>Blur</th><th>Spread</th><th>Alpha</th></tr></thead>
+          <tbody>
+            <tr><td>--shadow-xs</td><td>1px</td><td>2px</td><td>0</td><td>.05</td></tr>
+            <tr><td>--shadow-sm</td><td>2px</td><td>4px</td><td>0</td><td>.07</td></tr>
+            <tr><td>--shadow-md</td><td>4px</td><td>12px</td><td>0</td><td>.10</td></tr>
+            <tr><td>--shadow-lg</td><td>8px</td><td>24px</td><td>0</td><td>.12</td></tr>
+            <tr><td>--shadow-xl</td><td>16px</td><td>48px</td><td>0</td><td>.16</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── MOTION ─────────────────────────────────────── -->
+    <section class="ds-section" id="motion">
+      <div class="ds-section-header">
+        <span class="ds-section-label">08 — Foundations</span>
+        <div class="ds-section-title">Motion</div>
+        <p class="ds-section-desc">Плавни, премиум transitions. <span class="ds-token">--ease-out</span> за entrances; <span class="ds-token">--ease-in-out</span> за state transitions. Hover бутоните за live demo.</p>
+      </div>
+
+      <table class="ds-motion-table" style="margin-bottom: var(--space-8);">
+        <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td>--ease-out</td><td>cubic-bezier(.22, 1, .36, 1)</td><td>Entrances, hover-in</td></tr>
+          <tr><td>--ease-in-out</td><td>cubic-bezier(.65, 0, .35, 1)</td><td>State transitions</td></tr>
+          <tr><td>--duration-fast</td><td>150ms</td><td>Micro-interactions (scale, opacity)</td></tr>
+          <tr><td>--duration-base</td><td>220ms</td><td>Buttons, inputs, card hovers</td></tr>
+          <tr><td>--duration-slow</td><td>360ms</td><td>Panels, drawers, image zoom</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ds-motion-demo">
+        <div class="ds-motion-hint">Live demo — hover и click за да усетиш transitions</div>
+        <div style="display:flex; gap: var(--space-4); flex-wrap:wrap; align-items:center;">
+          <button class="cs-btn cs-btn--primary">Добави в количката</button>
+          <button class="cs-btn cs-btn--secondary">Wishlist</button>
+          <button class="cs-btn cs-btn--tertiary">Виж детайли</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BUTTONS ────────────────────────────────────── -->
+    <section class="ds-section" id="buttons">
+      <div class="ds-section-header">
+        <span class="ds-section-label">09 — Components</span>
+        <div class="ds-section-title">Buttons</div>
+        <p class="ds-section-desc">Три варианта за action hierarchy. Primary — конверсия (ATC); Secondary — вторични actions; Tertiary — навигация и inline links. Всички states са live.</p>
+      </div>
+
+      <!-- Sizes -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Sizes</div>
+        <div class="ds-components-canvas" style="display:flex; gap:var(--space-5); align-items:center; flex-wrap:wrap;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-3);">
+            <button class="cs-btn cs-btn--primary cs-btn--sm">Small</button>
+            <span class="ds-token">--sm · 36px</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-3);">
+            <button class="cs-btn cs-btn--primary">Default</button>
+            <span class="ds-token">Default · 48px</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-3);">
+            <button class="cs-btn cs-btn--primary cs-btn--lg">Large</button>
+            <span class="ds-token">--lg · 56px</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-3);">
+            <button class="cs-btn cs-btn--primary cs-btn--full" style="width:200px;">Full width</button>
+            <span class="ds-token">--full · 100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- States -->
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Variants &amp; States</div>
+        <div style="overflow-x:auto; padding:4px; margin:-4px;">
+          <div style="min-width:660px; padding:4px;">
+            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); margin-bottom:var(--space-3);">
+              <div></div>
+              <div class="ds-col-label">Default</div>
+              <div class="ds-col-label">Hover</div>
+              <div class="ds-col-label">Pressed</div>
+              <div class="ds-col-label">Focus</div>
+              <div class="ds-col-label">Disabled</div>
+            </div>
+            <!-- Primary -->
+            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center; margin-bottom:var(--space-5);">
+              <div class="ds-row-label">Primary</div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm">Купи</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" style="background:var(--action-primary-hover); border-color:var(--action-primary-hover);">Купи</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" style="transform:scale(.98);">Купи</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Купи</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" disabled>Купи</button></div>
+            </div>
+            <!-- Secondary -->
+            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center; margin-bottom:var(--space-5);">
+              <div class="ds-row-label">Secondary</div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm">Wishlist</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" style="box-shadow:inset 0 0 0 1px var(--action-primary);">Wishlist</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" style="box-shadow:inset 0 0 0 1px var(--action-primary); transform:scale(.98);">Wishlist</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Wishlist</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" disabled>Wishlist</button></div>
+            </div>
+            <!-- Tertiary -->
+            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center;">
+              <div class="ds-row-label">Tertiary</div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm">Детайли</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="color:var(--color-warm-500);">Детайли</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="transform:scale(.98);">Детайли</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Детайли</button></div>
+              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" disabled>Детайли</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- On dark / warm bg -->
+      <div class="ds-subsection" style="margin-bottom:0;">
+        <div class="ds-subsection-title">On Dark / Warm Background</div>
+        <div class="ds-onDark-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-4);">
+          <div class="ds-components-canvas" style="background:var(--bg-dark); display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center;">
+            <button class="cs-btn cs-btn--primary cs-btn--sm">Добави</button>
+            <button class="cs-btn cs-btn--secondary cs-btn--secondary-inverse cs-btn--sm">Wishlist</button>
+            <button class="cs-btn cs-btn--tertiary cs-btn--tertiary-inverse cs-btn--sm">Детайли</button>
+          </div>
+          <div class="ds-components-canvas" style="background:var(--bg-warm); display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center;">
+            <button class="cs-btn cs-btn--primary cs-btn--sm">Добави</button>
+            <button class="cs-btn cs-btn--secondary cs-btn--secondary-inverse cs-btn--sm">Wishlist</button>
+            <button class="cs-btn cs-btn--tertiary cs-btn--tertiary-inverse cs-btn--sm">Детайли</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INPUTS ─────────────────────────────────────── -->
+    <section class="ds-section" id="inputs">
+      <div class="ds-section-header">
+        <span class="ds-section-label">10 — Components</span>
+        <div class="ds-section-title">Inputs</div>
+        <p class="ds-section-desc">Text inputs и form controls. Click на полетата за live focus states.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div class="ds-inputs-row">
+          <div class="cs-field">
+            <label class="cs-field-label">Email</label>
+            <input class="cs-input" type="email" placeholder="your@email.com">
+            <span class="cs-help">Default state — click за focus</span>
+          </div>
+          <div class="cs-field">
+            <label class="cs-field-label">Име</label>
+            <input class="cs-input" type="text" value="Мария Иванова" style="border-color:var(--state-focus); box-shadow:0 0 0 1px rgba(255,132,149,.35), 0 0 12px 2px rgba(255,132,149,.18);">
+            <span class="cs-help">Focus state</span>
+          </div>
+          <div class="cs-field">
+            <label class="cs-field-label">Промо код</label>
+            <input class="cs-input cs-input--error" type="text" value="INVALID123" style="box-shadow:0 0 0 1px rgba(232,67,26,.4), 0 0 12px 2px rgba(232,67,26,.15);">
+            <span class="cs-help cs-help--error">Този код не е валиден.</span>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-8); display:flex; gap:var(--space-6); align-items:center; flex-wrap:wrap;">
+          <label class="cs-check">
+            <input type="checkbox" checked>
+            Абонирай се за нашия newsletter
+          </label>
+          <label class="cs-check">
+            <input type="checkbox">
+            Запази адреса за следваща поръчка
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BADGES ─────────────────────────────────────── -->
+    <section class="ds-section" id="badges">
+      <div class="ds-section-header">
+        <span class="ds-section-label">11 — Components</span>
+        <div class="ds-section-title">Badges</div>
+        <p class="ds-section-desc">Product и promo badges. Кокосолис има специфични промо механики — gift threshold, bundles, seasonal. Максимум 1–2 badge на продукт; не комбинирай цветни варианти.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div class="ds-badge-row">
+          <div class="ds-badge-item">
+            <span class="cs-badge">Default</span>
+            <div class="ds-badge-label">Default</div>
+          </div>
+          <div class="ds-badge-item">
+            <span class="cs-badge cs-badge--sale">Sale</span>
+            <div class="ds-badge-label">--sale</div>
+          </div>
+          <div class="ds-badge-item">
+            <span class="cs-badge cs-badge--new">New</span>
+            <div class="ds-badge-label">--new</div>
+          </div>
+          <div class="ds-badge-item">
+            <span class="cs-badge cs-badge--gift">Free Gift</span>
+            <div class="ds-badge-label">--gift · threshold promo</div>
+          </div>
+          <div class="ds-badge-item">
+            <span class="cs-badge cs-badge--bundle">Bundle</span>
+            <div class="ds-badge-label">--bundle</div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top:1px solid var(--border-default);">
+          <div class="ds-subsection-title" style="margin-bottom:var(--space-4);">In Context — Product Title</div>
+          <div style="display:flex; gap:var(--space-2); flex-wrap:wrap; align-items:center;">
+            <span class="cs-badge cs-badge--sale">Sale</span>
+            <span style="font: var(--fw-body-m) 16px/1 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-primary);">Cocosolis ORGANIC Sun Tan Oil</span>
+            <span style="font: var(--fw-body-l) 16px/1 var(--font-body); color:var(--fg-primary);">49,90 €</span>
+            <span style="font: var(--fw-body-s) 14px/1 var(--font-body); color:var(--fg-muted); text-decoration:line-through;">59,90 €</span>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-6); padding-top: var(--space-6); border-top:1px solid var(--border-default);">
+          <div class="ds-subsection-title" style="margin-bottom:var(--space-4);">Threshold Promo Strip (inline)</div>
+          <div style="display:flex; align-items:center; gap:var(--space-3); padding:var(--space-3) var(--space-5); background:var(--color-bg-light); border-radius:var(--radius-md); font:var(--fw-body-s) 13px/1 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">
+            <span class="cs-badge cs-badge--gift">Free Gift</span>
+            <span>Добави още <strong style="color:var(--fg-primary);">20,10 €</strong> и получи безплатен подарък</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CARDS ──────────────────────────────────────── -->
+    <section class="ds-section" id="cards">
+      <div class="ds-section-header">
+        <span class="ds-section-label">12 — Components</span>
+        <div class="ds-section-title">Cards</div>
+        <p class="ds-section-desc">Product cards с 1:1 (square) aspect ratio. Hover → translateY lift + shadow. Hover за live interaction.</p>
+      </div>
+
+      <div class="ds-card-row">
+
+        <div class="cs-card cs-product-card">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920577.webp" alt="Sun Tan Oil Dark" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--new">New</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Sun Tan Oil Dark</div>
+            <div class="card-subtitle">Баобаб · Какао · Папая</div>
+            <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+              <span class="card-price">49,90 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920734.webp" alt="Body Shimmer Oil" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Body Shimmer Oil</div>
+            <div class="card-subtitle">Розово злато · Арган</div>
+            <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+              <span class="card-price">39,90 €</span>
+              <span class="card-price-old">49,90 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1931382.webp" alt="Summer Ritual Set" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Summer Ritual Set</div>
+            <div class="card-subtitle">3 продукта · Limited edition</div>
+            <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+              <span class="card-price">89,90 €</span>
+              <span class="card-price-old">119,70 €</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: var(--space-8);">
+        <div class="ds-subsection-title">Card Anatomy</div>
+        <table class="ds-motion-table">
+          <thead><tr><th>Element</th><th>Token</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>--color-white</td><td>#FFFFFF</td></tr>
+            <tr><td>Image aspect ratio</td><td>—</td><td>1:1 (square)</td></tr>
+            <tr><td>Border (default)</td><td>--border-default</td><td>#DEC9BE · 1px</td></tr>
+            <tr><td>Border Radius</td><td>--radius-lg</td><td>10px</td></tr>
+            <tr><td>Border (hover)</td><td>transparent</td><td>—</td></tr>
+            <tr><td>Shadow (hover)</td><td>--shadow-md</td><td>0 4px 12px rgba(168,138,129,.10)</td></tr>
+            <tr><td>Lift (hover)</td><td>translateY</td><td>−2px</td></tr>
+            <tr><td>Transition duration</td><td>--duration-base</td><td>220ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: var(--space-8);">
+        <div class="ds-subsection-title">Variant — No Background (Flush)</div>
+        <p class="ds-section-desc" style="margin-bottom:var(--space-5);">Modifier class <code>.cs-product-card--flush</code> — card container loses background, border and hover shadow/lift. Image keeps its own radius on all four corners (independent of the card frame), and the body text sits flush left (no left padding). Apply alongside <code>.cs-card .cs-product-card</code> in any direction, including Direction B where the base card normally gets a 1px border.</p>
+
+        <div class="ds-card-row">
+          <div class="cs-card cs-product-card cs-product-card--flush">
+            <div class="card-image">
+              <div class="card-image-inner">
+                <img src="P1920577.webp" alt="Sun Tan Oil Dark" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div class="card-badges"><span class="cs-badge cs-badge--new">New</span></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Sun Tan Oil Dark</div>
+              <div class="card-subtitle">Баобаб · Какао · Папая</div>
+              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+                <span class="card-price">49,90 €</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-card cs-product-card cs-product-card--flush">
+            <div class="card-image">
+              <div class="card-image-inner">
+                <img src="P1920734.webp" alt="Body Shimmer Oil" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Body Shimmer Oil</div>
+              <div class="card-subtitle">Розово злато · Арган</div>
+              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+                <span class="card-price">39,90 €</span>
+                <span class="card-price-old">49,90 €</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-card cs-product-card cs-product-card--flush">
+            <div class="card-image">
+              <div class="card-image-inner">
+                <img src="P1931382.webp" alt="Summer Ritual Set" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Summer Ritual Set</div>
+              <div class="card-subtitle">3 продукта · Limited edition</div>
+              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+                <span class="card-price">89,90 €</span>
+                <span class="card-price-old">119,70 €</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="ds-motion-table" style="margin-top:var(--space-5);">
+          <thead><tr><th>Element</th><th>Token</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Container background</td><td>—</td><td>transparent</td></tr>
+            <tr><td>Container border</td><td>—</td><td>none (all directions, incl. B)</td></tr>
+            <tr><td>Container shadow/lift (hover)</td><td>—</td><td>none</td></tr>
+            <tr><td>Image border radius</td><td>--radius-lg</td><td>10px · all 4 corners</td></tr>
+            <tr><td>Body left padding</td><td>—</td><td>0 (flush with image edge)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── RATING ───────────────────────────────────────── -->
+    <section class="ds-section" id="rating">
+      <div class="ds-section-header">
+        <span class="ds-section-label">13 — Components</span>
+        <div class="ds-section-title">Rating</div>
+        <p class="ds-section-desc">Star display + review count. Ползва се в product card, PDP header и search results. Powered by Yotpo — само display стойности, не интерактивен input.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div style="display: flex; flex-direction: column; gap: var(--space-8);">
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <span class="ds-token">Full — PDP header</span>
+            <div class="cs-rating">
+              <span class="cs-rating-stars">★★★★★</span>
+              <span class="cs-rating-score">4.91</span>
+              <a href="#" class="cs-rating-count">1 247 отзива</a>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <span class="ds-token">Compact — product card</span>
+            <div class="cs-rating cs-rating--sm">
+              <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
+              <span class="cs-rating-count">(312)</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <span class="ds-token">No reviews yet</span>
+            <div class="cs-rating">
+              <span class="cs-rating-stars" style="color: var(--border-interactive);">★★★★★</span>
+              <span class="cs-rating-count" style="text-decoration:none;">Бъди първият, който оценява</span>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-4); padding-top:var(--space-6); border-top:1px solid var(--border-default);">
+            <div class="ds-subsection-title" style="margin-bottom:var(--space-5);">In Context — Product Card</div>
+            <div style="max-width:220px;">
+              <div class="cs-card cs-product-card">
+                <div class="card-image">
+                  <div class="card-image-inner">
+                    <img src="P1920577.webp" alt="Sun Tan Oil Dark" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="card-title">Sun Tan Oil Dark</div>
+                  <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-2);">
+                    <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
+                    <span class="cs-rating-count" style="text-decoration:none;">(1 247)</span>
+                  </div>
+                  <span class="card-price">49,90 €</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICE DISPLAY ─────────────────────────────── -->
+    <section class="ds-section" id="price">
+      <div class="ds-section-header">
+        <span class="ds-section-label">14 — Components</span>
+        <div class="ds-section-title">Price Display</div>
+        <p class="ds-section-desc">Три сценария: пълна цена, намалена (EU Omnibus footnote задължителна) и bundle. Strikethrough + discount badge се показват автоматично при активна промо. Currency от market selector.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div class="ds-price-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-10);">
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <span class="ds-token">Full price</span>
+            <div class="cs-price">
+              <span class="cs-price-current">49,90 €</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <span class="ds-token">Discounted</span>
+            <div class="cs-price">
+              <span class="cs-price-current">39,90 €</span>
+              <span class="cs-price-original">49,90 €</span>
+              <span class="cs-badge cs-badge--sale">−20%</span>
+            </div>
+            <p class="cs-omnibus">Последна най-ниска цена (30 дни): 39,90 €</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <span class="ds-token">Bundle</span>
+            <div class="cs-price">
+              <span class="cs-price-current">89,90 €</span>
+              <span class="cs-price-original">119,70 €</span>
+              <span class="cs-badge cs-badge--bundle">Bundle</span>
+            </div>
+            <p class="cs-omnibus">Спестяваш 29,80 € (25%)</p>
+          </div>
+
+        </div>
+
+        <div style="margin-top:var(--space-8); padding-top:var(--space-6); border-top:1px solid var(--border-default);">
+          <div class="ds-subsection-title" style="margin-bottom:var(--space-4);">Omnibus Rule</div>
+          <div style="display:inline-flex; align-items:flex-start; gap:var(--space-3); padding:var(--space-4) var(--space-5); background:var(--color-white); border-left:3px solid var(--border-strong); border-radius:0 var(--radius-md) var(--radius-md) 0; font:400 var(--fs-body-s)/var(--lh-body) var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">
+            EU Omnibus Directive — задължителна footnote при всяка <code style="font-size:11px; background:var(--bg-subtle); padding:1px 4px; border-radius:3px;">cs-price-original</code> (strikethrough). Винаги под price row, никога скрита.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ACCORDION ─────────────────────────────────── -->
+    <section class="ds-section" id="accordion">
+      <div class="ds-section-header">
+        <span class="ds-section-label">15 — Components</span>
+        <div class="ds-section-title">Accordion</div>
+        <p class="ds-section-desc">Ползва се за FAQ, INCI съставки и разширени описания. Click за live interaction. Само един item може да е отворен наведнъж (опционално за INCI — може да стои отворен независимо).</p>
+      </div>
+
+      <div style="max-width: 640px; display: flex; flex-direction: column; gap: var(--space-2);">
+        <div class="cs-accordion-item">
+          <button class="cs-accordion-trigger" aria-expanded="true" onclick="csAccordionToggle(this)">
+            <span>Изпитвам парещо усещане — нормално ли е?</span>
+            <svg class="cs-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="cs-accordion-panel cs-accordion-panel--open">
+            <div class="cs-accordion-body">Да, леко парещо или топлинно усещане е нормален ефект от активните съставки. Ако усещането е силно, изплакнете с вода и намалете честотата на нанасяне до веднъж на ден.</div>
+          </div>
+        </div>
+        <div class="cs-accordion-item">
+          <button class="cs-accordion-trigger" aria-expanded="false" onclick="csAccordionToggle(this)">
+            <span>Кога да очаквам видими резултати?</span>
+            <svg class="cs-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="cs-accordion-panel">
+            <div class="cs-accordion-body">При редовна употреба 2–3 пъти седмично — видимо подобрение в рамките на 4 седмици. Клинично потвърдени резултати при 87% от тестваните участници.</div>
+          </div>
+        </div>
+        <div class="cs-accordion-item">
+          <button class="cs-accordion-trigger" aria-expanded="false" onclick="csAccordionToggle(this)">
+            <span>Подходящ ли е за чувствителна кожа?</span>
+            <svg class="cs-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="cs-accordion-panel">
+            <div class="cs-accordion-body">Да, формулата е дерматологично тествана и подходяща за всички типове кожа, включително чувствителна. Препоръчваме patch test при много чувствителна кожа.</div>
+          </div>
+        </div>
+        <div class="cs-accordion-item">
+          <button class="cs-accordion-trigger" aria-expanded="false" onclick="csAccordionToggle(this)">
+            <span>Съставки (INCI)</span>
+            <svg class="cs-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="cs-accordion-panel">
+            <div class="cs-accordion-body" style="font-size:12px; color:var(--fg-muted);">Olea Europaea* (Olive) Fruit Oil, Prunus Armeniaca* (Apricot) Kernel Oil, Adansonia Digitata* (Baobab) Seed Oil, Theobroma Cacao* (Cocoa) Seed Butter, Carica Papaya* (Papaya) Fruit Extract, Tocopherol. <em>*Certified organic ingredient.</em></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── TOAST NOTIFICATION ────────────────────────── -->
+    <section class="ds-section" id="toast">
+      <div class="ds-section-header">
+        <span class="ds-section-label">16 — Components</span>
+        <div class="ds-section-title">Toast Notifications</div>
+        <p class="ds-section-desc">Non-blocking feedback. Bottom screen (mobile), top-right (desktop). Auto-dismiss 4s. Swipeable. Три варианта + gift специфичен success.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
+
+          <div class="cs-toast cs-toast--success">
+            <svg class="cs-toast-icon" style="color:#498D68;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div class="cs-toast-body">
+              <div class="cs-toast-title">Добавено в количката</div>
+              <div class="cs-toast-msg">Sun Tan Oil Dark · 110 ml</div>
+            </div>
+            <button class="cs-toast-close" aria-label="Затвори">&times;</button>
+          </div>
+
+          <div class="cs-toast cs-toast--success">
+            <svg class="cs-toast-icon" style="color:#498D68;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 12v10H4V12"></path><path d="M22 7H2v5h20V7z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+            <div class="cs-toast-body">
+              <div class="cs-toast-title">Подаръкът е добавен!</div>
+              <div class="cs-toast-msg">Gelato Bag е в количката ти безплатно</div>
+            </div>
+            <button class="cs-toast-close" aria-label="Затвори">&times;</button>
+          </div>
+
+          <div class="cs-toast cs-toast--error">
+            <svg class="cs-toast-icon" style="color:#D93025;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <div class="cs-toast-body">
+              <div class="cs-toast-title">Невалиден промо код</div>
+              <div class="cs-toast-msg">Провери кода и опитай отново.</div>
+            </div>
+            <button class="cs-toast-close" aria-label="Затвори">&times;</button>
+          </div>
+
+          <div class="cs-toast cs-toast--info">
+            <svg class="cs-toast-icon" style="color:var(--fg-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <div class="cs-toast-body">
+              <div class="cs-toast-title">Добавено в списъка с желания</div>
+              <div class="cs-toast-msg">Влез в профила си за да видиш wishlist-а си.</div>
+            </div>
+            <button class="cs-toast-close" aria-label="Затвори">&times;</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THRESHOLD PROGRESS BAR ────────────────────── -->
+    <section class="ds-section" id="progress">
+      <div class="ds-section-header">
+        <span class="ds-section-label">17 — Components</span>
+        <div class="ds-section-title">Threshold Progress Bar</div>
+        <p class="ds-section-desc">Динамична лента в cart drawer — показва напредъка към gift threshold. При drop под threshold: gift се премахва и лентата се нулира. Три state-а.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div style="display: flex; flex-direction: column; gap: var(--space-8); max-width: 460px;">
+
+          <div style="display:flex; flex-direction:column; gap:var(--space-2);">
+            <span class="ds-token">Incomplete — 35%</span>
+            <div class="cs-threshold">
+              <p class="cs-threshold-msg">Добави още <strong>52,10 €</strong> и вземи <strong>Gelato Bag</strong> подарък!</p>
+              <div class="cs-threshold-track"><div class="cs-threshold-fill" style="width:35%;"></div></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:var(--space-2);">
+            <span class="ds-token">Near — 80% (urgency)</span>
+            <div class="cs-threshold">
+              <p class="cs-threshold-msg">Само още <strong>16,10 €</strong> до безплатния <strong>Gelato Bag</strong>!</p>
+              <div class="cs-threshold-track"><div class="cs-threshold-fill" style="width:80%;"></div></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:var(--space-2);">
+            <span class="ds-token">Complete — подарък отключен</span>
+            <div class="cs-threshold cs-threshold--complete">
+              <p class="cs-threshold-msg"><strong>Gelato Bag</strong> е добавен в количката ти!</p>
+              <div class="cs-threshold-track"><div class="cs-threshold-fill" style="width:100%;"></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QUANTITY STEPPER ───────────────────────────── -->
+    <section class="ds-section" id="stepper">
+      <div class="ds-section-header">
+        <span class="ds-section-label">18 — Components</span>
+        <div class="ds-section-title">Quantity Stepper</div>
+        <p class="ds-section-desc">−/qty/+ контрол. Default (48px) в PDP и cart. Compact (36px) в sticky bottom bar. Min 1 е disabled state на − бутона. Max от inventory.</p>
+      </div>
+
+      <div class="ds-components-canvas">
+        <div style="display:flex; gap:var(--space-12); align-items:flex-end; flex-wrap:wrap;">
+
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-4);">
+            <div class="cs-qty">
+              <button class="cs-qty-btn" disabled>−</button>
+              <span class="cs-qty-val">1</span>
+              <button class="cs-qty-btn">+</button>
+            </div>
+            <span class="ds-token">Default · min</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-4);">
+            <div class="cs-qty">
+              <button class="cs-qty-btn">−</button>
+              <span class="cs-qty-val">3</span>
+              <button class="cs-qty-btn">+</button>
+            </div>
+            <span class="ds-token">Default · qty 3</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-4);">
+            <div class="cs-qty">
+              <button class="cs-qty-btn">−</button>
+              <span class="cs-qty-val">5</span>
+              <button class="cs-qty-btn" disabled>+</button>
+            </div>
+            <span class="ds-token">Default · max</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-4);">
+            <div class="cs-qty cs-qty--sm">
+              <button class="cs-qty-btn" disabled>−</button>
+              <span class="cs-qty-val">1</span>
+              <button class="cs-qty-btn">+</button>
+            </div>
+            <span class="ds-token">--sm · sticky bar</span>
+          </div>
+
+        </div>
+
+        <div style="margin-top:var(--space-8); padding-top:var(--space-6); border-top:1px solid var(--border-default);">
+          <div class="ds-subsection-title" style="margin-bottom:var(--space-5);">In Context — Sticky Bar (compact)</div>
+          <div style="display:inline-flex; align-items:center; gap:var(--space-3); padding:var(--space-4) var(--space-6); background:var(--color-white); border:1px solid var(--border-default); border-radius:var(--radius-lg); box-shadow:var(--shadow-md);">
+            <div class="cs-qty cs-qty--sm">
+              <button class="cs-qty-btn" disabled>−</button>
+              <span class="cs-qty-val">1</span>
+              <button class="cs-qty-btn">+</button>
+            </div>
+            <button class="cs-btn cs-btn--primary" style="flex:1; min-width:200px;">Добави в количката</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+</div>
+
+<div id="cs-copy-toast"></div>
+
+<script>
+  function csCopyColor(el) {
+    let value = el.dataset.copy;
+    if (!value) {
+      const hexEl = el.querySelector('.swatch-hex, .ds-semantic-hex');
+      if (hexEl) {
+        const match = hexEl.textContent.match(/#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{3}/);
+        if (match) value = match[0];
+      }
+    }
+    if (!value) {
+      const colorEl = el.querySelector('.swatch-color');
+      if (colorEl) {
+        const match = (colorEl.getAttribute('style') || '').match(/#[0-9A-Fa-f]{6}|#[0-9A-Fa-f]{3}/);
+        if (match) {
+          value = match[0];
+        } else {
+          const rgb = getComputedStyle(colorEl).backgroundColor.match(/\d+/g);
+          if (rgb && rgb.length >= 3) {
+            value = '#' + rgb.slice(0, 3).map(n => parseInt(n).toString(16).padStart(2, '0')).join('').toUpperCase();
+          }
+        }
+      }
+    }
+    if (!value || !navigator.clipboard) return;
+    navigator.clipboard.writeText(value).then(() => {
+      const toast = document.getElementById('cs-copy-toast');
+      toast.textContent = `Copied ${value}`;
+      toast.classList.add('visible');
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => toast.classList.remove('visible'), 1800);
+    });
+  }
+
+  // PDP mobile swipe gallery — sync custom scrollbar thumb to track scroll
+  (function () {
+    const track = document.getElementById('pdpMobileTrack');
+    const thumb = document.getElementById('pdpMobileScrollbarThumb');
+    if (!track || !thumb) return;
+    function syncThumb() {
+      const ratio = track.clientWidth / track.scrollWidth;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const progress = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+      thumb.style.width = (ratio * 100) + '%';
+      thumb.style.transform = `translateX(${progress * (100 / ratio - 100)}%)`;
+    }
+    track.addEventListener('scroll', syncThumb, { passive: true });
+    window.addEventListener('resize', syncThumb);
+    syncThumb();
+  })();
+
+  function csToggleSidebar() {
+    document.body.classList.toggle('ds-sidebar-open');
+  }
+  document.querySelectorAll('.ds-sidebar-nav a').forEach(a =>
+    a.addEventListener('click', () => document.body.classList.remove('ds-sidebar-open'))
+  );
+
+  function csAccordionToggle(trigger) {
+    const expanded = trigger.getAttribute('aria-expanded') === 'true';
+    trigger.setAttribute('aria-expanded', String(!expanded));
+    const panel = trigger.closest('.cs-accordion-item').querySelector('.cs-accordion-panel');
+    panel.classList.toggle('cs-accordion-panel--open', !expanded);
+  }
+
+  // Scrollspy
+  const sections = document.querySelectorAll('.ds-section[id]');
+  const links = document.querySelectorAll('.ds-sidebar-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.ds-sidebar-nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -65% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  /* ── Direction switcher ────────────────────────────────── */
+  const DS_DIR = {
+    a: {
+      label:       'Montserrat',
+      cover:       'Direction A — Montserrat',
+      fontDisplay: 'Montserrat',
+      fontDetail:  'Display + Body · Single system<br>Weights: 300 · 400 · 500 · 600 · 700<br>Google Fonts · BG Cyrillic с locl fix',
+      detailDisplay: 'Montserrat',
+      detailBody:    'Montserrat',
+      headingWeight: '300',
+      bodyWeights: { l: 400, m: 400, s: 400 },
+      typoDesc: 'Direction A използва Montserrat като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. Кирилица fix: <span class="ds-token">font-feature-settings: \'locl\' 0</span> деактивира ръкописните BG форми.',
+      emphasisRule: 'Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Montserrat и конфликтира с brand weight (300) на display текстове.',
+      colors: {
+        accent:      { bg: '#FF8495', name: 'Accent / Coral' },
+        accentHover: { bg: '#D9607A' },
+        accentFocus: { bg: '#DF95A0' },
+        bgWarm:      { bg: '#DEBAA7', name: 'Warm Beige' },
+        bgLight:     { bg: '#FBF1EB', name: 'Cream' },
+        warmCream:   { bg: '#FBF1EB' },
+      },
+    },
+    b: {
+      label:       'Nunito Sans',
+      cover:       'Direction B — Nunito Sans',
+      fontDisplay: 'Nunito Sans',
+      fontDetail:  'Display + Body · Single system<br>Nunito Sans · Variable · Google Fonts<br>Headings: 900 · Body: 700→600→500',
+      detailDisplay: 'Nunito Sans',
+      detailBody:    'Nunito Sans',
+      headingWeight: '900',
+      bodyWeights: { l: 700, m: 600, s: 500, xs: 500 },
+      typoDesc: 'Direction B използва Nunito Sans като единна типографска система — sans-serif display и body от едно семейство. Weight 900 за heading и display. Body weight се увеличава с размера: 700 (18px) → 600 (16px) → 500 (11–14px).',
+      emphasisRule: 'Използвай <em>italic</em> за inline emphasis. Headings са 900 (Black) — запазвай bold само за heading-level hierarchy, не за inline emphasis в body текст.',
+      colors: {
+        accent:      { bg: '#FF7B79', name: 'Accent / Coral' },
+        accentHover: { bg: '#D96967' },
+        accentFocus: { bg: '#E79493' },
+        bgWarm:      { bg: '#E8C6B4', name: 'Warm Mist' },
+        bgLight:     { bg: '#F8F3F1', name: 'Parchment' },
+        bgDark:      { bg: '#7D4F3D', name: 'Mocha' },
+        warmCream:   { bg: '#FDF0E9' },
+      },
+    },
+    c: {
+      label:       'Figtree',
+      cover:       'Direction C — Figtree',
+      fontDisplay: 'Figtree',
+      fontDetail:  'Display + Body · Single system<br>Figtree · Variable · Google Fonts<br>BG Cyrillic нативно (без locl fix)',
+      detailDisplay: 'Figtree',
+      detailBody:    'Figtree',
+      headingWeight: '300',
+      bodyWeights: { l: 400, m: 400, s: 400 },
+      typoDesc: 'Direction C използва Figtree като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. BG Cyrillic нативно.',
+      emphasisRule: 'Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Figtree и конфликтира с brand weight (300) на display текстове.',
+      colors: {
+        accent:      { bg: '#F0506E', name: 'Accent / Flamingo' },
+        accentHover: { bg: '#CB3F5A' },
+        accentFocus: { bg: '#D47788' },
+        bgWarm:      { bg: '#E8C6B4', name: 'Warm Mist' },
+        bgLight:     { bg: '#F8F3F1', name: 'Parchment' },
+        bgDark:      { bg: '#311B15', name: 'Espresso' },
+        warmCream:   { bg: '#FFFFFF' },
+      },
+    },
+  };
+
+  function csSetDir(dir) {
+    const d = DS_DIR[dir];
+    if (!d) return;
+
+    document.documentElement.dataset.direction = dir;
+
+    document.querySelectorAll('.ds-dir-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.dir === dir)
+    );
+
+    const label = document.getElementById('ds-dir-label');
+    if (label) label.textContent = d.label;
+
+    const coverDir = document.querySelector('.ds-cover-direction');
+    if (coverDir) coverDir.textContent = d.cover;
+
+    const coverDirInline = document.getElementById('ds-cover-dir-inline');
+    if (coverDirInline) coverDirInline.textContent = d.cover;
+
+    const fontName = document.getElementById('ds-font-name-display');
+    if (fontName) fontName.textContent = d.fontDisplay;
+
+    const fontDetail = document.getElementById('ds-font-detail-display');
+    if (fontDetail) fontDetail.innerHTML = d.fontDetail;
+
+    document.querySelectorAll('.ds-type-detail--display').forEach(el => {
+      const rest = el.textContent.replace(/^.*?·\s*\d+\s*·\s*/, '');
+      el.textContent = d.detailDisplay + ' · ' + (d.headingWeight || '300') + ' · ' + rest;
+    });
+    document.querySelectorAll('.ds-type-detail--body').forEach(el => {
+      const level = el.dataset.bodyLevel;
+      const w = (level && d.bodyWeights) ? d.bodyWeights[level] : 400;
+      const rest = el.textContent.replace(/^.*?·\s*\d+\s*·\s*/, '');
+      el.textContent = d.detailBody + ' · ' + w + ' · ' + rest;
+    });
+
+    const typoDesc = document.getElementById('ds-typo-desc');
+    if (typoDesc && d.typoDesc) typoDesc.innerHTML = d.typoDesc;
+
+    const emphasisRule = document.getElementById('ds-emphasis-rule');
+    if (emphasisRule && d.emphasisRule) emphasisRule.innerHTML = d.emphasisRule;
+
+    if (d.colors) {
+      document.querySelectorAll('[data-dir-bg]').forEach(el => {
+        const c = d.colors[el.dataset.dirBg];
+        if (c) el.style.background = c.bg;
+      });
+      document.querySelectorAll('[data-dir-hex]').forEach(el => {
+        const c = d.colors[el.dataset.dirHex];
+        if (c) {
+          const suffix = el.dataset.dirLabel;
+          el.textContent = c.bg + (suffix ? ' · ' + suffix : '');
+        }
+      });
+      document.querySelectorAll('[data-dir-name]').forEach(el => {
+        const c = d.colors[el.dataset.dirName];
+        if (c && c.name) el.textContent = c.name;
+      });
+    }
+
+    document.title = `Cocosolis — Design System v1 · ${d.cover}`;
+  }
+
+  /* Init type detail labels with direction A prefix */
+  document.querySelectorAll('.ds-type-detail--display').forEach(el => {
+    el.textContent = 'Montserrat · ' + el.textContent;
+  });
+  document.querySelectorAll('.ds-type-detail--body').forEach(el => {
+    el.textContent = 'Montserrat · ' + el.textContent;
+  });
+</script>
+
+</body>
+</html>

@@ -3,1403 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cocosolis — Design System v1 · Direction A — Montserrat</title>
+  <title>Cocosolis — Design System v0-2 · Montserrat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,300;1,400;1,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
-  <style>
-    /* ── Design tokens — Direction A · Montserrat ──────── */
-    :root {
-      /* Brand palette */
-      --color-text:        #816C65;
-      --color-bg-warm:     #DEBAA7;
-      --color-bg-light:    #FBF1EB;
-      --color-accent:      #FF8495;
-      --color-accent-hover:#D9607A;
-      --color-accent-focus:#DF95A0;
-
-      /* Warm neutral scale */
-      --color-white:       #FFFFFF;
-      --color-cream:       #FBF1EB;
-      --color-warm-100:    #F0E4DB;
-      --color-warm-200:    #DEC9BE;
-      --color-warm-300:    #C4A89C;
-      --color-warm-400:    #A88A81;
-      --color-warm-500:    #816C65;
-      --color-warm-600:    #6A574F;
-      --color-warm-700:    #4D3D38;
-      --color-dark:        #2A1F1C;
-
-      /* True neutral scale */
-      --color-neutral-300: #C8C8C8;
-
-      /* Semantic — backgrounds */
-      --bg-primary:  var(--color-white);
-      --bg-subtle:   var(--color-warm-100);
-      --bg-muted:    var(--color-warm-200);
-      --bg-warm:     var(--color-bg-warm);
-      --bg-dark:     var(--color-dark);
-      --bg-brand:    var(--color-accent);
-
-      /* Semantic — text */
-      --fg-primary:   var(--color-warm-500);
-      --fg-secondary: var(--color-warm-600);
-      --fg-muted:     var(--color-warm-400);
-      --fg-inverse:   var(--color-white);
-      --fg-brand:     var(--color-accent);
-
-      /* Semantic — borders */
-      --border-default:      var(--color-cream);
-      --border-interactive:  var(--color-warm-200);
-      --border-strong:       var(--color-warm-400);
-      --border-brand:        var(--color-accent);
-
-      /* Actions */
-      --action-primary:       var(--color-warm-500);
-      --action-primary-hover: var(--color-warm-600);
-      --action-primary-text:  var(--color-white);
-
-      /* States */
-      --state-focus:    var(--color-accent-focus);
-      --state-error:    #EB5D33;
-      --state-success:  #498D68;
-      --state-disabled: var(--color-neutral-300);
-
-      /* Typography — Direction A: Montserrat (single system) */
-      --font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      --font-display: var(--font-body);
-      --fw-heading: 700;
-      --fw-h3:      700;
-      --fw-h4:      800;
-      --fw-body-l:  400;
-      --fw-body-m:  400;
-      --fw-body-s:  400;
-      --fw-body-xs: 400;
-
-      /* font-feature-settings: 'locl' 0 — disables cursive BG Cyrillic т/д forms in Montserrat */
-
-      /* Type scale */
-      --fs-display: 58px;
-      --fs-h1:      44px;
-      --fs-h2:      32px;
-      --fs-h3:      26px;
-      --fs-h4:      20px;
-      --fs-body-l:  22px;
-      --fs-body-m:  19px;
-      --fs-body-s:  17px;
-      --fs-body-xs: 14px;
-      --fs-caption: 14px;
-
-      /* Line heights */
-      --lh-tight:   1.15;
-      --lh-snug:    1.3;
-      --lh-body:    1.55;
-      --lh-relaxed: 1.7;
-
-      /* Letter spacing */
-      --ls-tight:   -0.7px;
-      --ls-caption: 3px;
-
-      /* Spacing — 4px base grid */
-      --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
-      --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
-      --space-8: 32px;  --space-10: 40px; --space-12: 48px;
-      --space-16: 64px; --space-20: 80px; --space-24: 96px;
-      --space-32: 128px;
-
-      /* Border radius — rectangular base, subtle rounding */
-      --radius-none: 0;
-      --radius-sm:   3px;
-      --radius-md:   6px;
-      --radius-lg:   10px;
-      --radius-xl:   14px;
-      --radius-2xl:  20px;
-      --radius-pill: 9999px;
-
-      /* Shadows — warm-tinted */
-      --shadow-xs: 0 1px 2px  0 rgba(168,138,129,.05);
-      --shadow-sm: 0 2px 4px  0 rgba(168,138,129,.07);
-      --shadow-md: 0 4px 12px 0 rgba(168,138,129,.10);
-      --shadow-lg: 0 8px 24px 0 rgba(168,138,129,.12);
-      --shadow-xl: 0 16px 48px 0 rgba(168,138,129,.16);
-
-      /* Motion */
-      --ease-out:      cubic-bezier(.22, 1, .36, 1);
-      --ease-in-out:   cubic-bezier(.65, 0, .35, 1);
-      --duration-fast: 150ms;
-      --duration-base: 220ms;
-      --duration-slow: 360ms;
-    }
-
-    /* ── Direction B — Nunito Sans ─────────────────────────── */
-    [data-direction="b"] {
-      --font-display: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      --font-body: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      --fw-heading: 900;
-      --fw-h3:      900;
-      --fw-h4:      1000;
-      --fw-body-l:  700;
-      --fw-body-m:  600;
-      --fw-body-s:  500;
-      --fw-body-xs: 500;
-
-      /* Deeper, more aspirational palette */
-      --color-accent:        #FF7B79;
-      --color-accent-hover:  #D96967;
-      --color-accent-focus:  #E79493;
-      --color-bg-warm:       var(--color-warm-200);
-      --color-bg-light:      #F8F3F1;
-      --bg-dark:             var(--color-warm-600);
-
-      /* Layered background system: cream page bg + white cards pop forward */
-      --bg-primary:          #FDF0E9;
-      --color-cream:         #FFFFFF;
-      --border-default:      rgba(130,108,101,0.15);
-
-      /* Warm neutrals — +20pp saturation for richer, warmer feel */
-      --color-text:        #98604E;
-      --color-warm-100:    #F5E3D6;
-      --color-warm-200:    #E8C6B4;
-      --color-warm-300:    #D4A28C;
-      --color-warm-400:    #BD7F6C;
-      --color-warm-500:    #98604E;
-      --color-warm-600:    #7D4F3D;
-      --color-warm-700:    #5A362B;
-      --color-dark:        #311B15;
-      --color-neutral-300: #D3BDBD;
-      --shadow-xs: 0 1px 2px  0 rgba(189,127,108,.05);
-      --shadow-sm: 0 2px 4px  0 rgba(189,127,108,.07);
-      --shadow-md: 0 4px 12px 0 rgba(189,127,108,.10);
-      --shadow-lg: 0 8px 24px 0 rgba(189,127,108,.12);
-      --shadow-xl: 0 16px 48px 0 rgba(189,127,108,.16);
-
-      /* Radius — all rounded elements shift +2 steps */
-      --radius-sm:   10px;    /* 3  → lg  */
-      --radius-md:   14px;    /* 6  → xl  */
-      --radius-lg:   20px;    /* 10 → 2xl */
-      --radius-xl:   9999px;  /* 14 → pill */
-      --radius-2xl:  9999px;  /* 20 → pill */
-    }
-
-    /* Direction A — pdp-wrap: no border on container */
-    [data-direction="a"] .pdp-wrap {
-      border: none;
-    }
-
-    /* Direction B — pdp-wrap: cap radius at 24px (pill is nonsensical for large layout containers) */
-    [data-direction="b"] .pdp-wrap {
-      border-radius: 24px;
-      background: transparent;
-      border: none;
-    }
-
-    /* Direction B — no borders on containers, only horizontal section dividers */
-    [data-direction="b"] .cs-threshold,
-    [data-direction="b"] .pdp-accordion-item,
-    [data-direction="b"] .ds-swatch-item,
-    [data-direction="b"] .ds-shadow-item,
-    [data-direction="b"] .ds-components-canvas {
-      border: none;
-    }
-
-    /* Direction B — product cards use default border, static on hover */
-    [data-direction="b"] .cs-card {
-      border: 1px solid var(--border-default);
-    }
-    [data-direction="b"] .cs-card:hover {
-      border-color: var(--border-default);
-    }
-
-    /* Direction B — product card title: bold */
-    [data-direction="b"] .cs-product-card .card-title {
-      font-weight: 900;
-    }
-
-    /* Direction B — button label weight: +2 steps (600 → 800) */
-    [data-direction="b"] .cs-btn {
-      font-weight: 800;
-    }
-
-    /* Direction B — badges: pill shape, wider side padding to balance the rounded ends, +2 steps text weight (700 → 900) */
-    [data-direction="b"] .cs-badge {
-      border-radius: var(--radius-xl);
-      padding: 0 var(--space-3);
-      font-weight: 900;
-    }
-
-    /* Direction B — qty stepper: white bg on all parts */
-    [data-direction="b"] .cs-qty-btn,
-    [data-direction="b"] .cs-qty-val { background: #FFFFFF; }
-    [data-direction="b"] .cs-qty-btn:hover:not(:disabled) { background: var(--bg-subtle); }
-
-    /* Direction B — PDP before/after: white bg (border/hover inherit accordion defaults) */
-    [data-direction="b"] .pdp-ba-strip {
-      background: var(--color-white);
-    }
-
-    /* ── Direction C — Figtree ───────────────────────────────── */
-    [data-direction="c"] {
-      --font-display: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      --font-body:    "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-
-      /* Warm neutrals — B's richer, +20pp saturation scale */
-      --color-text:        #98604E;
-      --color-warm-100:    #F5E3D6;
-      --color-warm-200:    #E8C6B4;
-      --color-warm-300:    #D4A28C;
-      --color-warm-400:    #BD7F6C;
-      --color-warm-500:    #98604E;
-      --color-warm-600:    #7D4F3D;
-      --color-warm-700:    #5A362B;
-      --color-dark:        #311B15;
-      --color-neutral-300: #D3BDBD;
-      --color-bg-warm:     var(--color-warm-200);
-      --color-bg-light:    #F8F3F1;
-
-      /* Accent — flamingo, used sparingly (badges/indicators only) */
-      --color-accent:        #F0506E;
-      --color-accent-hover:  #CB3F5A;
-      --color-accent-focus:  #D47788;
-
-      /* Semantic text — warm-500 register */
-      --fg-primary:   var(--color-warm-500);
-      --fg-secondary: var(--color-warm-600);
-      --fg-muted:     var(--color-warm-400);
-
-      /* Backgrounds — white primary, warm-scale subtle/muted */
-      --bg-primary:  #FFFFFF;
-      --bg-subtle:   var(--color-warm-100);
-      --bg-muted:    var(--color-warm-200);
-      --color-cream: #FFFFFF;
-
-      /* Borders — warm-500, 2px structural weight */
-      --border-default:     var(--color-warm-500);
-      --border-interactive: var(--color-warm-500);
-      --border-strong:      var(--color-warm-700);
-
-      /* Actions — warm-600 button */
-      --action-primary:       var(--color-warm-600);
-      --action-primary-hover: var(--color-warm-700);
-      --action-primary-text:  #FFFFFF;
-
-      /* Links */
-      --fg-brand: var(--color-warm-600);
-
-      /* Shadows — warm-tinted (B's hue), tighter opacity */
-      --shadow-xs: 0 1px 2px  0 rgba(189,127,108,.04);
-      --shadow-sm: 0 2px 4px  0 rgba(189,127,108,.06);
-      --shadow-md: 0 4px 12px 0 rgba(189,127,108,.08);
-      --shadow-lg: 0 8px 24px 0 rgba(189,127,108,.10);
-      --shadow-xl: 0 16px 48px 0 rgba(189,127,108,.14);
-
-      /* Radius — small, noticeably sharper than Direction A */
-      --radius-sm:   2px;
-      --radius-md:   4px;
-      --radius-lg:   6px;
-      --radius-xl:   8px;
-      --radius-2xl:  10px;
-
-      /* Letter spacing — open display for neo-grotesk breathing room */
-      --ls-tight: 0px;
-    }
-
-    /* Direction C — cards: separation via tinted background, no border (flush variant stays transparent via higher-specificity rule below) */
-    [data-direction="c"] .cs-card {
-      background: var(--color-bg-light);
-      border: none;
-    }
-    [data-direction="c"] .cs-card:hover {
-      border: none;
-    }
-
-    /* Direction C — pdp-wrap: white bg, no border */
-    [data-direction="c"] .pdp-wrap {
-      background: #FFFFFF;
-      border: none;
-    }
-
-    /* Direction C — threshold: white bg, 1px border */
-    [data-direction="c"] .cs-threshold {
-      background: #FFFFFF;
-      border-width: 1px;
-      border-color: var(--color-warm-500);
-    }
-
-    /* Direction C — accordion: background primary, 1px border */
-    [data-direction="c"] .cs-accordion-item {
-      background: var(--color-bg-light);
-      border-width: 1px;
-      border-color: var(--color-warm-500);
-    }
-
-    /* Direction A/B — threshold track: white unfilled area */
-    [data-direction="a"] .cs-threshold-track,
-    [data-direction="b"] .cs-threshold-track {
-      background: #FFFFFF;
-    }
-
-    /* Direction C — threshold track: subtle unfilled area */
-    [data-direction="c"] .cs-threshold-track {
-      background: var(--bg-subtle);
-    }
-
-    /* Direction C — spec containers, canvases, and PDP sub-sections: cream bg, no border */
-    [data-direction="c"] .ds-components-canvas,
-    [data-direction="c"] .ds-font-card,
-    [data-direction="c"] .ds-motion-demo,
-    [data-direction="c"] .ds-swatch-item,
-    [data-direction="c"] .ds-shadow-item,
-    [data-direction="c"] .pdp-accordion-item,
-    [data-direction="c"] .pdp-ba-strip {
-      background: var(--color-bg-light);
-      border: none;
-    }
-
-    /* Direction C — PDP benefits: no bg (matches A/B) */
-    [data-direction="c"] .pdp-benefits {
-      background: transparent;
-      border: none;
-    }
-
-    /* Direction C — semantic token chips: white bg, dark border */
-    [data-direction="c"] .ds-semantic-item {
-      background: #FFFFFF;
-      border: 1px solid var(--color-warm-500);
-    }
-
-    /* Direction C — badges use accent sparingly; CTAs inherit dark action tokens */
-    [data-direction="c"] .cs-badge-promo,
-    [data-direction="c"] .cs-threshold-badge {
-      background: var(--color-accent);
-      color: #FFFFFF;
-    }
-
-    /* ── Direction switcher ──────────────────────────────── */
-    .ds-dir-switch {
-      display: flex;
-      gap: 6px;
-      padding: 16px 20px 8px;
-    }
-    .ds-dir-btn {
-      flex: 1;
-      padding: 7px 4px;
-      border: 1px solid var(--border-interactive);
-      background: transparent;
-      border-radius: var(--radius-sm);
-      font: 600 10px/1 var(--font-body);
-      letter-spacing: 1.5px;
-      color: var(--fg-muted);
-      cursor: pointer;
-      transition: background var(--duration-fast) var(--ease-out),
-                  color var(--duration-fast) var(--ease-out),
-                  border-color var(--duration-fast) var(--ease-out);
-    }
-    .ds-dir-btn.active {
-      background: var(--action-primary);
-      border-color: var(--action-primary);
-      color: var(--action-primary-text);
-    }
-    .ds-dir-btn:hover:not(.active) {
-      border-color: var(--border-strong);
-      color: var(--fg-primary);
-    }
-    .ds-dir-label {
-      padding: 0 20px 12px;
-      font: 500 11px/1 var(--font-body);
-      letter-spacing: .5px;
-      color: var(--fg-muted);
-    }
-
-    /* ── Resets ──────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      font-feature-settings: 'locl' 0; /* disable cursive BG Cyrillic forms in Montserrat */
-      font-size: var(--fs-body-m);
-      line-height: var(--lh-body);
-      color: var(--fg-primary);
-      background: var(--bg-primary);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    h1,h2,h3,h4,h5,h6,p { margin: 0; }
-    a { color: var(--fg-brand); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ── Buttons ─────────────────────────────────────────── */
-    .cs-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: var(--space-2);
-      height: 48px; padding: 0 var(--space-6);
-      font: 600 var(--fs-body-s)/1 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      letter-spacing: .85px; text-transform: uppercase;
-      border-radius: var(--radius-md);
-      border: 1px solid transparent;
-      cursor: pointer; white-space: nowrap;
-      transition:
-        background var(--duration-base) var(--ease-out),
-        color var(--duration-base) var(--ease-out),
-        border-color var(--duration-base) var(--ease-out),
-        box-shadow var(--duration-base) var(--ease-out),
-        transform var(--duration-fast) var(--ease-out);
-      user-select: none; text-decoration: none;
-    }
-    .cs-btn:focus-visible { outline: 2px solid var(--state-focus); outline-offset: 2px; }
-    .cs-btn:active { transform: scale(.98); }
-
-    .cs-btn--primary {
-      background: var(--action-primary);
-      color: var(--action-primary-text);
-      border-color: var(--action-primary);
-    }
-    .cs-btn--primary:hover {
-      background: var(--action-primary-hover);
-      border-color: var(--action-primary-hover);
-    }
-    .cs-btn--primary:disabled {
-      background: var(--state-disabled);
-      border-color: var(--state-disabled);
-      color: var(--fg-inverse);
-      cursor: not-allowed; transform: none;
-    }
-
-    .cs-btn--secondary {
-      background: transparent;
-      color: var(--color-warm-500);
-      border-color: var(--action-primary);
-      box-shadow: inset 0 0 0 0 var(--action-primary);
-      transition:
-        box-shadow var(--duration-fast) var(--ease-out),
-        color var(--duration-fast) var(--ease-out),
-        transform var(--duration-fast) var(--ease-out);
-    }
-    .cs-btn--secondary:hover {
-      background: transparent;
-      border-color: var(--action-primary);
-      color: var(--color-warm-500);
-      box-shadow: inset 0 0 0 1px var(--action-primary);
-    }
-    .cs-btn--secondary:disabled {
-      color: var(--state-disabled);
-      border-color: var(--state-disabled);
-      cursor: not-allowed;
-    }
-
-    .cs-btn--secondary-inverse {
-      color: #fff;
-      border-color: #fff;
-      box-shadow: inset 0 0 0 0 #fff;
-    }
-    .cs-btn--secondary-inverse:hover {
-      color: #fff;
-      border-color: #fff;
-      box-shadow: inset 0 0 0 1px #fff;
-    }
-
-    .cs-btn--tertiary {
-      background: transparent;
-      color: var(--color-warm-500);
-      border-color: transparent;
-      padding: 0 var(--space-2);
-      height: 32px;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-color: var(--border-strong);
-    }
-    .cs-btn--tertiary:hover { color: var(--color-warm-500); text-decoration-color: var(--color-warm-500); }
-    .cs-btn--tertiary:disabled { color: var(--state-disabled); cursor: not-allowed; }
-
-    .cs-btn--tertiary-inverse {
-      color: #fff;
-      text-decoration-color: rgba(255,255,255,.5);
-    }
-    .cs-btn--tertiary-inverse:hover { color: #fff; text-decoration-color: #fff; }
-
-    .cs-btn--sm  { height: 36px; padding: 0 var(--space-4); font-size: var(--fs-caption); }
-    .cs-btn--lg  { height: 56px; padding: 0 var(--space-8); font-size: var(--fs-body-s); }
-    .cs-btn--full { width: 100%; }
-
-    /* ── Form inputs ─────────────────────────────────────── */
-    .cs-field { display: flex; flex-direction: column; gap: var(--space-2); }
-    .cs-field-label {
-      font: 500 var(--fs-caption)/1 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      letter-spacing: 1.8px; text-transform: uppercase;
-      color: var(--fg-muted);
-    }
-    .cs-input {
-      height: 48px; padding: 0 var(--space-4);
-      border: 1px solid var(--border-interactive);
-      border-radius: var(--radius-md);
-      background: var(--color-white);
-      font: var(--fw-body-m) var(--fs-body-m)/1.5 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-primary);
-      transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
-    }
-    .cs-input::placeholder { color: var(--fg-muted); }
-    .cs-input:hover { border-color: var(--border-strong); }
-    .cs-input:focus {
-      outline: none;
-      border-color: var(--state-focus);
-      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 12px 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
-    }
-    .cs-input--error { border-color: var(--state-error); }
-    .cs-input--error:focus { box-shadow: 0 0 0 1px color-mix(in srgb, var(--state-error) 40%, transparent), 0 0 12px 2px color-mix(in srgb, var(--state-error) 15%, transparent); }
-    .cs-help { font: var(--fw-body-xs) var(--fs-caption)/1.4 var(--font-body); color: var(--fg-muted); }
-    .cs-help--error { color: var(--state-error); }
-
-    .cs-check {
-      display: inline-flex; align-items: center; gap: var(--space-3);
-      font: var(--fw-body-s) var(--fs-body-s)/1.4 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); cursor: pointer;
-    }
-    .cs-check input {
-      appearance: none; width: 20px; height: 20px;
-      border: 1px solid var(--border-interactive); border-radius: var(--radius-sm);
-      display: inline-grid; place-content: center; cursor: pointer; flex-shrink: 0;
-      transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
-      background: var(--color-white);
-    }
-    .cs-check input:checked { background: var(--action-primary); border-color: var(--action-primary); }
-    .cs-check input:checked::after {
-      content: "";
-      width: 10px; height: 6px;
-      border-left: 2px solid #fff; border-bottom: 2px solid #fff;
-      transform: rotate(-45deg) translateY(-1px);
-    }
-
-    /* ── Badges ──────────────────────────────────────────── */
-    .cs-badge {
-      display: inline-flex; align-items: center; gap: var(--space-1);
-      height: 22px; padding: 0 var(--space-1);
-      border-radius: var(--radius-sm);
-      font: 700 15px/1 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      letter-spacing: 0.7px; text-transform: uppercase;
-      background: var(--color-warm-500);
-      color: #fff;
-      border: none;
-    }
-    .cs-badge--sale    { background: var(--color-accent); color: #fff; }
-    .cs-badge--discount{ background: var(--color-bg-warm); color: #fff; }
-    .cs-badge--new     { background: var(--color-warm-400); color: #fff; }
-    .cs-badge--gift    { background: var(--color-bg-warm); color: #fff; }
-    .cs-badge--bundle  { background: var(--color-warm-700); color: #fff; }
-
-    /* ── Cards ───────────────────────────────────────────── */
-    .cs-card {
-      background: var(--color-cream);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition:
-        box-shadow var(--duration-base) var(--ease-out),
-        border-color var(--duration-base) var(--ease-out),
-        transform var(--duration-base) var(--ease-out);
-    }
-    .cs-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: transparent;
-      transform: translateY(-2px);
-    }
-
-    /* ── Design system page layout ───────────────────────── */
-    .ds-layout { display: flex; min-height: 100vh; }
-
-    .ds-sidebar {
-      position: sticky; top: 0; height: 100vh;
-      width: 224px; min-width: 224px;
-      background: var(--color-cream);
-      color: var(--fg-primary);
-      display: flex; flex-direction: column;
-      overflow-y: auto; padding-bottom: var(--space-8);
-      z-index: 10;
-    }
-    .ds-sidebar-brand {
-      padding: var(--space-6) var(--space-6) var(--space-5);
-      border-bottom: 1px solid rgba(77,61,56,.12);
-    }
-    .ds-sidebar-logo {
-      display: block;
-      width: 148px;
-      height: auto;
-    }
-    .ds-sidebar-nav { padding: var(--space-5) 0; flex: 1; }
-    .ds-sidebar-group {
-      font: 500 9px/1 var(--font-body);
-      letter-spacing: 2px; text-transform: uppercase;
-      color: rgba(77,61,56,.45);
-      padding: var(--space-4) var(--space-6) var(--space-2);
-    }
-    .ds-sidebar-nav a {
-      display: block;
-      padding: 9px var(--space-6);
-      font: 400 13px/1 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--color-warm-600);
-      text-decoration: none;
-      transition: color var(--duration-fast), background var(--duration-fast);
-      border-left: 2px solid transparent;
-    }
-    .ds-sidebar-nav a:hover,
-    .ds-sidebar-nav a.active {
-      color: var(--color-dark);
-      background: rgba(77,61,56,.08);
-      border-left-color: var(--color-accent);
-    }
-    .ds-sidebar-footer {
-      padding: var(--space-4) var(--space-6);
-      border-top: 1px solid rgba(77,61,56,.12);
-      font: 400 10px/1.6 var(--font-body);
-      color: rgba(77,61,56,.45);
-    }
-
-    .ds-main {
-      flex: 1; overflow-x: visible;
-      padding: calc(var(--space-16) + 60px) var(--space-10) var(--space-16);
-      max-width: 980px;
-    }
-
-    /* ── Sections ────────────────────────────────────────── */
-    .ds-section {
-      padding-bottom: var(--space-20);
-      border-bottom: 1px solid var(--border-default);
-      margin-bottom: var(--space-20);
-    }
-    .ds-section:last-child { border-bottom: none; }
-
-    .ds-section-header { margin-bottom: var(--space-10); }
-    .ds-section-label {
-      font: 500 10px/1 var(--font-body);
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--fg-muted); display: block;
-      margin-bottom: var(--space-2);
-    }
-    .ds-section-title {
-      font: var(--fw-heading) var(--fs-h2)/var(--lh-tight) var(--font-display);
-      letter-spacing: var(--ls-tight);
-      color: var(--fg-primary);
-    }
-    .ds-section-desc {
-      margin-top: var(--space-3);
-      font: 400 var(--fs-body-m)/var(--lh-relaxed) var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); max-width: 560px;
-    }
-
-    .ds-subsection { margin-bottom: var(--space-10); }
-    .ds-subsection-title {
-      font: 500 11px/1 var(--font-body);
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--fg-muted);
-      margin-bottom: var(--space-5);
-      padding-bottom: var(--space-3);
-      border-bottom: 1px solid var(--border-default);
-    }
-
-    /* ── Token pill ──────────────────────────────────────── */
-    .ds-token {
-      display: inline-block;
-      font: 500 11px/1.5 "SFMono-Regular", "Consolas", "Menlo", monospace;
-      color: var(--fg-muted);
-      white-space: nowrap;
-    }
-
-    /* ── Copy toast ─────────────────────────────────────── */
-    #cs-copy-toast {
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(12px);
-      background: var(--color-dark); color: var(--color-white);
-      font: 500 12px/1 "SFMono-Regular", monospace;
-      padding: 8px 16px; border-radius: 20px;
-      opacity: 0; pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-      z-index: 9999; white-space: nowrap;
-    }
-    #cs-copy-toast.visible {
-      opacity: 1; transform: translateX(-50%) translateY(0);
-    }
-
-    /* ── Color swatches ──────────────────────────────────── */
-    .ds-palette { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-    .ds-swatch-lg {
-      flex: 1; min-width: 120px;
-      display: flex; flex-direction: column;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-default);
-      cursor: pointer;
-      transition:
-        box-shadow var(--duration-base) var(--ease-out),
-        border-color var(--duration-base) var(--ease-out),
-        transform var(--duration-base) var(--ease-out);
-    }
-    .ds-swatch-lg:hover {
-      box-shadow: var(--shadow-md);
-      border-color: transparent;
-      transform: translateY(-2px);
-    }
-    .ds-swatch-lg .swatch-color { height: 100px; flex-shrink: 0; }
-    .ds-swatch-lg .swatch-info {
-      flex: 1;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-white);
-    }
-    .ds-swatch-lg .swatch-name { font: 600 13px/1.2 var(--font-body); color: var(--fg-primary); }
-    .ds-swatch-lg .swatch-hex  { font: 400 12px/1.5 "SFMono-Regular", monospace; color: var(--fg-muted); }
-
-    .ds-neutral-row { display: flex; gap: 0; border-radius: var(--radius-md); }
-    .ds-neutral-step {
-      flex: 1; text-align: center;
-      cursor: pointer;
-      position: relative;
-      transition:
-        box-shadow var(--duration-base) var(--ease-out),
-        transform var(--duration-base) var(--ease-out);
-    }
-    .ds-neutral-step:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-      z-index: 1;
-    }
-    .ds-neutral-step .swatch-color { height: 56px; }
-    .ds-neutral-step .swatch-label {
-      padding: var(--space-2) 0 var(--space-3);
-      font: 400 10px/1 "SFMono-Regular", monospace; color: var(--fg-muted);
-      background: var(--color-white);
-    }
-
-    .ds-semantic-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: var(--space-3);
-    }
-    .ds-semantic-item {
-      display: flex; align-items: center; gap: var(--space-3);
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-white);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-default);
-    }
-    .ds-semantic-dot {
-      width: 32px; height: 32px; border-radius: var(--radius-sm);
-      flex-shrink: 0; border: 1px solid rgba(168,138,129,.08);
-    }
-    .ds-semantic-info { min-width: 0; }
-    .ds-semantic-name { font: 500 11px/1.2 var(--font-body); color: var(--fg-primary); }
-    .ds-semantic-hex  { font: 400 11px/1.5 "SFMono-Regular", monospace; color: var(--fg-muted); }
-
-    /* ── Typography ──────────────────────────────────────── */
-    .ds-type-scale { display: flex; flex-direction: column; }
-    .ds-type-row {
-      display: grid; grid-template-columns: 1fr 240px;
-      gap: var(--space-6); align-items: center;
-      padding: var(--space-5) 0;
-      border-bottom: 1px solid var(--border-default);
-    }
-    .ds-type-row:first-child { border-top: 1px solid var(--border-default); }
-    .ds-type-meta { display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-end; }
-    .ds-type-meta .ds-token { margin-bottom: var(--space-1); }
-    .ds-type-detail { font: 400 11px/1.7 "SFMono-Regular", monospace; color: var(--fg-muted); text-align: right; }
-
-    .ds-font-card {
-      padding: var(--space-8);
-      background: var(--color-white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-default);
-      margin-bottom: var(--space-10);
-    }
-    .ds-font-specimen { margin-bottom: var(--space-4); }
-    .ds-font-name { font: 600 13px/1 var(--font-body); color: var(--fg-primary); }
-    .ds-font-detail { font: 400 12px/1.5 var(--font-body); color: var(--fg-muted); margin-top: var(--space-1); }
-
-    /* ── Spacing ─────────────────────────────────────────── */
-    .ds-spacing-list { display: flex; flex-direction: column; gap: var(--space-4); }
-    .ds-spacing-row { display: flex; align-items: center; gap: var(--space-5); }
-    .ds-spacing-bar-wrap { flex: 1; }
-    .ds-spacing-bar { height: 24px; background: var(--color-accent); border-radius: var(--radius-sm); opacity: .6; }
-    .ds-spacing-meta { width: 180px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-    .ds-spacing-token { font: 500 12px/1 "SFMono-Regular", monospace; color: var(--fg-secondary); }
-    .ds-spacing-value { font: 400 12px/1 "SFMono-Regular", monospace; color: var(--fg-muted); }
-
-    /* ── Radius ──────────────────────────────────────────── */
-    .ds-radius-row { display: flex; gap: var(--space-6); flex-wrap: wrap; align-items: flex-end; }
-    .ds-radius-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
-    .ds-radius-box {
-      width: 80px; height: 80px;
-      background: var(--color-warm-200);
-      border: 2px solid var(--color-warm-300);
-    }
-    .ds-radius-label { font: 500 11px/1 "SFMono-Regular", monospace; color: var(--fg-muted); text-align: center; }
-    .ds-radius-value { font: 400 11px/1 "SFMono-Regular", monospace; color: var(--fg-muted); }
-
-    /* ── Shadows ─────────────────────────────────────────── */
-    .ds-shadow-row { display: flex; gap: var(--space-6); flex-wrap: wrap; }
-    .ds-shadow-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); }
-    .ds-shadow-card {
-      width: 100px; height: 80px;
-      background: var(--bg-warm);
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .ds-shadow-label { font: 500 11px/1 "SFMono-Regular", monospace; color: var(--fg-muted); text-align: center; }
-
-    /* ── Motion ──────────────────────────────────────────── */
-    .ds-motion-table { width: 100%; border-collapse: collapse; }
-    .ds-motion-table th {
-      text-align: left; padding: var(--space-3) var(--space-4);
-      font: 500 10px/1 var(--font-body); letter-spacing: 2px;
-      text-transform: uppercase; color: var(--fg-muted);
-      border-bottom: 1px solid var(--border-default);
-    }
-    .ds-motion-table td {
-      padding: var(--space-4) var(--space-4);
-      font: 400 13px/1.5 "SFMono-Regular", monospace; color: var(--fg-secondary);
-      border-bottom: 1px solid var(--border-default);
-    }
-    .ds-motion-table tr:last-child td { border-bottom: none; }
-    .ds-motion-demo {
-      margin-top: var(--space-8);
-      padding: var(--space-8);
-      background: var(--color-white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-default);
-      display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start;
-    }
-    .ds-motion-hint { font: 400 12px/1.5 var(--font-body); color: var(--fg-muted); }
-
-    /* ── Components layout ───────────────────────────────── */
-    .ds-components-canvas {
-      padding: var(--space-8);
-      background: var(--color-white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-default);
-    }
-    .ds-col-label {
-      font: 500 10px/1 var(--font-body);
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--fg-muted); text-align: center;
-    }
-    .ds-row-label {
-      font: 500 11px/1 var(--font-body);
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--fg-muted);
-      display: flex; align-items: center;
-    }
-    .ds-btn-cell { display: flex; justify-content: center; }
-
-    .ds-badge-row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
-    .ds-badge-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
-    .ds-badge-label { font: 400 11px/1 var(--font-body); color: var(--fg-muted); text-align: center; margin-top: var(--space-1); }
-
-    .ds-inputs-row {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: var(--space-6);
-    }
-
-    .ds-card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
-
-    /* Product card internals */
-    .cs-product-card { cursor: pointer; display: flex; flex-direction: column; }
-    .cs-product-card .card-image {
-      aspect-ratio: 1/1;
-      background: var(--color-cream);
-      position: relative; overflow: hidden;
-    }
-    .cs-product-card .card-image-inner {
-      position: absolute; inset: 0;
-      transition: transform var(--duration-slow) var(--ease-out);
-    }
-    .cs-product-card:hover .card-image-inner { transform: scale(1.03); }
-    .cs-product-card .card-image-ph {
-      width: 100%; height: 100%;
-    }
-    .cs-product-card .card-body { padding: var(--space-4) var(--space-4) var(--space-5); display: flex; flex-direction: column; flex: 1; }
-    .cs-product-card .card-title {
-      font: var(--fw-heading) var(--fs-body-m)/var(--lh-snug) var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); margin-bottom: var(--space-2);
-    }
-    .cs-product-card .card-subtitle {
-      font: var(--fw-body-s) var(--fs-body-s)/1.4 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-muted); margin-bottom: var(--space-3);
-    }
-    .cs-product-card .card-price {
-      font: 600 var(--fs-body-m)/1 var(--font-body); color: var(--fg-primary);
-    }
-    .cs-product-card .card-price-old {
-      font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted);
-      text-decoration: line-through; margin-left: var(--space-2);
-    }
-    .cs-product-card .card-badges {
-      position: absolute; top: var(--space-3); left: var(--space-3); z-index: 2;
-      display: flex; gap: var(--space-2);
-    }
-    .cs-product-card .card-desc {
-      font: var(--fw-body-s) var(--fs-caption)/1.5 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); margin-bottom: var(--space-3);
-    }
-    .cs-product-card .card-zone {
-      font: 500 var(--fs-caption)/1 var(--font-body);
-      font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); margin-bottom: var(--space-4);
-    }
-    .cs-product-card .card-price-bgn-current {
-      font: 600 var(--fs-caption)/1 var(--font-body);
-      color: var(--fg-primary);
-    }
-    .cs-product-card .card-price-bgn-old {
-      font: var(--fw-body-s) var(--fs-caption)/1 var(--font-body);
-      color: var(--fg-muted); text-decoration: line-through; margin-left: var(--space-2);
-    }
-    .cs-product-card .card-bottom { margin-top: auto; }
-
-    /* Product card — flush variant: no card bg/border, body flush-left, image rounded on all sides (works in any direction, incl. B's bordered-card override) */
-    .cs-card.cs-product-card--flush { background: transparent; border: none; }
-    .cs-card.cs-product-card--flush:hover { box-shadow: none; border: none; transform: none; }
-    .cs-product-card--flush .card-body { padding-left: 0; background: transparent; }
-    .cs-product-card--flush .card-image { border-radius: var(--radius-lg); overflow: hidden; }
-
-    /* State indicators */
-    .ds-state-row { display: flex; gap: var(--space-5); align-items: center; flex-wrap: wrap; }
-    .ds-state-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
-    .ds-state-label { font: 400 11px/1 var(--font-body); color: var(--fg-muted); }
-    .ds-state-dot {
-      width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font: 600 14px/1 var(--font-body); color: var(--fg-inverse);
-    }
-
-    /* Cover strip — fixed title bar */
-    .ds-cover {
-      position: fixed;
-      top: 0; left: 224px; right: 0;
-      z-index: 100;
-      background: var(--color-white);
-      padding: var(--space-4) var(--space-12);
-      display: flex; align-items: center;
-      gap: 0;
-      border-bottom: 1px solid var(--border-default);
-    }
-    .ds-cover-title {
-      font: var(--fw-heading) var(--fs-h3)/var(--lh-tight) var(--font-display);
-      letter-spacing: var(--ls-tight);
-      color: var(--fg-primary);
-      flex-shrink: 0;
-    }
-    .ds-cover-title-dir {
-      font-weight: 400;
-      opacity: 0.55;
-    }
-    .ds-cover-meta {
-      margin-left: auto;
-      display: flex; align-items: center; gap: var(--space-4);
-    }
-    .ds-cover-ver {
-      font: 500 10px/1 var(--font-body); letter-spacing: 2px;
-      text-transform: uppercase; color: var(--fg-muted);
-    }
-    .ds-cover-direction {
-      display: inline-block;
-      padding: 3px 10px;
-      background: rgba(255,132,149,.15);
-      border: 1px solid rgba(255,132,149,.3);
-      border-radius: var(--radius-sm);
-      font: 500 10px/1.6 var(--font-body);
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--color-accent);
-    }
-
-    /* ── PDP Mockup ──────────────────────────────────────── */
-    .pdp-wrap {
-      display: grid;
-      grid-template-columns: 56fr 44fr;
-      gap: var(--space-10);
-      background: var(--color-white);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-xl);
-      padding: 0;
-    }
-    .pdp-gallery { display: flex; flex-direction: column; gap: var(--space-4); }
-    .pdp-main-image-wrap {
-      position: relative; border-radius: var(--radius-lg);
-      overflow: hidden; background: var(--color-cream); aspect-ratio: 4/5;
-    }
-    .pdp-main-image { width:100%; height:100%; object-fit:cover; display:block; }
-    .pdp-best-badge {
-      position: absolute; top: var(--space-4); left: var(--space-4); z-index: 2;
-    }
-    .pdp-ingredients {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: var(--space-3); padding: var(--space-4);
-      background: var(--color-cream); border-radius: var(--radius-md);
-    }
-    .pdp-ingredient { text-align: center; }
-    .pdp-ingredient-name {
-      font: 600 var(--fs-caption)/1.2 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); margin-bottom: var(--space-1);
-    }
-    .pdp-ingredient-desc {
-      font: var(--fw-body-xs) var(--fs-caption)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-muted);
-    }
-    /* Mobile swipe gallery — hidden by default, shown ≤900px in place of main image + thumbs */
-    .pdp-mobile-gallery { display: none; }
-    .pdp-mobile-gallery-track {
-      display: flex; gap: var(--space-2); overflow-x: auto; scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
-    .pdp-mobile-gallery-track::-webkit-scrollbar { display: none; }
-    .pdp-mobile-slide {
-      flex: 0 0 92%; scroll-snap-align: start; aspect-ratio: 1/1;
-      position: relative; background: var(--color-cream); border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .pdp-mobile-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .pdp-mobile-scrollbar {
-      height: 3px; margin-top: var(--space-3); border-radius: 2px;
-      background: var(--border-default); position: relative; overflow: hidden;
-    }
-    .pdp-mobile-scrollbar-thumb {
-      position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px;
-      background: var(--fg-muted); will-change: transform, width;
-    }
-    .pdp-thumbs { display: flex; gap: var(--space-2); }
-    .pdp-thumb {
-      flex: 1; aspect-ratio: 1; border-radius: var(--radius-md);
-      overflow: hidden; border: 2px solid transparent; cursor: pointer;
-      transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
-    }
-    .pdp-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-    .pdp-thumb--active {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 12px 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
-    }
-    .pdp-thumb:hover { border-color: var(--border-strong); }
-    .pdp-ba-strip {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: var(--space-3) var(--space-4);
-      background: transparent; border: 1px solid var(--border-interactive);
-      border-radius: var(--radius-md);
-      font: 500 var(--fs-caption)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); cursor: pointer;
-      transition: border-color var(--duration-fast), color var(--duration-fast), box-shadow var(--duration-fast);
-    }
-    .pdp-ba-strip:hover { border-color: var(--border-strong); color: var(--fg-primary); }
-    .pdp-ba-strip:focus-visible,
-    .pdp-vol-btn:focus-visible,
-    .pdp-qty-btn:focus-visible,
-    .pdp-wish-btn:focus-visible { outline: 2px solid var(--state-focus); outline-offset: 2px; }
-    .pdp-ba-plus {
-      width: 22px; height: 22px; border: 1px solid var(--border-strong);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font: var(--fw-body-s) 14px/1 var(--font-body); color: var(--fg-muted);
-    }
-    .pdp-info { display: flex; flex-direction: column; padding-top: var(--space-2); }
-    .pdp-title {
-      font: var(--fw-heading) var(--fs-h2)/1.1 var(--font-body); font-feature-settings: 'locl' 0;
-      letter-spacing: -0.35px; color: var(--fg-primary);
-      margin: 0 0 var(--space-4);
-    }
-    .pdp-stars {
-      display: flex; align-items: center; gap: var(--space-3);
-      margin-bottom: var(--space-5);
-    }
-    .pdp-stars-icons { color: var(--color-accent); font-size: 15px; letter-spacing: 1px; }
-    .pdp-stars-count { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); }
-    .pdp-desc {
-      font: var(--fw-body-s) var(--fs-body-s)/1.7 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); margin: 0 0 var(--space-5);
-    }
-    .pdp-benefits {
-      list-style: none; margin: 0 0 var(--space-5); padding: 0;
-      background: transparent; border: none; border-radius: var(--radius-md);
-      display: flex; flex-direction: column; gap: var(--space-3);
-    }
-    .pdp-benefits li {
-      font: var(--fw-body-xs) var(--fs-body-xs)/0.7 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); display: flex; align-items: flex-start; gap: var(--space-3);
-    }
-    .pdp-benefits li::before {
-      content: ''; flex-shrink: 0; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--color-accent); margin-top: 4px;
-    }
-    .pdp-benefit-label { font-weight: 600; color: var(--fg-primary); }
-    .pdp-benefit-note { color: var(--fg-muted); }
-    .pdp-divider { height: 1px; background: transparent; margin: var(--space-5) 0; }
-    .pdp-price-row {
-      display: flex; align-items: baseline; gap: var(--space-2);
-      margin-bottom: var(--space-5);
-    }
-    .pdp-price {
-      font: 600 var(--fs-h3)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-primary);
-    }
-    .pdp-price-per { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); }
-    .pdp-volume { margin-bottom: var(--space-5); }
-    .pdp-volume-label {
-      font: 500 var(--fs-caption)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--fg-muted); margin-bottom: var(--space-3);
-    }
-    .pdp-volume-options { display: flex; gap: var(--space-2); }
-    .pdp-vol-btn {
-      padding: 0 var(--space-4); height: 38px;
-      border: 1px solid var(--border-interactive); border-radius: var(--radius-md);
-      background: var(--bg-primary);
-      font: 500 var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); cursor: pointer;
-      transition: border-color var(--duration-fast), color var(--duration-fast), box-shadow var(--duration-fast);
-    }
-    .pdp-vol-btn:hover { border-color: var(--border-strong); color: var(--fg-primary); }
-
-    .pdp-vol-btn--active {
-      border-color: var(--color-accent); color: var(--fg-primary);
-      box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 12px 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
-    }
-    .pdp-atc-row {
-      display: flex; align-items: center; gap: var(--space-3);
-      margin-bottom: var(--space-2);
-    }
-.pdp-atc-btn { flex: 1; }
-    .pdp-wish-btn {
-      width: 48px; height: 48px; flex-shrink: 0;
-      border: 1px solid var(--border-default); border-radius: var(--radius-md);
-      background: var(--bg-primary); color: var(--fg-muted);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color var(--duration-fast), color var(--duration-fast);
-    }
-    .pdp-wish-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
-    .pdp-service-strip {
-      display: flex; align-items: center; gap: var(--space-3);
-      padding: var(--space-3) 0; border-bottom: 1px solid var(--border-default);
-      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary);
-    }
-    .pdp-service-strip:last-child { border-bottom: none; }
-    .pdp-service-strip svg { flex-shrink: 0; color: var(--fg-muted); }
-    .pdp-service-strip strong { color: var(--fg-primary); font-weight: 600; }
-
-    /* ── PDP Bundle variant ──────────────────────────── */
-    .pdp-bundle-list strong { color: var(--fg-primary); font-weight: 600; }
-    .pdp-price-row--promo { margin-bottom: var(--space-2); }
-    .pdp-price-row--promo .pdp-price-old {
-      font: var(--fw-body-m) var(--fs-body-m)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-muted); text-decoration: line-through;
-    }
-    .pdp-price-row--bgn { margin-bottom: var(--space-5); }
-    .pdp-price-bgn {
-      font: 600 var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-primary);
-    }
-    .pdp-price-old-bgn {
-      font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-muted); text-decoration: line-through;
-    }
-    .pdp-omnibus-note {
-      display: flex; align-items: center; gap: var(--space-2);
-      font: var(--fw-body-xs) var(--fs-body-xs)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-muted); margin: 0 0 var(--space-5);
-    }
-    .pdp-omnibus-note strong { color: var(--fg-secondary); }
-    .pdp-omnibus-note svg { flex-shrink: 0; }
-    .pdp-club-banner {
-      display: flex; align-items: flex-start; gap: var(--space-3);
-      padding: var(--space-4) var(--space-5);
-      background: var(--color-bg-light); border-radius: var(--radius-md);
-      font: var(--fw-body-xs) var(--fs-body-xs)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-secondary); margin-bottom: var(--space-5);
-    }
-    .pdp-club-banner svg { flex-shrink: 0; color: var(--color-accent); margin-top: 1px; }
-    .pdp-club-link { color: var(--fg-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-    .pdp-service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-    .pdp-service-strip--col {
-      flex-direction: row; align-items: center; text-align: left;
-      gap: var(--space-3); border-bottom: none; padding: 0;
-    }
-    .pdp-service-strip--col svg,
-    .pdp-service-strip--col .pdp-free-badge { width: 24px; height: 24px; flex-shrink: 0; }
-    .pdp-free-badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      border: 1.5px solid var(--border-strong);
-      font: 700 8px/1 var(--font-body); letter-spacing: 0.3px;
-      color: var(--fg-primary);
-    }
-
-    /* ── Rating ──────────────────────────────────────── */
-    .cs-rating { display: inline-flex; align-items: center; gap: var(--space-2); }
-    .cs-rating-stars { color: var(--color-accent); font-size: 14px; letter-spacing: 2px; }
-    .cs-rating-stars--sm { font-size: 12px; letter-spacing: 1px; }
-    .cs-rating-score { font: 600 var(--fs-body-s)/1 var(--font-body); color: var(--fg-primary); }
-    .cs-rating-count { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); text-decoration: underline; text-underline-offset: 2px; }
-    .cs-rating--sm .cs-rating-count { font-size: var(--fs-caption); text-decoration: none; }
-
-    /* ── Price Display ───────────────────────────────── */
-    .cs-price { display: inline-flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
-    .cs-price-current { font: 600 var(--fs-h4)/1 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-primary); }
-    .cs-price-original { font: var(--fw-body-m) var(--fs-body-m)/1 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-muted); text-decoration: line-through; }
-    .cs-omnibus { font: var(--fw-body-xs) var(--fs-caption)/1.4 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-muted); margin: var(--space-1) 0 0; }
-
-    /* ── Accordion ───────────────────────────────────── */
-    .cs-accordion-item {
-      background: var(--color-white);
-      border: 1px solid var(--border-interactive);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
-    }
-    .cs-accordion-item:has([aria-expanded="true"]) { border-color: var(--border-strong); }
-    .cs-accordion-item:hover { border-color: var(--border-strong); box-shadow: inset 0 0 0 1px var(--border-strong); }
-    .cs-accordion-trigger {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      gap: var(--space-4); padding: var(--space-5) var(--space-6);
-      background: transparent; border: none; cursor: pointer;
-      font: 500 var(--fs-body-s)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); text-align: left;
-    }
-    .cs-accordion-icon { width: 18px; height: 18px; flex-shrink: 0; transition: transform var(--duration-base) var(--ease-out); }
-    .cs-accordion-trigger[aria-expanded="true"] .cs-accordion-icon { transform: rotate(45deg); }
-    .cs-accordion-panel { overflow: hidden; max-height: 0; transition: max-height var(--duration-slow) var(--ease-in-out); }
-    .cs-accordion-panel--open { max-height: 500px; }
-    .cs-accordion-body { padding: 0 var(--space-6) var(--space-5); font: var(--fw-body-s) var(--fs-body-s)/1.7 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-secondary); }
-
-    /* ── Toast Notification ──────────────────────────── */
-    .cs-toast {
-      display: flex; align-items: flex-start; gap: var(--space-3);
-      padding: var(--space-4) var(--space-5);
-      border-radius: var(--radius-md); border: 1px solid;
-      box-shadow: var(--shadow-lg);
-    }
-    .cs-toast--success { background: rgba(168, 213, 181, 0.15); border-color: #A8D5B5; }
-    .cs-toast--error   { background: rgba(245, 169, 164, 0.15); border-color: #F5A9A4; }
-    .cs-toast--info    { background: var(--color-white); border-color: var(--border-interactive); }
-    .cs-toast-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
-    .cs-toast-body { flex: 1; min-width: 0; }
-    .cs-toast-title { font: 600 var(--fs-body-s)/1.3 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-primary); margin-bottom: 3px; }
-    .cs-toast-msg { font: var(--fw-body-s) var(--fs-body-s)/1.5 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-secondary); }
-    .cs-toast-close {
-      background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;
-      font: 300 22px/1 var(--font-body); color: var(--fg-muted); line-height: 1;
-      transition: color var(--duration-fast);
-    }
-    .cs-toast-close:hover { color: var(--fg-primary); }
-
-    /* ── Threshold Progress Bar ──────────────────────── */
-    .cs-threshold { padding: var(--space-4) var(--space-5); background: var(--color-bg-light); border: 1px solid var(--border-default); border-radius: var(--radius-md); }
-    .cs-threshold-msg { font: 500 var(--fs-body-s)/1.5 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-secondary); margin: 0 0 var(--space-3); }
-    .cs-threshold-msg strong { color: var(--fg-primary); }
-    .cs-threshold-track { height: 4px; background: var(--border-interactive); border-radius: var(--radius-pill); overflow: hidden; }
-    .cs-threshold-fill { height: 100%; background: var(--color-accent); border-radius: var(--radius-pill); transition: width var(--duration-slow) var(--ease-out); }
-    .cs-threshold--complete .cs-threshold-msg { color: var(--state-success); }
-    .cs-threshold--complete .cs-threshold-msg strong { color: var(--state-success); }
-    .cs-threshold--complete .cs-threshold-fill { background: var(--state-success); }
-
-    /* ── Quantity Stepper ────────────────────────────── */
-    .cs-qty { display: inline-flex; align-items: center; border: 1px solid var(--border-interactive); border-radius: var(--radius-md); overflow: hidden; flex-shrink: 0; }
-    .cs-qty-btn {
-      width: 44px; height: 48px; flex-shrink: 0;
-      background: var(--bg-primary); border: none; cursor: pointer;
-      font: 300 22px/1 var(--font-body); color: var(--fg-secondary);
-      transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
-    }
-    .cs-qty-btn:hover:not(:disabled) { background: var(--bg-subtle); color: var(--fg-primary); }
-    .cs-qty-btn:disabled { color: var(--state-disabled); cursor: not-allowed; }
-    .cs-qty-val {
-      min-width: 44px; text-align: center;
-      font: 500 var(--fs-body-m)/48px var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); user-select: none;
-      background: var(--bg-primary);
-      border-left: 1px solid var(--border-interactive);
-      border-right: 1px solid var(--border-interactive);
-    }
-    .cs-qty--sm .cs-qty-btn { width: 36px; height: 36px; font-size: 18px; }
-    .cs-qty--sm .cs-qty-val { min-width: 36px; font-size: var(--fs-body-s); line-height: 36px; }
-
-    /* ── Mobile sidebar drawer (controls) ────────────────── */
-    .ds-hamburger {
-      display: none;
-      width: 36px; height: 36px; flex-shrink: 0; margin-right: var(--space-3);
-      align-items: center; justify-content: center;
-      background: transparent; border: 1px solid var(--border-interactive);
-      border-radius: var(--radius-sm); color: var(--fg-primary); cursor: pointer;
-    }
-    .ds-sidebar-backdrop {
-      display: none;
-      position: fixed; inset: 0; z-index: 150;
-      background: rgba(42,31,28,.45);
-    }
-    body.ds-sidebar-open .ds-sidebar-backdrop { display: block; }
-
-    /* ── Mobile breakpoint — ≤900px ──────────────────────── */
-    @media (max-width: 900px) {
-      .ds-hamburger { display: flex; }
-
-      html, body { overflow-x: hidden; }
-
-      .ds-sidebar {
-        position: fixed; top: 0; left: 0; height: 100vh;
-        width: min(280px, 80vw); min-width: 0;
-        transform: translateX(-100%);
-        transition: transform var(--duration-base) var(--ease-out);
-        box-shadow: var(--shadow-xl);
-        z-index: 200;
-      }
-      body.ds-sidebar-open .ds-sidebar { transform: translateX(0); }
-
-      .ds-cover {
-        left: 0;
-        padding: var(--space-3) var(--space-4);
-        flex-wrap: wrap; row-gap: var(--space-2);
-      }
-      .ds-cover-title { font-size: var(--fs-body-l); }
-      .ds-cover-meta { margin-left: 0; }
-
-      .ds-main {
-        padding: calc(var(--space-16) + 84px) var(--space-4) var(--space-12);
-        max-width: 100%;
-      }
-
-      .pdp-wrap { grid-template-columns: 1fr; padding: var(--space-5); gap: var(--space-6); }
-      .pdp-main-image-wrap, .pdp-thumbs { display: none; }
-      .pdp-mobile-gallery { display: block; }
-      .ds-card-row { grid-template-columns: 1fr; }
-      .ds-inputs-row { grid-template-columns: 1fr; }
-      .ds-onDark-grid { grid-template-columns: 1fr; }
-      .ds-price-grid { grid-template-columns: 1fr; gap: var(--space-6); }
-
-      .ds-type-row { grid-template-columns: 1fr; gap: var(--space-2); }
-      .ds-type-meta { align-items: flex-start; }
-      .ds-type-detail { text-align: left; }
-
-      .ds-spacing-meta { width: 130px; }
-      .ds-semantic-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-    }
-
-    @media (max-width: 480px) {
-      .ds-cover-ver { display: none; }
-      .ds-cover-title { font-size: var(--fs-body-m); }
-      .ds-main { padding-top: calc(var(--space-16) + 64px); }
-      .pdp-atc-row { flex-wrap: wrap; }
-      .pdp-volume-options { flex-wrap: wrap; }
-    }
-
-    /* ── Desktop breakpoint — ≥1440px ─────────────────────── */
-    @media (min-width: 1440px) {
-      .ds-main { margin: 0 auto; }
-    }
-  </style>
+  <link rel="stylesheet" href="cocosolis.css">
 </head>
 <body>
 
@@ -1412,11 +21,6 @@
   <nav class="ds-sidebar">
     <div class="ds-sidebar-brand">
       <svg class="ds-sidebar-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="310" height="119" viewBox="0 0 310 119"><defs><clipPath id="cs-logo-clip"><rect width="303.234" height="118.361" transform="translate(0 0)" fill="none"></rect></clipPath></defs><g transform="translate(-2202 -453)"><rect width="310" height="119" transform="translate(2202 453)" fill="rgba(255,255,255,0)"></rect><g transform="translate(2203 453)"><g clip-path="url(#cs-logo-clip)"><path d="M84.64,110.27a6.206,6.206,0,0,0,6.449-6.5,6.45,6.45,0,1,0-12.9,0,6.2,6.2,0,0,0,6.447,6.5m0-1.231a5.016,5.016,0,0,1-5.215-5.269,5.22,5.22,0,1,1,10.432,0,5.019,5.019,0,0,1-5.217,5.269M104.205,97.4v12.687h1.26v-7.4a4.214,4.214,0,0,1,4.187-4.239,4.072,4.072,0,0,1,2.158.59l.564-1.026a4.964,4.964,0,0,0-2.722-.746,4.462,4.462,0,0,0-4.212,2.39l-.051-2.26Zm29.251.924a6.448,6.448,0,0,0-3.6-1.156c-3.288,0-5.959,2.234-5.959,6.192a5.819,5.819,0,0,0,5.959,6.137c2.365,0,4.805,1.082,4.805,3.8,0,2.7-2.262,3.828-4.805,3.828s-4.751-1.233-4.751-3.828h-1.26c0,3.21,2.647,5.06,6.011,5.06s6.037-1.645,6.037-5.06a4.654,4.654,0,0,0-3.466-4.548,6.245,6.245,0,0,0,1.846-9.71l1.236-1.438-.824-.718Zm-3.6.1a4.564,4.564,0,0,1,4.754,4.933,4.871,4.871,0,0,1-4.754,4.881,4.653,4.653,0,0,1-4.7-4.881c0-3.316,2.108-4.933,4.7-4.933M159.6,97.4v2.771a5.756,5.756,0,0,0-5.19-2.924,6.524,6.524,0,0,0,0,13.047,5.928,5.928,0,0,0,5.19-2.9v2.7h1.26V97.4Zm-5.19,1.052c7.063,0,7.063,10.609,0,10.609a5.306,5.306,0,0,1,0-10.609m20.08-1.052v12.687h1.259v-7.063a4.411,4.411,0,0,1,4.446-4.624c2.746-.024,4.521,1.517,4.521,4.394v7.293h1.256v-7.317c0-3.523-2.338-5.6-5.726-5.6a5.055,5.055,0,0,0-4.524,2.492V97.4Zm26.245,12.687h-1.26V97.347h1.26Zm-1.616-16.825a1.014,1.014,0,0,0,2.027,0,1.014,1.014,0,0,0-2.027,0M224.1,107.469a5.377,5.377,0,0,1-3.775,1.57,5.293,5.293,0,1,1,0-10.586,5.376,5.376,0,0,1,3.8,1.516l.822-.8a6.6,6.6,0,0,0-4.624-1.9,6.474,6.474,0,1,0,0,12.948,6.5,6.5,0,0,0,4.624-1.9Z" fill="#4D3D38"></path><path d="M27.725,78.028a14.982,14.982,0,0,1-10.486,4.263c-9.673,0-14.654-6.8-14.746-14.653C2.441,59.592,7.47,52.7,17.239,52.7a14.661,14.661,0,0,1,10.438,4.259l1.772-1.531A17.25,17.25,0,0,0,17.239,50.4C5.747,50.4-.095,58.779,0,67.733c.048,9.049,5.938,16.951,17.238,16.951a17.26,17.26,0,0,0,12.21-5.03ZM54.1,50.256c-11.3,0-16.9,8.234-16.9,17.238,0,8.859,5.65,17.381,16.9,17.381S70.95,76.4,71,67.589c.044-9.05-5.6-17.333-16.9-17.333m0,2.4c9.621,0,14.409,7.133,14.409,14.891,0,7.565-4.835,14.938-14.409,14.938-9.528,0-14.317-7.373-14.365-14.938-.047-7.9,4.741-14.891,14.365-14.891m52.129,25.377A14.984,14.984,0,0,1,95.74,82.291c-9.673,0-14.65-6.8-14.746-14.653C80.946,59.592,85.972,52.7,95.74,52.7a14.668,14.668,0,0,1,10.439,4.259l1.77-1.531A17.248,17.248,0,0,0,95.74,50.4c-11.492,0-17.334,8.379-17.238,17.333.048,9.049,5.938,16.951,17.238,16.951a17.258,17.258,0,0,0,12.209-5.03ZM132.6,50.256c-11.3,0-16.905,8.234-16.905,17.238,0,8.859,5.653,17.381,16.905,17.381s16.853-8.477,16.9-17.286c.048-9.05-5.6-17.333-16.9-17.333m0,2.4c9.625,0,14.413,7.133,14.413,14.891,0,7.565-4.836,14.938-14.413,14.938-9.528,0-14.316-7.373-14.365-14.938-.048-7.9,4.74-14.891,14.365-14.891M183.581,56c-3.3-4.929-7.473-5.7-12.261-5.7-5.506,0-12.878,2.2-12.734,9.289,0,6.179,6.271,7.421,12.4,8.619,5.505,1.054,11.059,2.155,11.012,7.181,0,5.938-6.56,7.088-10.679,7.088s-9.384-2.011-11.444-6.082l-2.3,1.149c2.586,5.125,8.524,7.281,13.741,7.281,5.6,0,13.215-1.823,13.263-9.385,0-7.232-6.7-8.382-13.166-9.624-5.651-1.054-10.247-2.06-10.247-6.32,0-5.365,6.223-6.8,10.15-6.8,3.783.047,7.709.62,10.153,4.547Zm25.078-5.746c-11.3,0-16.9,8.234-16.9,17.238,0,8.859,5.649,17.381,16.9,17.381s16.853-8.477,16.9-17.286c.047-9.05-5.606-17.333-16.9-17.333m0,2.4c9.62,0,14.409,7.133,14.409,14.891,0,7.565-4.836,14.938-14.409,14.938-9.529,0-14.317-7.373-14.365-14.938-.048-7.9,4.74-14.891,14.365-14.891m26.176-1.915V84.3h21.453V81.858H237.423V50.736Zm32.07,0h-2.536V84.3H266.9ZM302.228,56c-3.3-4.929-7.468-5.7-12.257-5.7-5.509,0-12.882,2.2-12.738,9.289,0,6.179,6.275,7.421,12.4,8.619,5.505,1.054,11.063,2.155,11.015,7.181,0,5.938-6.56,7.088-10.679,7.088s-9.384-2.011-11.444-6.082l-2.3,1.149c2.585,5.125,8.523,7.281,13.744,7.281,5.6,0,13.216-1.823,13.263-9.385,0-7.232-6.7-8.382-13.167-9.624-5.649-1.054-10.25-2.06-10.25-6.32,0-5.365,6.227-6.8,10.154-6.8,3.783.047,7.709.62,10.15,4.547Z" fill="#4D3D38"></path><path d="M154.028,23.6c-2.656-9.958-13.98-11.78-18.522-16.033a20.281,20.281,0,0,0,1.1,13.229" fill="none" stroke="#ecceb1" stroke-miterlimit="22.926" stroke-width="2.126"></path><path d="M153.843,33.041c-3.655-12.988-20.828-12.123-29.306-14.76.7,18.5,29.975,21.57,29.993,20.726M148.55,15.33c1-6.728,3.584-9.265,5.472-13.023,2.324,4.335,6.219,6.669,6.628,12.435" fill="none" stroke="#ecceb1" stroke-linecap="round" stroke-miterlimit="22.926" stroke-width="2.126"></path><path d="M152.635,30.029c2.657-17.684,15.374-18.209,19.915-22.458a20.31,20.31,0,0,1-1.1,13.229m-18.11,18.209c-.38-19.247,20.386-17.735,29.993-20.729C182.631,36.781,153.356,39.853,153.338,39.009Z" fill="none" stroke="#ecceb1" stroke-miterlimit="22.926" stroke-width="2.126"></path></g></g></g></svg>
-    </div>
-    <div class="ds-dir-switch">
-      <button class="ds-dir-btn active" data-dir="a" onclick="csSetDir('a')">A</button>
-      <button class="ds-dir-btn" data-dir="b" onclick="csSetDir('b')">B</button>
-      <button class="ds-dir-btn" data-dir="c" onclick="csSetDir('c')">C</button>
     </div>
     <div class="ds-dir-label" id="ds-dir-label">Montserrat</div>
 
@@ -1442,10 +46,11 @@
       <a href="#toast">Toast</a>
       <a href="#progress">Progress Bar</a>
       <a href="#stepper">Qty Stepper</a>
+      <a href="#variant-selectors">Variant Selectors</a>
     </div>
     <div class="ds-sidebar-footer">
       Cocosolis · Shopify Custom Theme<br>
-      Embrand Studio · June 2026
+      Gloross · v0-2 · June 2026
     </div>
   </nav>
 
@@ -1457,7 +62,7 @@
       <button class="ds-hamburger" aria-label="Отвори навигация" onclick="csToggleSidebar()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
-      <div class="ds-cover-title">Design System · <span class="ds-cover-title-dir" id="ds-cover-dir-inline">Direction A — Montserrat</span></div>
+      <div class="ds-cover-title">Design System v0-2 · <span class="ds-cover-title-dir" id="ds-cover-dir-inline">Montserrat</span></div>
       <div class="ds-cover-meta">
         <span class="ds-cover-ver">v1 · June 2026</span>
       </div>
@@ -1477,7 +82,7 @@
         <div class="pdp-gallery">
 
           <div class="pdp-main-image-wrap">
-            <span class="cs-badge cs-badge--sale pdp-best-badge">-30%</span>
+            <span class="cs-badge cs-badge--discount pdp-best-badge">-30%</span>
             <img src="P1931635.webp" alt="Cocosolis Next-Gen Body Serums" class="pdp-main-image">
           </div>
 
@@ -1494,7 +99,7 @@
           <div class="pdp-mobile-gallery">
             <div class="pdp-mobile-gallery-track" id="pdpMobileTrack">
               <div class="pdp-mobile-slide">
-                <span class="cs-badge cs-badge--sale pdp-best-badge">-30%</span>
+                <span class="cs-badge cs-badge--discount pdp-best-badge">-30%</span>
                 <img src="P1931635.webp" alt="Cocosolis Next-Gen Body Serums">
               </div>
               <div class="pdp-mobile-slide"><img src="P1920577.webp" alt=""></div>
@@ -1518,32 +123,27 @@
         <!-- Right: Product info -->
         <div class="pdp-info">
 
-          <h1 class="pdp-title">Next-Gen Body Serums</h1>
+          <div class="pdp-eyebrow">Solis</div>
+          <h1 class="pdp-title">Body Serums</h1>
 
           <p class="pdp-desc">Трансформирайте тялото си със силата на натурални активни съставки с клинично доказан ефект. HOT+ топи мазнините и намалява обиколките на дупето и бедрата, а SKIN+ видимо намалява целулита, изглажда и оформя. SLIM+ намалява обиколките, стяга и оформя корема и ръцете. LIFT+ повдига бюста, стяга и изглажда шията и деколтето.</p>
 
           <!-- Bundle contents -->
           <ul class="pdp-bundle-list pdp-benefits">
-            <li>1x <strong>LIFT+</strong> Anti-aging Serum, 50 ML</li>
-            <li>1x <strong>HOT+</strong> Fat-burning Serum, 100 ML</li>
-            <li>1x <strong>SLIM+</strong> Shaping Serum, 100 ML</li>
-            <li>1x <strong>SKIN+</strong> Anti-cellulite Serum, 100 ML</li>
+            <li>Лека, бързо попиваща емулсия</li>
+            <li>Нанася се равномерно, без петна</li>
+            <li>Идеален за начинаещи</li>
+            <li>Аромат на карамелено лате</li>
           </ul>
 
           <!-- Price -->
           <div class="pdp-price-row pdp-price-row--promo">
             <span class="pdp-price">83,75 €</span>
             <span class="pdp-price-old">119,64 €</span>
-            <span class="cs-badge cs-badge--sale">-30%</span>
+            <span class="cs-badge cs-badge--discount">-30%</span>
           </div>
-          <div class="pdp-price-row pdp-price-row--bgn">
-            <span class="pdp-price-bgn">163,80 лв.</span>
-            <span class="pdp-price-old-bgn">234,00 лв.</span>
-          </div>
-
           <!-- Volume selector -->
           <div class="pdp-volume">
-            <div class="pdp-volume-label">Размер</div>
             <div class="pdp-volume-options">
               <button class="pdp-vol-btn pdp-vol-btn--active">110 ml</button>
               <button class="pdp-vol-btn">50 ml</button>
@@ -1558,32 +158,27 @@
               <span class="cs-qty-val">1</span>
               <button class="cs-qty-btn">+</button>
             </div>
-            <button class="cs-btn cs-btn--primary cs-btn--lg pdp-atc-btn">Добави в количката</button>
+            <button class="cs-btn cs-btn--primary pdp-atc-btn">ДОБАВИ</button>
             <button class="pdp-wish-btn" aria-label="Wishlist">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             </button>
           </div>
 
-          <p class="pdp-omnibus-note">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            Най-ниска цена за последните 30 дни: <strong>119,64 € (234,00 лв.)</strong>
-          </p>
+          <p class="pdp-omnibus-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>Най-ниска цена за последните 30 дни: <strong>119,64 €</strong></p>
 
-          <!-- Club / loyalty banner -->
-          <div class="pdp-club-banner">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l4 3 6-7 6 7 4-3-2 13H4L2 7z"></path></svg>
-            <span>Не пропускайте точките! <a href="#" class="pdp-club-link">Влезте в клуба</a>, събирайте точки и пазарувайте с отстъпка.</span>
-          </div>
-
-          <!-- Service strips -->
-          <div class="pdp-service-grid">
-            <div class="pdp-service-strip pdp-service-strip--col">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              <span>Върнете в рамките на <strong>30 дни</strong>, ако не сте доволни</span>
+          <!-- Info bar: club / returns / shipping, 3 stacked rows, thin icons -->
+          <div class="pdp-info-bar">
+            <div class="pdp-info-bar-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l4 3 6-7 6 7 4-3-2 13H4L2 7z"></path></svg>
+              <span>Влез в <a href="#" class="pdp-club-link">клуба</a>, пазарувай с отстъпка</span>
             </div>
-            <div class="pdp-service-strip pdp-service-strip--col">
-              <span class="pdp-free-badge">FREE</span>
-              <span><strong>Бърза и безплатна</strong> доставка</span>
+            <div class="pdp-info-bar-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Върни в рамките на 30 дни</span>
+            </div>
+            <div class="pdp-info-bar-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><path d="M16 8h4l3 3v5h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>Бърза и безплатна доставка</span>
             </div>
           </div>
 
@@ -1596,75 +191,10 @@
       <div class="ds-section-header">
         <span class="ds-section-label">02 — Mockup</span>
         <div class="ds-section-title">Product Grid Mockup</div>
-        <p class="ds-section-desc">Collection grid — product card в пълен контекст: rating, описание, употреба, EUR/BGN цена и пълноширинен ATC. 3 колони desktop, 1 колона mobile (90% от трафика).</p>
+        <p class="ds-section-desc">Collection grid — product card в пълен контекст: описание, цена в EUR и пълноширинен ATC. 3 колони desktop, 1 колона mobile (90% от трафика).</p>
       </div>
 
-      <div class="ds-subsection-title" style="margin-bottom:var(--space-3);">With background</div>
-      <div class="ds-card-row">
-
-        <div class="cs-card cs-product-card" style="cursor:default;">
-          <div class="card-image">
-            <div class="card-image-inner">
-              <img src="P1920577.webp" alt="Full Glow" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
-          </div>
-          <div class="card-body">
-            <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
-            <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
-            <div class="card-bottom">
-              <div style="margin-bottom:var(--space-4);">
-                <div><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
-                <div><span class="card-price-bgn-current">107,77 лв.</span> <span class="card-price-bgn-old">134,72 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
-              </div>
-              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="cs-card cs-product-card" style="cursor:default;">
-          <div class="card-image">
-            <div class="card-image-inner">
-              <img src="P1920734.webp" alt="Summer Crush" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
-          </div>
-          <div class="card-body">
-            <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
-            <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
-            <div class="card-bottom">
-              <div style="margin-bottom:var(--space-4);">
-                <div><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
-                <div><span class="card-price-bgn-current">108,01 лв.</span> <span class="card-price-bgn-old">144,01 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
-              </div>
-              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="cs-card cs-product-card" style="cursor:default;">
-          <div class="card-image">
-            <div class="card-image-inner">
-              <img src="P1931382.webp" alt="Next-Gen Body Serums" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
-          </div>
-          <div class="card-body">
-            <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
-            <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
-            <div class="card-bottom">
-              <div style="margin-bottom:var(--space-4);">
-                <div><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
-                <div><span class="card-price-bgn-current">163,80 лв.</span> <span class="card-price-bgn-old">234,00 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
-              </div>
-              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="ds-subsection-title" style="margin:var(--space-6) 0 var(--space-3);">Without background</div>
+      <div class="ds-subsection-title" style="margin-bottom:var(--space-3);">Without background — избран вариант</div>
       <div class="ds-card-row">
 
         <div class="cs-card cs-product-card cs-product-card--flush" style="cursor:default;">
@@ -1675,12 +205,12 @@
             <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
           </div>
           <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
             <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
             <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
             <div class="card-bottom">
               <div style="margin-bottom:var(--space-4);">
-                <div><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
-                <div><span class="card-price-bgn-current">107,77 лв.</span> <span class="card-price-bgn-old">134,72 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+                <div class="cs-price"><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
               </div>
               <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
             </div>
@@ -1695,12 +225,12 @@
             <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
           </div>
           <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
             <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
             <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
             <div class="card-bottom">
               <div style="margin-bottom:var(--space-4);">
-                <div><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
-                <div><span class="card-price-bgn-current">108,01 лв.</span> <span class="card-price-bgn-old">144,01 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+                <div class="cs-price"><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
               </div>
               <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
             </div>
@@ -1715,12 +245,77 @@
             <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
           </div>
           <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
             <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
             <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
             <div class="card-bottom">
               <div style="margin-bottom:var(--space-4);">
-                <div><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
-                <div><span class="card-price-bgn-current">163,80 лв.</span> <span class="card-price-bgn-old">234,00 лв.</span> <span aria-hidden="true" style="color:var(--fg-muted);">ⓘ</span></div>
+                <div class="cs-price"><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ds-subsection-title" style="margin:var(--space-6) 0 var(--space-3);">With background — алтернатива</div>
+      <div class="ds-card-row">
+
+        <div class="cs-card cs-product-card" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920577.webp" alt="Full Glow" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
+            <div class="card-title" style="text-transform:uppercase;">Full Glow</div>
+            <p class="card-desc">Цялостна грижа за тяло и лице и естествено изглеждащ тен</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div class="cs-price"><span class="cs-price-current">55,10 €</span> <span class="cs-price-original">68,88 €</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1920734.webp" alt="Summer Crush" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
+            <div class="card-title" style="text-transform:uppercase;">Summer Crush</div>
+            <p class="card-desc">Триото за неотразима кожа и тен през ваканцията</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div class="cs-price"><span class="cs-price-current">55,22 €</span> <span class="cs-price-original">73,63 €</span></div>
+              </div>
+              <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-card cs-product-card" style="cursor:default;">
+          <div class="card-image">
+            <div class="card-image-inner">
+              <img src="P1931382.webp" alt="Next-Gen Body Serums" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="card-badges"><span class="cs-badge cs-badge--discount">-30%</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
+            <div class="card-title" style="text-transform:uppercase;">Next-Gen Body Serums</div>
+            <p class="card-desc">Зони: дупе и бедра, корем и ръце, шия и бюст</p>
+            <div class="card-bottom">
+              <div style="margin-bottom:var(--space-4);">
+                <div class="cs-price"><span class="cs-price-current">83,75 €</span> <span class="cs-price-original">119,64 €</span></div>
               </div>
               <button class="cs-btn cs-btn--primary cs-btn--full">Добави</button>
             </div>
@@ -1864,9 +459,9 @@
         <div class="ds-subsection-title">Semantic Tokens — States</div>
         <div class="ds-state-row">
           <div class="ds-state-item">
-            <div class="ds-state-dot" data-dir-bg="accentFocus" style="background:#DF95A0;">!</div>
+            <div class="ds-state-dot" data-dir-bg="accentFocus" style="background:#DEBAA7;">!</div>
             <div class="ds-state-label">state/focus</div>
-            <div data-dir-hex="accentFocus" style="font: 400 11px/1 monospace; color: var(--fg-muted);">#DF95A0</div>
+            <div data-dir-hex="accentFocus" style="font: 400 11px/1 monospace; color: var(--fg-muted);">#DEBAA7</div>
           </div>
           <div class="ds-state-item">
             <div class="ds-state-dot" style="background:#EB5D33;">✕</div>
@@ -1892,7 +487,7 @@
       <div class="ds-section-header">
         <span class="ds-section-label">04 — Foundations</span>
         <div class="ds-section-title">Typography</div>
-        <p class="ds-section-desc" id="ds-typo-desc">Direction A използва Montserrat като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. Кирилица fix: <span class="ds-token">font-feature-settings: 'locl' 0</span> деактивира ръкописните BG форми.</p>
+        <p class="ds-section-desc" id="ds-typo-desc">Cocosolis използва Montserrat като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. Кирилица fix: <span class="ds-token">font-feature-settings: 'locl' 0</span> деактивира ръкописните BG форми.</p>
       </div>
 
       <div class="ds-font-card">
@@ -1921,7 +516,7 @@
             <div style="font: var(--fw-heading) var(--fs-display)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">Display</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-display</span>
-              <div class="ds-type-detail ds-type-detail--display">300 · 77px · lh 1.15 · ls −1px</div>
+              <div class="ds-type-detail ds-type-detail--display">300 · 46px mob / 58px desk · lh 1.15 · ls −1px</div>
             </div>
           </div>
 
@@ -1929,7 +524,7 @@
             <div style="font: var(--fw-heading) var(--fs-h1)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary);">Heading 1</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-h1</span>
-              <div class="ds-type-detail ds-type-detail--display">300 · 58px · lh 1.15 · ls −1px</div>
+              <div class="ds-type-detail ds-type-detail--display">300 · 35px mob / 44px desk · lh 1.15 · ls −1px</div>
             </div>
           </div>
 
@@ -1937,7 +532,7 @@
             <div style="font: var(--fw-heading) var(--fs-h2)/1.15 var(--font-display); font-feature-settings:'locl' 0; letter-spacing:-0.7px; color:var(--fg-primary);">Heading 2</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-h2</span>
-              <div class="ds-type-detail ds-type-detail--display">300 · 43px · lh 1.15 · ls −1px</div>
+              <div class="ds-type-detail ds-type-detail--display">300 · 26px mob / 32px desk · lh 1.15 · ls −1px</div>
             </div>
           </div>
 
@@ -1945,7 +540,7 @@
             <div style="font: var(--fw-h3) var(--fs-h3)/1.3 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Heading 3</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-h3</span>
-              <div class="ds-type-detail ds-type-detail--display">400 · 34px · lh 1.3</div>
+              <div class="ds-type-detail ds-type-detail--display">400 · 21px mob / 26px desk · lh 1.3</div>
             </div>
           </div>
 
@@ -1953,7 +548,7 @@
             <div style="font: var(--fw-h4) var(--fs-h4)/1.3 var(--font-display); font-feature-settings:'locl' 0; color:var(--fg-primary);">Heading 4</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-h4</span>
-              <div class="ds-type-detail ds-type-detail--display">500 · 26px · lh 1.3</div>
+              <div class="ds-type-detail ds-type-detail--display">500 · 16px mob / 20px desk · lh 1.3</div>
             </div>
           </div>
 
@@ -1961,7 +556,7 @@
             <div style="font: var(--fw-body-l) var(--fs-body-l)/1.7 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-primary);">Body Large — за editorial leads и product description intros. Натурални съставки, грижа за кожата.</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-body-l</span>
-              <div class="ds-type-detail ds-type-detail--body" data-body-level="l">400 · 22px · lh 1.7</div>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="l">500 · 18px mob / 22px desk · lh 1.7</div>
             </div>
           </div>
 
@@ -1969,7 +564,7 @@
             <div style="font: var(--fw-body-m) var(--fs-body-m)/1.55 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-primary);">Body Medium — основен размер за всички описания, UI текст, продуктови мета данни из целия магазин.</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-body-m</span>
-              <div class="ds-type-detail ds-type-detail--body" data-body-level="m">400 · 19px · lh 1.55</div>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="m">500 · 15px mob / 19px desk · lh 1.55</div>
             </div>
           </div>
 
@@ -1977,15 +572,15 @@
             <div style="font: var(--fw-body-s) var(--fs-body-s)/1.55 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">Body Small — помощни текстове, метаданни, form helper text и вторична информация.</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-body-s</span>
-              <div class="ds-type-detail ds-type-detail--body" data-body-level="s">400 · 17px · lh 1.55</div>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="s">600 · 14px mob / 17px desk · lh 1.55</div>
             </div>
           </div>
 
           <div class="ds-type-row">
-            <div style="font: var(--fw-body-xs) var(--fs-body-xs)/1.55 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-secondary);">Body XSmall — компактни списъци, продуктови ползи, legal copy и secondary detail text в тесни контексти.</div>
+            <div style="font: var(--fw-body-xs) var(--fs-body-xs)/1.55 var(--font-body); font-feature-settings:'locl' 0; letter-spacing:var(--ls-body-xs); color:var(--fg-secondary);">Body XSmall — компактни списъци, продуктови ползи, legal copy и secondary detail text в тесни контексти.</div>
             <div class="ds-type-meta">
               <span class="ds-token">--fs-body-xs</span>
-              <div class="ds-type-detail ds-type-detail--body" data-body-level="xs">400 · 14px · lh 1.55</div>
+              <div class="ds-type-detail ds-type-detail--body" data-body-level="xs">600 · 14px · lh 1.55 · ls .02em</div>
             </div>
           </div>
 
@@ -1994,6 +589,14 @@
             <div class="ds-type-meta">
               <span class="ds-token">--fs-caption</span>
               <div class="ds-type-detail ds-type-detail--body">500 · 14px · ls 3px · uppercase</div>
+            </div>
+          </div>
+
+          <div class="ds-type-row">
+            <div style="font: 600 var(--fs-omnibus)/1.4 var(--font-body); font-feature-settings:'locl' 0; color:var(--fg-muted);">Omnibus — EU price-history footnote (PDP price drop, last-30-days note)</div>
+            <div class="ds-type-meta">
+              <span class="ds-token">--fs-omnibus</span>
+              <div class="ds-type-detail ds-type-detail--body">600 · 10.5px · lh 1.4 (25% smaller than --fs-caption)</div>
             </div>
           </div>
 
@@ -2093,22 +696,27 @@
           <div class="ds-shadow-item">
             <div class="ds-shadow-card" style="box-shadow:0 1px 2px 0 rgba(168,138,129,.05);"></div>
             <div class="ds-shadow-label">--shadow-xs</div>
+            <div class="ds-shadow-usage">Resting card / input</div>
           </div>
           <div class="ds-shadow-item">
             <div class="ds-shadow-card" style="box-shadow:0 2px 4px 0 rgba(168,138,129,.07);"></div>
             <div class="ds-shadow-label">--shadow-sm</div>
+            <div class="ds-shadow-usage">Hover — small components</div>
           </div>
           <div class="ds-shadow-item">
             <div class="ds-shadow-card" style="box-shadow:0 4px 12px 0 rgba(168,138,129,.10);"></div>
             <div class="ds-shadow-label">--shadow-md</div>
+            <div class="ds-shadow-usage">Hover — product card</div>
           </div>
           <div class="ds-shadow-item">
             <div class="ds-shadow-card" style="box-shadow:0 8px 24px 0 rgba(168,138,129,.12);"></div>
             <div class="ds-shadow-label">--shadow-lg</div>
+            <div class="ds-shadow-usage">Dropdown / toast</div>
           </div>
           <div class="ds-shadow-item">
             <div class="ds-shadow-card" style="box-shadow:0 16px 48px 0 rgba(168,138,129,.16);"></div>
             <div class="ds-shadow-label">--shadow-xl</div>
+            <div class="ds-shadow-usage">Modal / drawer</div>
           </div>
         </div>
       </div>
@@ -2192,39 +800,35 @@
         <div class="ds-subsection-title">Variants &amp; States</div>
         <div style="overflow-x:auto; padding:4px; margin:-4px;">
           <div style="min-width:660px; padding:4px;">
-            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); margin-bottom:var(--space-3);">
+            <div style="display:grid; grid-template-columns: 110px repeat(4, 1fr); gap:var(--space-4); margin-bottom:var(--space-3);">
               <div></div>
               <div class="ds-col-label">Default</div>
               <div class="ds-col-label">Hover</div>
               <div class="ds-col-label">Pressed</div>
-              <div class="ds-col-label">Focus</div>
               <div class="ds-col-label">Disabled</div>
             </div>
             <!-- Primary -->
-            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center; margin-bottom:var(--space-5);">
+            <div style="display:grid; grid-template-columns: 110px repeat(4, 1fr); gap:var(--space-4); align-items:center; margin-bottom:var(--space-5);">
               <div class="ds-row-label">Primary</div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm">Купи</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" style="background:var(--action-primary-hover); border-color:var(--action-primary-hover);">Купи</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" style="transform:scale(.98);">Купи</button></div>
-              <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Купи</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--primary cs-btn--sm" disabled>Купи</button></div>
             </div>
             <!-- Secondary -->
-            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center; margin-bottom:var(--space-5);">
+            <div style="display:grid; grid-template-columns: 110px repeat(4, 1fr); gap:var(--space-4); align-items:center; margin-bottom:var(--space-5);">
               <div class="ds-row-label">Secondary</div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm">Wishlist</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" style="box-shadow:inset 0 0 0 1px var(--action-primary);">Wishlist</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" style="box-shadow:inset 0 0 0 1px var(--action-primary); transform:scale(.98);">Wishlist</button></div>
-              <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Wishlist</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--secondary cs-btn--sm" disabled>Wishlist</button></div>
             </div>
             <!-- Tertiary -->
-            <div style="display:grid; grid-template-columns: 110px repeat(5, 1fr); gap:var(--space-4); align-items:center;">
+            <div style="display:grid; grid-template-columns: 110px repeat(4, 1fr); gap:var(--space-4); align-items:center;">
               <div class="ds-row-label">Tertiary</div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm">Детайли</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="color:var(--color-warm-500);">Детайли</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="transform:scale(.98);">Детайли</button></div>
-              <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" style="outline:2px solid var(--state-focus); outline-offset:2px;">Детайли</button></div>
               <div class="ds-btn-cell"><button class="cs-btn cs-btn--tertiary cs-btn--sm" disabled>Детайли</button></div>
             </div>
           </div>
@@ -2254,7 +858,7 @@
       <div class="ds-section-header">
         <span class="ds-section-label">10 — Components</span>
         <div class="ds-section-title">Inputs</div>
-        <p class="ds-section-desc">Text inputs и form controls. Click на полетата за live focus states.</p>
+        <p class="ds-section-desc">Text inputs и form controls.</p>
       </div>
 
       <div class="ds-components-canvas">
@@ -2262,12 +866,6 @@
           <div class="cs-field">
             <label class="cs-field-label">Email</label>
             <input class="cs-input" type="email" placeholder="your@email.com">
-            <span class="cs-help">Default state — click за focus</span>
-          </div>
-          <div class="cs-field">
-            <label class="cs-field-label">Име</label>
-            <input class="cs-input" type="text" value="Мария Иванова" style="border-color:var(--state-focus); box-shadow:0 0 0 1px rgba(255,132,149,.35), 0 0 12px 2px rgba(255,132,149,.18);">
-            <span class="cs-help">Focus state</span>
           </div>
           <div class="cs-field">
             <label class="cs-field-label">Промо код</label>
@@ -2300,8 +898,8 @@
       <div class="ds-components-canvas">
         <div class="ds-badge-row">
           <div class="ds-badge-item">
-            <span class="cs-badge">Default</span>
-            <div class="ds-badge-label">Default</div>
+            <span class="cs-badge cs-badge--discount">-30%</span>
+            <div class="ds-badge-label">--discount</div>
           </div>
           <div class="ds-badge-item">
             <span class="cs-badge cs-badge--sale">Sale</span>
@@ -2359,9 +957,10 @@
             <div class="card-badges"><span class="cs-badge cs-badge--new">New</span></div>
           </div>
           <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
             <div class="card-title">Sun Tan Oil Dark</div>
             <div class="card-subtitle">Баобаб · Какао · Папая</div>
-            <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+            <div class="card-bottom" style="display:flex; align-items:center; gap:4px;">
               <span class="card-price">49,90 €</span>
             </div>
           </div>
@@ -2375,9 +974,10 @@
             <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
           </div>
           <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
             <div class="card-title">Body Shimmer Oil</div>
             <div class="card-subtitle">Розово злато · Арган</div>
-            <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+            <div class="card-bottom" style="display:flex; align-items:center; gap:4px;">
               <span class="card-price">39,90 €</span>
               <span class="card-price-old">49,90 €</span>
             </div>
@@ -2392,9 +992,10 @@
             <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
           </div>
           <div class="card-body">
+            <div class="card-eyebrow">Solis</div>
             <div class="card-title">Summer Ritual Set</div>
             <div class="card-subtitle">3 продукта · Limited edition</div>
-            <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+            <div class="card-bottom" style="display:flex; align-items:center; gap:4px;">
               <span class="card-price">89,90 €</span>
               <span class="card-price-old">119,70 €</span>
             </div>
@@ -2422,7 +1023,7 @@
 
       <div style="margin-top: var(--space-8);">
         <div class="ds-subsection-title">Variant — No Background (Flush)</div>
-        <p class="ds-section-desc" style="margin-bottom:var(--space-5);">Modifier class <code>.cs-product-card--flush</code> — card container loses background, border and hover shadow/lift. Image keeps its own radius on all four corners (independent of the card frame), and the body text sits flush left (no left padding). Apply alongside <code>.cs-card .cs-product-card</code> in any direction, including Direction B where the base card normally gets a 1px border.</p>
+        <p class="ds-section-desc" style="margin-bottom:var(--space-5);">Modifier class <code>.cs-product-card--flush</code> — card container loses background, border and hover shadow/lift. Image keeps its own radius on all four corners (independent of the card frame), and the body text sits flush left (no left padding). Apply alongside <code>.cs-card .cs-product-card</code>.</p>
 
         <div class="ds-card-row">
           <div class="cs-card cs-product-card cs-product-card--flush">
@@ -2433,9 +1034,10 @@
               <div class="card-badges"><span class="cs-badge cs-badge--new">New</span></div>
             </div>
             <div class="card-body">
+              <div class="card-eyebrow">Solis</div>
               <div class="card-title">Sun Tan Oil Dark</div>
               <div class="card-subtitle">Баобаб · Какао · Папая</div>
-              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+              <div class="card-bottom" style="display:flex; align-items:center; gap:4px;">
                 <span class="card-price">49,90 €</span>
               </div>
             </div>
@@ -2449,9 +1051,10 @@
               <div class="card-badges"><span class="cs-badge cs-badge--sale">Sale</span></div>
             </div>
             <div class="card-body">
+              <div class="card-eyebrow">Solis</div>
               <div class="card-title">Body Shimmer Oil</div>
               <div class="card-subtitle">Розово злато · Арган</div>
-              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+              <div class="card-bottom" style="display:flex; align-items:center; gap:4px;">
                 <span class="card-price">39,90 €</span>
                 <span class="card-price-old">49,90 €</span>
               </div>
@@ -2466,9 +1069,10 @@
               <div class="card-badges"><span class="cs-badge cs-badge--gift">Free Gift</span></div>
             </div>
             <div class="card-body">
+              <div class="card-eyebrow">Solis</div>
               <div class="card-title">Summer Ritual Set</div>
               <div class="card-subtitle">3 продукта · Limited edition</div>
-              <div class="card-bottom" style="display:flex; align-items:baseline; gap:4px;">
+              <div class="card-bottom" style="display:flex; align-items:center; gap:4px;">
                 <span class="card-price">89,90 €</span>
                 <span class="card-price-old">119,70 €</span>
               </div>
@@ -2504,7 +1108,6 @@
             <span class="ds-token">Full — PDP header</span>
             <div class="cs-rating">
               <span class="cs-rating-stars">★★★★★</span>
-              <span class="cs-rating-score">4.91</span>
               <a href="#" class="cs-rating-count">1 247 отзива</a>
             </div>
           </div>
@@ -2535,6 +1138,7 @@
                   </div>
                 </div>
                 <div class="card-body">
+                  <div class="card-eyebrow">Solis</div>
                   <div class="card-title">Sun Tan Oil Dark</div>
                   <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-2);">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
@@ -2573,7 +1177,7 @@
             <div class="cs-price">
               <span class="cs-price-current">39,90 €</span>
               <span class="cs-price-original">49,90 €</span>
-              <span class="cs-badge cs-badge--sale">−20%</span>
+              <span class="cs-badge cs-badge--discount">−20%</span>
             </div>
             <p class="cs-omnibus">Последна най-ниска цена (30 дни): 39,90 €</p>
           </div>
@@ -2659,8 +1263,8 @@
       <div class="ds-components-canvas">
         <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
 
-          <div class="cs-toast cs-toast--success">
-            <svg class="cs-toast-icon" style="color:#498D68;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div class="cs-toast cs-toast--cart">
+            <svg class="cs-toast-icon" style="color:var(--fg-primary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <div class="cs-toast-body">
               <div class="cs-toast-title">Добавено в количката</div>
               <div class="cs-toast-msg">Sun Tan Oil Dark · 110 ml</div>
@@ -2795,13 +1399,80 @@
               <span class="cs-qty-val">1</span>
               <button class="cs-qty-btn">+</button>
             </div>
-            <button class="cs-btn cs-btn--primary" style="flex:1; min-width:200px;">Добави в количката</button>
+            <button class="cs-btn cs-btn--primary cs-btn--sm" style="flex:1; min-width:200px;">Добави в количката</button>
           </div>
         </div>
       </div>
     </section>
 
 
+
+    <section class="ds-section" id="variant-selectors">
+      <div class="ds-section-header">
+        <span class="ds-section-label">19 — Components</span>
+        <div class="ds-section-title">Variant Selectors</div>
+        <p class="ds-section-desc">Volume и Color/Shade избор на PDP. Desktop: хоризонтален ред от pill бутони (volume) + color chips + label. Mobile (≤767px): двата селектора колапсират до custom dropdowns — volume текстов, color с swatch. Двата варианта са в синхрон.</p>
+      </div>
+
+      <!-- Desktop -->
+      <div class="ds-subsection-title" style="margin-bottom:var(--space-4);">Desktop — Pill + Chip Row</div>
+      <div class="ds-block" style="padding: var(--space-5);">
+        <div class="pdp-volume-options" style="flex-wrap:nowrap;">
+          <button class="pdp-vol-btn pdp-vol-btn--active">110 ml</button>
+          <button class="pdp-vol-btn">50 ml</button>
+          <button class="pdp-vol-btn">Sample</button>
+          <div class="pdp-color-chips">
+            <button class="pdp-color-btn pdp-color-btn--active" aria-label="Ултра тъмен">
+              <span class="pdp-color-swatch" style="background:#6B4C41;"></span>
+            </button>
+            <button class="pdp-color-btn" aria-label="Тъмен">
+              <span class="pdp-color-swatch" style="background:#C49A7A;"></span>
+            </button>
+            <button class="pdp-color-btn" aria-label="Дълбоко виолетово">
+              <span class="pdp-color-swatch" style="background:#2E1F1F;"></span>
+            </button>
+          </div>
+          <span class="pdp-color-heading"><span>Ултра тъмен</span></span>
+        </div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="ds-subsection-title" style="margin: var(--space-6) 0 var(--space-4);">Mobile — Custom Dropdowns</div>
+      <div class="ds-block" style="padding: var(--space-5); max-width: 390px;">
+        <div style="display:flex; gap:var(--space-2);">
+
+          <!-- Volume dropdown -->
+          <div class="pdp-dd" data-dd="vol-ds" style="flex:1; position:relative;">
+            <button class="pdp-dd__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="pdp-dd__label">110 ml</span>
+              <svg class="pdp-dd__caret" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="pdp-dd__list" role="listbox" hidden>
+              <li class="pdp-dd__option" role="option" data-value="50" data-label="50 ml"><span class="pdp-dd__option-text">50 ml</span></li>
+              <li class="pdp-dd__option" role="option" data-value="sample" data-label="Sample"><span class="pdp-dd__option-text">Sample</span></li>
+            </ul>
+          </div>
+
+          <!-- Color dropdown -->
+          <div class="pdp-dd pdp-dd--color" data-dd="color-ds" style="flex:1; position:relative;">
+            <button class="pdp-dd__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="pdp-dd__swatch" style="background:#6B4C41;"></span>
+              <span class="pdp-dd__label">Ултра тъмен</span>
+              <svg class="pdp-dd__caret" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="pdp-dd__list" role="listbox" hidden>
+              <li class="pdp-dd__option" role="option" data-value="dark" data-label="Тъмен" data-swatch="#C49A7A">
+                <span class="pdp-dd__swatch" style="background:#C49A7A;"></span><span class="pdp-dd__option-text">Тъмен</span>
+              </li>
+              <li class="pdp-dd__option" role="option" data-value="deep-violet" data-label="Дълбоко виолетово" data-swatch="#2E1F1F">
+                <span class="pdp-dd__swatch" style="background:#2E1F1F;"></span><span class="pdp-dd__option-text">Дълбоко виолетово</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
   </main>
 </div>
@@ -2889,141 +1560,52 @@
 
   sections.forEach(s => observer.observe(s));
 
-  /* ── Direction switcher ────────────────────────────────── */
-  const DS_DIR = {
-    a: {
-      label:       'Montserrat',
-      cover:       'Direction A — Montserrat',
-      fontDisplay: 'Montserrat',
-      fontDetail:  'Display + Body · Single system<br>Weights: 300 · 400 · 500 · 600 · 700<br>Google Fonts · BG Cyrillic с locl fix',
-      detailDisplay: 'Montserrat',
-      detailBody:    'Montserrat',
-      headingWeight: '300',
-      bodyWeights: { l: 400, m: 400, s: 400 },
-      typoDesc: 'Direction A използва Montserrat като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. Кирилица fix: <span class="ds-token">font-feature-settings: \'locl\' 0</span> деактивира ръкописните BG форми.',
-      emphasisRule: 'Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Montserrat и конфликтира с brand weight (300) на display текстове.',
-      colors: {
-        accent:      { bg: '#FF8495', name: 'Accent / Coral' },
-        accentHover: { bg: '#D9607A' },
-        accentFocus: { bg: '#DF95A0' },
-        bgWarm:      { bg: '#DEBAA7', name: 'Warm Beige' },
-        bgLight:     { bg: '#FBF1EB', name: 'Cream' },
-        warmCream:   { bg: '#FBF1EB' },
-      },
-    },
-    b: {
-      label:       'Nunito Sans',
-      cover:       'Direction B — Nunito Sans',
-      fontDisplay: 'Nunito Sans',
-      fontDetail:  'Display + Body · Single system<br>Nunito Sans · Variable · Google Fonts<br>Headings: 900 · Body: 700→600→500',
-      detailDisplay: 'Nunito Sans',
-      detailBody:    'Nunito Sans',
-      headingWeight: '900',
-      bodyWeights: { l: 700, m: 600, s: 500, xs: 500 },
-      typoDesc: 'Direction B използва Nunito Sans като единна типографска система — sans-serif display и body от едно семейство. Weight 900 за heading и display. Body weight се увеличава с размера: 700 (18px) → 600 (16px) → 500 (11–14px).',
-      emphasisRule: 'Използвай <em>italic</em> за inline emphasis. Headings са 900 (Black) — запазвай bold само за heading-level hierarchy, не за inline emphasis в body текст.',
-      colors: {
-        accent:      { bg: '#FF7B79', name: 'Accent / Coral' },
-        accentHover: { bg: '#D96967' },
-        accentFocus: { bg: '#E79493' },
-        bgWarm:      { bg: '#E8C6B4', name: 'Warm Mist' },
-        bgLight:     { bg: '#F8F3F1', name: 'Parchment' },
-        bgDark:      { bg: '#7D4F3D', name: 'Mocha' },
-        warmCream:   { bg: '#FDF0E9' },
-      },
-    },
-    c: {
-      label:       'Figtree',
-      cover:       'Direction C — Figtree',
-      fontDisplay: 'Figtree',
-      fontDetail:  'Display + Body · Single system<br>Figtree · Variable · Google Fonts<br>BG Cyrillic нативно (без locl fix)',
-      detailDisplay: 'Figtree',
-      detailBody:    'Figtree',
-      headingWeight: '300',
-      bodyWeights: { l: 400, m: 400, s: 400 },
-      typoDesc: 'Direction C използва Figtree като единна типографска система — display и body от едно семейство. Weight 300 за display, 400 за body, 500–600 за labels и UI. BG Cyrillic нативно.',
-      emphasisRule: 'Използвай <em>italic</em> за inline emphasis — <strong style="font-weight:400;">не bold</strong>. Bold нарушава ритъма при Figtree и конфликтира с brand weight (300) на display текстове.',
-      colors: {
-        accent:      { bg: '#F0506E', name: 'Accent / Flamingo' },
-        accentHover: { bg: '#CB3F5A' },
-        accentFocus: { bg: '#D47788' },
-        bgWarm:      { bg: '#E8C6B4', name: 'Warm Mist' },
-        bgLight:     { bg: '#F8F3F1', name: 'Parchment' },
-        bgDark:      { bg: '#311B15', name: 'Espresso' },
-        warmCream:   { bg: '#FFFFFF' },
-      },
-    },
-  };
-
-  function csSetDir(dir) {
-    const d = DS_DIR[dir];
-    if (!d) return;
-
-    document.documentElement.dataset.direction = dir;
-
-    document.querySelectorAll('.ds-dir-btn').forEach(btn =>
-      btn.classList.toggle('active', btn.dataset.dir === dir)
-    );
-
-    const label = document.getElementById('ds-dir-label');
-    if (label) label.textContent = d.label;
-
-    const coverDir = document.querySelector('.ds-cover-direction');
-    if (coverDir) coverDir.textContent = d.cover;
-
-    const coverDirInline = document.getElementById('ds-cover-dir-inline');
-    if (coverDirInline) coverDirInline.textContent = d.cover;
-
-    const fontName = document.getElementById('ds-font-name-display');
-    if (fontName) fontName.textContent = d.fontDisplay;
-
-    const fontDetail = document.getElementById('ds-font-detail-display');
-    if (fontDetail) fontDetail.innerHTML = d.fontDetail;
-
-    document.querySelectorAll('.ds-type-detail--display').forEach(el => {
-      const rest = el.textContent.replace(/^.*?·\s*\d+\s*·\s*/, '');
-      el.textContent = d.detailDisplay + ' · ' + (d.headingWeight || '300') + ' · ' + rest;
-    });
-    document.querySelectorAll('.ds-type-detail--body').forEach(el => {
-      const level = el.dataset.bodyLevel;
-      const w = (level && d.bodyWeights) ? d.bodyWeights[level] : 400;
-      const rest = el.textContent.replace(/^.*?·\s*\d+\s*·\s*/, '');
-      el.textContent = d.detailBody + ' · ' + w + ' · ' + rest;
-    });
-
-    const typoDesc = document.getElementById('ds-typo-desc');
-    if (typoDesc && d.typoDesc) typoDesc.innerHTML = d.typoDesc;
-
-    const emphasisRule = document.getElementById('ds-emphasis-rule');
-    if (emphasisRule && d.emphasisRule) emphasisRule.innerHTML = d.emphasisRule;
-
-    if (d.colors) {
-      document.querySelectorAll('[data-dir-bg]').forEach(el => {
-        const c = d.colors[el.dataset.dirBg];
-        if (c) el.style.background = c.bg;
-      });
-      document.querySelectorAll('[data-dir-hex]').forEach(el => {
-        const c = d.colors[el.dataset.dirHex];
-        if (c) {
-          const suffix = el.dataset.dirLabel;
-          el.textContent = c.bg + (suffix ? ' · ' + suffix : '');
-        }
-      });
-      document.querySelectorAll('[data-dir-name]').forEach(el => {
-        const c = d.colors[el.dataset.dirName];
-        if (c && c.name) el.textContent = c.name;
-      });
-    }
-
-    document.title = `Cocosolis — Design System v1 · ${d.cover}`;
-  }
-
   /* Init type detail labels with direction A prefix */
   document.querySelectorAll('.ds-type-detail--display').forEach(el => {
     el.textContent = 'Montserrat · ' + el.textContent;
   });
   document.querySelectorAll('.ds-type-detail--body').forEach(el => {
     el.textContent = 'Montserrat · ' + el.textContent;
+  });
+
+  // Variant selector — desktop pill interaction
+  document.querySelectorAll('#variant-selectors .pdp-vol-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#variant-selectors .pdp-vol-btn').forEach(b => b.classList.remove('pdp-vol-btn--active'));
+      btn.classList.add('pdp-vol-btn--active');
+    });
+  });
+  document.querySelectorAll('#variant-selectors .pdp-color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#variant-selectors .pdp-color-btn').forEach(b => b.classList.remove('pdp-color-btn--active'));
+      btn.classList.add('pdp-color-btn--active');
+      const heading = btn.closest('.pdp-volume-options')?.querySelector('.pdp-color-heading span');
+      if (heading) heading.textContent = btn.getAttribute('aria-label');
+    });
+  });
+
+  // Variant selector — mobile dropdown interaction
+  document.querySelectorAll('#variant-selectors .pdp-dd').forEach(dd => {
+    const trigger = dd.querySelector('.pdp-dd__trigger');
+    const list    = dd.querySelector('.pdp-dd__list');
+    if (!trigger || !list) return;
+    trigger.addEventListener('click', () => {
+      const open = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', !open);
+      list.hidden = open;
+      if (!open) list.querySelectorAll('.pdp-dd__option').forEach(o => { o.hidden = o.classList.contains('pdp-dd__option--active'); });
+    });
+    list.querySelectorAll('.pdp-dd__option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        list.querySelectorAll('.pdp-dd__option').forEach(o => { o.classList.remove('pdp-dd__option--active'); o.setAttribute('aria-selected','false'); });
+        opt.classList.add('pdp-dd__option--active'); opt.setAttribute('aria-selected','true');
+        trigger.querySelector('.pdp-dd__label').textContent = opt.dataset.label;
+        const sw = trigger.querySelector('.pdp-dd__swatch');
+        if (sw && opt.dataset.swatch) sw.style.background = opt.dataset.swatch;
+        trigger.setAttribute('aria-expanded','false'); list.hidden = true;
+      });
+    });
+    document.addEventListener('click', e => { if (!dd.contains(e.target)) { trigger.setAttribute('aria-expanded','false'); list.hidden = true; } });
   });
 </script>
 
