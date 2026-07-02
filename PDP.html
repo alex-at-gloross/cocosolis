@@ -696,10 +696,10 @@
       margin-top: var(--space-6);
     }
     .pdp-acc-item {
-      border-bottom: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-strong);
     }
     .pdp-acc-item:first-child {
-      border-top: 1px solid var(--border-default);
+      border-top: 1px solid var(--border-strong);
     }
     .pdp-acc-trigger {
       width: 100%;
@@ -726,7 +726,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--fg-muted);
+      color: var(--fg-primary);
       transition: transform var(--duration-base) var(--ease-out);
     }
     .pdp-acc-item.is-open .pdp-acc-icon {
@@ -789,6 +789,60 @@
       width: 28px;
       height: 28px;
       opacity: 0.5;
+    }
+
+    /* ── Bundle & Save promo card (horizontal) ────────────── */
+    .pdp-bundle-promo {
+      display: flex;
+      align-items: stretch;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+      background: var(--color-bg-warm);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-decoration: none;
+      transition: box-shadow var(--duration-base) var(--ease-out);
+    }
+    .pdp-bundle-promo:hover,
+    .pdp-bundle-promo:focus {
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+    }
+    .pdp-bundle-promo__image {
+      flex-shrink: 0;
+      width: 96px;
+      aspect-ratio: 1/1;
+      background: var(--bg-subtle);
+      overflow: hidden;
+    }
+    .pdp-bundle-promo__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pdp-bundle-promo__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-1);
+      padding: var(--space-3) var(--space-4) var(--space-3) 0;
+      min-width: 0;
+    }
+    .pdp-bundle-promo__title {
+      font: var(--fw-heading) var(--fs-body-m)/var(--lh-snug) var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-inverse);
+      margin: 0 0 var(--space-1);
+    }
+    .pdp-bundle-promo__line {
+      font: var(--fw-body-s) var(--fs-caption)/1.4 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-inverse);
+      margin: 0;
+    }
+    @media (min-width: 768px) {
+      .pdp-bundle-promo__image { width: 120px; }
     }
 
     /* ── Ingredients accordion content ───────────────────── */
@@ -947,6 +1001,11 @@
       .pdp-title { flex: 0 0 auto; }
     }
 
+    @media (min-width: 768px) {
+      .pdp-reviews__media.pdp-scroll-fade::after { display: none; }
+      .site-search__products-grid.pdp-scroll-fade::after { display: none; }
+    }
+
     /* ── pdp-bundle — "Вземи в Bundle" carousel ────────────── */
     .pdp-bundle,
     .pdp-ugc-section { padding: var(--space-8) 0; min-width: 0; }
@@ -1001,11 +1060,11 @@
     }
 
     .pdp-bundle-bar {
-      height: 3px; margin: var(--space-3) 0 0;
-      border-radius: 2px; background: var(--border-default); position: relative; overflow: hidden;
+      height: 1px; margin: var(--space-3) 0 0;
+      border-radius: 2px; background: var(--fg-muted); position: relative; overflow: visible;
     }
     .pdp-bundle-bar-thumb {
-      position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px;
+      position: absolute; top: calc(50% - 1.5px); left: 0; height: 3px; border-radius: 2px;
       background: var(--fg-muted); will-change: transform, width;
     }
 
@@ -1175,7 +1234,7 @@
     /* ── Key ingredients section ────────────────────────── */
     .pdp-key-ingredients {
       width: 100%;
-      background: var(--bg-subtle);
+      background: var(--color-cream);
       overflow: hidden;
     }
     .pdp-key-ingredients__inner {
@@ -1212,8 +1271,14 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: var(--bg-secondary, #FBF1EB);
       flex-shrink: 0;
+      overflow: hidden;
+    }
+    .pdp-key-ingredient__icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .pdp-key-ingredient__name {
       font-family: var(--ff-body);
@@ -1229,11 +1294,11 @@
       margin: 0;
     }
     .pdp-key-ingredients__bar {
-      height: 3px; margin: var(--space-3) var(--space-6) 0;
-      border-radius: 2px; background: var(--border-default); position: relative; overflow: hidden;
+      height: 1px; margin: var(--space-3) var(--space-6) 0;
+      border-radius: 2px; background: var(--fg-muted); position: relative; overflow: visible;
     }
     .pdp-key-ingredients__bar-thumb {
-      position: absolute; top: 0; left: 0; height: 100%; border-radius: 2px;
+      position: absolute; top: calc(50% - 1.5px); left: 0; height: 3px; border-radius: 2px;
       background: var(--fg-muted); will-change: transform, width;
     }
     @media (min-width: 1024px) {
@@ -1241,6 +1306,83 @@
     }
     @media (min-width: 1440px) {
       .pdp-key-ingredients__inner { max-width: 1360px; }
+    }
+
+    /* ── Why use (image + text feature rows) ─────────────── */
+    .pdp-why-use {
+      width: 100%;
+    }
+    .pdp-why-use__row {
+      display: flex;
+      flex-direction: column;
+    }
+    .pdp-why-use__row--1 { background: var(--color-cream); }
+    .pdp-why-use__row--2 { background: var(--color-cream); }
+    .pdp-why-use__row--2 .pdp-why-use__text { background: var(--color-cream); }
+    /* Mobile: always stack image above text, regardless of desktop column order */
+    .pdp-why-use__row--1 .pdp-why-use__media { order: -1; }
+    .pdp-why-use__text {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-12) var(--space-6);
+      background: var(--bg-muted);
+    }
+    .pdp-why-use__intro {
+      font: var(--fw-body-s) var(--fs-body-s)/1.6 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-primary);
+      margin: 0 0 var(--space-2);
+    }
+    .pdp-why-use__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .pdp-why-use__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font: var(--fw-body-s) var(--fs-body-s)/1.5 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      color: var(--fg-primary);
+      margin: 0;
+    }
+    .pdp-why-use__check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      color: var(--fg-primary);
+    }
+    .pdp-why-use__media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .pdp-why-use__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      /* Text column sets the row's height; media stretches to fill it fully
+         (align-items: stretch), and object-fit: cover crops the image so it
+         always covers the cell with no gap, at any column width. */
+      .pdp-why-use__row { flex-direction: row; align-items: stretch; min-height: 0; }
+      .pdp-why-use__text { flex: 0 0 50%; min-width: 0; padding: var(--space-16) var(--space-8); }
+      .pdp-why-use__media { flex: 0 0 50%; box-sizing: border-box; min-width: 0; }
+      /* Align outer text edge with the padded edge of the page's 1360px containers */
+      .pdp-why-use__row--1 .pdp-why-use__text { padding-left: calc(max(0px, (100vw - 1360px) / 2) + var(--space-6)); }
+      .pdp-why-use__row--2 .pdp-why-use__text { padding-right: calc(max(0px, (100vw - 1360px) / 2) + var(--space-6)); padding-left: var(--space-12); }
+      /* Desktop: row--1 restores DOM order (text left, image right) */
+      .pdp-why-use__row--1 .pdp-why-use__media { order: 0; }
     }
 
     /* ── Proof section (Клинични резултати / Ползи) ─── */
@@ -1257,11 +1399,12 @@
       display: flex;
       margin-bottom: var(--space-8);
       gap: var(--space-8);
+      border-bottom: 1px solid var(--border-strong);
     }
     .pdp-proof__tab {
       background: none;
       border: none;
-      padding: 0 0 var(--space-4);
+      padding: 0 0 var(--space-3);
       font: var(--fw-heading) var(--fs-h3)/var(--lh-snug) var(--font-body);
       text-align: left;
       color: var(--fg-muted);
@@ -1273,7 +1416,7 @@
       content: '';
       position: absolute;
       bottom: -1px; left: 0; right: 0;
-      height: 2px;
+      height: 3px;
       background: var(--fg-primary);
       transform: scaleX(0);
       transition: transform 0.2s;
@@ -1291,7 +1434,8 @@
     @media (min-width: 768px) {
       .pdp-proof__cols { flex-direction: row; align-items: stretch; gap: var(--space-10); }
       .pdp-proof__col-visual, .pdp-proof__col-content { flex: 1; }
-      .pdp-proof__col-content { display: flex; flex-direction: column; justify-content: center; }
+      .pdp-proof__col-visual { order: 2; }
+      .pdp-proof__col-content { order: 1; display: flex; flex-direction: column; justify-content: center; }
     }
 
     /* Before/after placeholder */
@@ -1529,9 +1673,9 @@
     }
 
     /* ── FAQ ─────────────────────────────────────────────── */
-    .pdp-faq { padding: var(--space-12) 0; background: var(--bg-primary); border-top: 1px solid var(--border-default); }
+    .pdp-faq { padding: var(--space-12) 0; background: var(--bg-primary); }
     .pdp-faq__inner { max-width: 1360px; margin: 0 auto; padding: 0 var(--space-4); }
-    .pdp-faq__title { font: var(--fw-heading) var(--fs-h2)/var(--lh-snug) var(--font-display); color: var(--fg-primary); text-align: center; margin-bottom: var(--space-10); }
+    .pdp-faq__title { font: var(--fw-heading) var(--fs-h2)/var(--lh-snug) var(--font-display); color: var(--fg-primary); text-align: left; margin-bottom: var(--space-10); }
     .pdp-faq__list { max-width: 1360px; margin: 0 auto; }
     @media (min-width: 768px) {
       .pdp-faq__inner { padding: 0 var(--space-6); }
@@ -1796,7 +1940,7 @@
                   </button>
                 </div>
               </div>
-              <div class="site-search__products-grid" id="searchProductsTrack">
+              <div class="site-search__products-grid pdp-scroll-fade" id="searchProductsTrack">
                 <a class="cs-card cs-product-card cs-product-card--flush" href="#">
                   <div class="card-image">
                     <div class="card-image-inner">
@@ -1967,6 +2111,7 @@
 
           <!-- Mobile swipe gallery -->
           <div class="pdp-mobile-gallery">
+            <div class="pdp-scroll-fade">
             <div class="pdp-mobile-gallery-track" id="pdpMobileTrack">
               <div class="pdp-mobile-slide">
                 <span class="cs-badge cs-badge--discount pdp-best-badge">-30%</span>
@@ -1987,6 +2132,7 @@
               </div>
               <div class="pdp-mobile-slide"><img src="P1931635.webp" alt=""></div>
             </div>
+            </div><!-- /pdp-scroll-fade -->
             <div class="pdp-mobile-scrollbar">
               <div class="pdp-mobile-scrollbar-thumb" id="pdpMobileScrollbarThumb"></div>
             </div>
@@ -2131,6 +2277,7 @@
               </div>
             </div>
 
+            <div class="pdp-scroll-fade">
             <div class="pdp-bundle-track" id="bundleTrack" role="list">
 
               <div class="cs-card cs-product-card pdp-bundle-card" role="listitem">
@@ -2272,6 +2419,7 @@
               </div>
 
             </div><!-- /pdp-bundle-track -->
+            </div><!-- /pdp-scroll-fade -->
 
             <div class="pdp-bundle-bar">
               <div class="pdp-bundle-bar-thumb" id="bundleBarThumb"></div>
@@ -2294,6 +2442,7 @@
               </div>
             </div>
 
+            <div class="pdp-scroll-fade">
             <div class="pdp-ugc-track" id="ugcTrack" role="list">
 
               <button class="pdp-ugc-thumb" role="listitem"
@@ -2367,6 +2516,7 @@
               </button>
 
             </div><!-- /pdp-ugc-track -->
+            </div><!-- /pdp-scroll-fade -->
 
             <div class="pdp-bundle-bar">
               <div class="pdp-bundle-bar-thumb" id="ugcBarThumb"></div>
@@ -2538,23 +2688,21 @@
 
           </div>
 
+          <!-- ── Bundle & Save promo card ────────────────── -->
+          <a class="pdp-bundle-promo" href="#" aria-label="Bundle & Save промоция">
+            <div class="pdp-bundle-promo__image">
+              <img src="bundle.jpg" alt="">
+            </div>
+            <div class="pdp-bundle-promo__body">
+              <h3 class="pdp-bundle-promo__title">Bundle &amp; Save</h3>
+              <p class="pdp-bundle-promo__line">2 продукта = 9% отстъпка</p>
+              <p class="pdp-bundle-promo__line">3+ продукта = 9% отстъпка + подарък несесер</p>
+            </div>
+          </a>
+
         </div>
       </div>
     </main>
-
-    <!-- Bundle & Save banner -->
-    <section class="bundle-save" aria-label="Bundle & Save промо">
-      <div class="bundle-save__inner">
-        <div class="bundle-save__text">
-          <h2 class="bundle-save__title">Bundle &amp; Save</h2>
-          <p class="bundle-save__subtitle">2 продукта = <strong>9% ОТСТЪПКА</strong></p>
-          <p class="bundle-save__subtitle">3+ продукта = <strong>9% ОТСТЪПКА + ПОДАРЪК НЕСЕСЕР</strong></p>
-        </div>
-        <div class="bundle-save__image">
-          <img src="pink-pouch-product-ribbon-desktop-4.9e62e1.jpg" alt="Bundle подарък — несесер с продукти GROW" class="bundle-save__img">
-        </div>
-      </div>
-    </section>
 
     <!-- Key ingredients -->
     <section class="pdp-key-ingredients">
@@ -2570,79 +2718,174 @@
           </button>
         </div>
       </div>
+      <div class="pdp-scroll-fade" style="--fade-bg: var(--color-cream);">
       <div class="pdp-key-ingredients__track" id="ingTrack" role="list">
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-pink-pepperslim.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Активна съставка със сладка лупина®</p>
           <p class="pdp-key-ingredient__desc">Стимулира производството на висококачествен колаген, прави кожата по-стегната и еластична, ремоделира отпуснатата кожата.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-guarana.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Етерично масло от мандарина</p>
           <p class="pdp-key-ingredient__desc">Регенерира и изглажда кожата. Възстановява баланса й и предотвратява образуването на стрии.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-bodyferm.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Масло от шипка</p>
           <p class="pdp-key-ingredient__desc">Изсветлява и изравнява тона на кожата, заличава белезите. Прави я гладка и безупречна.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-prickly-pear-cactus.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Екстракт от невен</p>
           <p class="pdp-key-ingredient__desc">Успокоява и регенерира кожата, прави по-малко видими съществуващите стрии и белези.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-dermosculpt.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Масло от авокадо</p>
           <p class="pdp-key-ingredient__desc">Богато на есенциални мастни киселини и витамини, дълбоко хидратира кожата и помага за предотвратяване появата на стрии.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-pink-pepperslim.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Кокосово масло</p>
           <p class="pdp-key-ingredient__desc">Лесно попива, дълбоко овлажнява и оставя кожата мека и еластична.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-guarana.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Какаово масло</p>
           <p class="pdp-key-ingredient__desc">Чудесна „храна" за кожата. Регенерира я и предотвратява появата на стрии и фини бръчки.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-bodyferm.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Масло от сладък бадем</p>
           <p class="pdp-key-ingredient__desc">Успокоява и подобрява текстурата и тона. Намалява зачервяването и възпалението.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-prickly-pear-cactus.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Масло от маслина</p>
           <p class="pdp-key-ingredient__desc">Хидратира кожата в дълбочина, успокоява и подхранва раздразнената кожа.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-dermosculpt.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Активна съставка</p>
           <p class="pdp-key-ingredient__desc">Извлечена от висококачествен зехтин, осигурява бързо усвояване на маслата от кожата.</p>
         </div>
 
         <div class="pdp-key-ingredient">
-          <div class="pdp-key-ingredient__icon"></div>
+          <div class="pdp-key-ingredient__icon"><img src="Ingredients/ingredients-v2025-pink-pepperslim.png" alt="" loading="lazy"></div>
           <p class="pdp-key-ingredient__name">Натурален витамин E</p>
           <p class="pdp-key-ingredient__desc">Мощен антиоксидант, който се бори с признаците на стареене и подкрепя естествения процес на оздравяване на кожата.</p>
         </div>
 
       </div><!-- /pdp-key-ingredients__track -->
+      </div><!-- /pdp-scroll-fade -->
       <div class="pdp-key-ingredients__bar">
         <div class="pdp-key-ingredients__bar-thumb" id="ingBarThumb"></div>
       </div>
       </div><!-- /pdp-key-ingredients__inner -->
+    </section>
+
+    <!-- Why use — image + text feature rows -->
+    <section class="pdp-why-use" aria-label="Защо да изберете продукта">
+      <div class="pdp-why-use__row pdp-why-use__row--1">
+        <div class="pdp-why-use__text">
+          <p class="pdp-why-use__intro">Чиста, skincare-first формула, която комбинира натурален DHA, био масло от какао, ценено като естествен ретинол, био масло от маруля за антиейдж ефект и хиалуронова киселина. Оставя кожата копринено гладка с тен, който се развива за 8 часа и можеш да надграждаш ден след ден.</p>
+          <ul class="pdp-why-use__list">
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Придава естествен тен, който се натрупва с всяко нанасяне
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Дълбока хидратация и антиейдж грижа със силата на естествен ретинол от масло от какао
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Иновативна формула, която се адаптира към цвета на кожата
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Лека, бързо попиваща емулсия, която не цапа
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Нанася се равномерно, без петна
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Идеален за начинаещи в автобронзантите
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              За най-добри резултати да се нанася със Self-tanning Mitt
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Аромат на карамелено лате
+            </li>
+          </ul>
+        </div>
+        <div class="pdp-why-use__media">
+          <img class="pdp-why-use__img" src="PDP images/why-use-solis-gradual-tan-body-milk-desktop.jpg" alt="SOLIS Gradual Tan Body Milk, нанесен върху кожата">
+        </div>
+      </div>
+    </section>
+
+    <!-- Why use — image + text feature rows (columns switched) -->
+    <section class="pdp-why-use" aria-label="Защо да изберете продукта">
+      <div class="pdp-why-use__row pdp-why-use__row--2">
+        <div class="pdp-why-use__media">
+          <img class="pdp-why-use__img" src="PDP images/product-self-tanning-mitt-why-use-desktop.jpg" alt="Нанасяне на автобронзираща пяна със Self-Tanning Mitt">
+        </div>
+        <div class="pdp-why-use__text">
+          <ul class="pdp-why-use__list">
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Създадена за бързо, лесно и безупречно нанасяне на автобронзираща пяна.
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Гарантира равномерно нанасяне.
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Предпазва ръцете от петна.
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Луксозен, кадифено-мек материал.
+            </li>
+            <li>
+              <svg class="pdp-why-use__check" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Подходяща за пране.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bundle & Save banner -->
+    <section class="bundle-save" aria-label="Bundle & Save промо">
+      <div class="bundle-save__inner">
+        <div class="bundle-save__text">
+          <h2 class="bundle-save__title">Bundle &amp; Save</h2>
+          <p class="bundle-save__subtitle">2 продукта = <strong>9% ОТСТЪПКА</strong></p>
+          <p class="bundle-save__subtitle">3+ продукта = <strong>9% ОТСТЪПКА + ПОДАРЪК НЕСЕСЕР</strong></p>
+        </div>
+        <div class="bundle-save__image">
+          <img src="pink-pouch-product-ribbon-desktop-4.9e62e1.jpg" alt="Bundle подарък — несесер с продукти GROW" class="bundle-save__img">
+        </div>
+      </div>
     </section>
 
     <!-- ── Proof: Клинични резултати / Ползи ──────── -->
@@ -2729,7 +2972,7 @@
     <!-- ── FAQ ────────────────────────────────────────────── -->
     <section class="pdp-faq" aria-label="FAQ">
       <div class="pdp-faq__inner">
-        <h2 class="pdp-faq__title">FAQ</h2>
+        <h2 class="pdp-faq__title">Често задавани въпроси</h2>
 
         <div class="pdp-faq__list">
         <div class="cs-accordion-item">
@@ -2831,7 +3074,7 @@
           </div>
 
           <!-- Customer media strip -->
-          <div class="pdp-reviews__media">
+          <div class="pdp-reviews__media pdp-scroll-fade" style="--fade-bg: var(--bg-subtle);">
             <div class="pdp-reviews__thumb pdp-reviews__thumb--video"></div>
             <div class="pdp-reviews__thumb"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=140&h=140&fit=crop&crop=face" alt="Customer photo"></div>
             <div class="pdp-reviews__thumb"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=140&h=140&fit=crop&crop=face" alt="Customer photo"></div>
