@@ -4566,5 +4566,26 @@
     })();
   </script>
 
+  <script>
+    /* Horizontal-scroll edge fade — hide once the last item is fully visible */
+    (function () {
+      const fades = document.querySelectorAll('.pdp-scroll-fade');
+      fades.forEach(function (fadeEl) {
+        const track = fadeEl.classList.contains('pdp-reviews__media') ||
+          fadeEl.classList.contains('site-search__products-grid')
+          ? fadeEl
+          : fadeEl.querySelector(':scope > [class*="track"], :scope > .site-search__products-grid, :scope > .pdp-reviews__media');
+        if (!track) return;
+        function sync() {
+          const atEnd = track.scrollWidth - track.clientWidth <= track.scrollLeft + 1;
+          fadeEl.classList.toggle('is-scroll-end', atEnd);
+        }
+        track.addEventListener('scroll', sync, { passive: true });
+        window.addEventListener('resize', sync);
+        sync();
+      });
+    })();
+  </script>
+
 </body>
 </html>

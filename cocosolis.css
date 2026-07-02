@@ -780,9 +780,11 @@
     .pdp-scroll-fade { position: relative; }
     .pdp-scroll-fade::after {
       content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 48px;
-      pointer-events: none; z-index: 2;
+      pointer-events: none; z-index: 2; opacity: 1; transition: opacity .2s ease;
       background: linear-gradient(to right, transparent, var(--fade-bg, var(--bg-primary)));
     }
+    /* Toggled by JS once the track is scrolled so the last item is fully in view */
+    .pdp-scroll-fade.is-scroll-end::after { opacity: 0; }
 
     /* Mobile swipe gallery — shown by default (mobile-first), hidden ≥1024px */
     .pdp-mobile-gallery { display: block; }
