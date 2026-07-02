@@ -986,6 +986,7 @@
 
     .pdp-bundle-card {
       flex: 0 0 168px; scroll-snap-align: start;
+      overflow: hidden;
     }
     .pdp-bundle-card .card-image { aspect-ratio: 1/1; }
     .pdp-bundle-card .card-image-ph,
@@ -994,7 +995,10 @@
     .pdp-bundle-card .card-title { font-size: var(--fs-body-s); margin-bottom: var(--space-1); }
     .pdp-bundle-card .card-desc { margin-bottom: var(--space-2); }
     .pdp-bundle-card .cs-rating { margin-bottom: 0; }
-    .pdp-bundle-card .card-footer { padding: 0 var(--space-3) var(--space-3); }
+    .pdp-bundle-card .card-footer { padding: 0; }
+    .pdp-bundle-card .card-footer .cs-btn {
+      height: 44px; border-radius: 0; font-size: var(--fs-body-xs);
+    }
 
     .pdp-bundle-bar {
       height: 3px; margin: var(--space-3) 0 0;
