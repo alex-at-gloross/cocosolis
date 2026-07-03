@@ -194,6 +194,33 @@
     }
     .site-header__icon-globe { display: none; }
 
+    /* ── Cart toast stack — reuses .cs-toast--cart from the design system;
+       positioning/stacking/animation is PDP-specific chrome, not part of
+       the component spec. Sits above the cart drawer (z-index 301).
+       top/right are set inline in JS, pinned under the cart icon. ── */
+    .cs-toast-stack {
+      position: fixed; top: 72px; right: var(--space-4);
+      z-index: 400;
+      display: flex; flex-direction: column; gap: var(--space-2);
+      width: min(320px, calc(100vw - var(--space-4) * 2));
+      pointer-events: none;
+    }
+    .cs-toast-stack .cs-toast {
+      pointer-events: auto;
+      cursor: pointer;
+      opacity: 0; transform: translateX(16px);
+      transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+    }
+    .cs-toast-stack .cs-toast.is-visible { opacity: 1; transform: translateX(0); }
+    .cs-toast-thumb {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border-radius: var(--radius-sm); object-fit: cover; display: block;
+      margin-top: 1px;
+    }
+    @media (max-width: 640px) {
+      .cs-toast-stack { width: min(280px, calc(100vw - var(--space-4) * 2)); }
+    }
+
     /* ── Search bar (replaces header row when open) ──────── */
     .site-header.is-search-open .site-header__inner {
       visibility: hidden;
@@ -481,7 +508,52 @@
       transition: color var(--duration-base) var(--ease-out);
     }
     .site-nav-drawer__link:hover { color: var(--color-warm-700); text-decoration: none; }
+    .site-nav-drawer__link--all { font-weight: 700; }
     .site-nav-drawer__group:hover { color: var(--color-warm-700); }
+    /* Promo banners — stacked, full-width; mirrors .site-mega__banner content on mobile */
+    .site-nav-drawer__banners {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      padding: var(--space-5);
+    }
+    .site-nav-drawer__banner {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-decoration: none;
+    }
+    .site-nav-drawer__banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .site-nav-drawer__banner-mark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(77, 61, 56, 0) 0, rgba(77, 61, 56, 0) 11px,
+        rgba(77, 61, 56, 0.22) 11px, rgba(77, 61, 56, 0.22) 22px
+      );
+    }
+    .site-nav-drawer__banner-label {
+      font: 600 var(--fs-body-xs)/1 var(--font-body);
+      font-feature-settings: 'locl' 0;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg-inverse);
+      background: rgba(42, 31, 28, 0.55);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+    }
     .site-nav-overlay {
       position: fixed;
       inset: 36px 0 0 0;
@@ -2053,7 +2125,7 @@
       <div class="site-nav-drawer__body">
         <details class="site-nav-drawer__acc" open>
           <summary class="site-nav-drawer__group">Всички категории</summary>
-          <a class="site-nav-drawer__link" href="#">Всички продукти</a>
+          <a class="site-nav-drawer__link site-nav-drawer__link--all" href="#">Всички продукти</a>
           <a class="site-nav-drawer__link" href="#">Серуми</a>
           <a class="site-nav-drawer__link" href="#">Автобронзанти</a>
           <a class="site-nav-drawer__link" href="#">Грижа за коса</a>
@@ -2069,9 +2141,28 @@
           <a class="site-nav-drawer__link" href="#">Клуб</a>
           <a class="site-nav-drawer__link" href="#">Контакти</a>
         </details>
+        <div class="site-nav-drawer__banners">
+          <a class="site-nav-drawer__banner" href="#">
+            <img src="P1931635.webp" alt="">
+            <span class="site-nav-drawer__banner-mark">
+              <span class="site-nav-drawer__banner-label">Promo banner placeholder</span>
+            </span>
+          </a>
+          <a class="site-nav-drawer__banner" href="#">
+            <img src="P1920734.webp" alt="">
+            <span class="site-nav-drawer__banner-mark">
+              <span class="site-nav-drawer__banner-label">Promo banner placeholder</span>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="site-nav-overlay" id="siteNavOverlay"></div>
+
+    <!-- ── Cart toast stack — uses the .cs-toast--cart component from
+         Design-System.html; PDP owns the fixed positioning + stacking
+         since the design system only specs the card itself ── -->
+    <div class="cs-toast-stack" id="cartToastStack" aria-live="polite" aria-atomic="false"></div>
 
     <!-- ── Cart Drawer — inline (mirrors Cart-Drawer.html, kept in sync manually;
          inlined here so the drawer opens instantly over the page with no
@@ -4005,6 +4096,10 @@
       const count = document.querySelectorAll('.cs-cart-line, .cs-bundle-line').length;
       document.getElementById('cartHeaderCount').textContent =
         count + (count === 1 ? ' продукт' : ' продукта');
+      const cartBadge = document.querySelector('.site-header__cart-badge');
+      if (cartBadge) cartBadge.textContent = count;
+      const cartTriggerBtn = document.getElementById('cartTrigger');
+      if (cartTriggerBtn) cartTriggerBtn.setAttribute('aria-label', 'Cart, ' + count + ' items');
       if (recalcCartSubtotal._lastCount !== undefined && count !== recalcCartSubtotal._lastCount) {
         advancePromoCarousel(count > recalcCartSubtotal._lastCount ? 1 : -1);
       }
@@ -4039,6 +4134,7 @@
       const line = btn.closest('.cs-cart-line, .cs-bundle-line');
       if (!line) return;
       if (line._upsellBtn) resetUpsellButton(line._upsellBtn);
+      if (line._onRemove) line._onRemove();
       line.remove();
       recalcCartSubtotal();
     });
@@ -4059,7 +4155,8 @@
       delete btn._cartLine;
     }
 
-    function addCartLine({ title, image, unitPrice }) {
+    function addCartLine({ title, image, unitPrice, qty }) {
+      qty = qty || 1;
       const line = document.createElement('div');
       line.className = 'cs-cart-line';
       line.dataset.unitPrice = unitPrice;
@@ -4067,12 +4164,12 @@
         '<div class="cs-cart-line__image"><img src="' + image + '" alt="' + title + '"></div>' +
         '<div class="cs-cart-line__body">' +
           '<span class="cs-cart-line__title">' + title + '</span>' +
-          '<span class="cs-cart-line__price" data-line-price>' + formatEUR(unitPrice) + '</span>' +
+          '<span class="cs-cart-line__price" data-line-price>' + formatEUR(unitPrice * qty) + '</span>' +
           '<div class="cs-cart-line__controls">' +
             '<div class="cs-cart-line__qty">' +
-              '<div class="pdp-dd" data-dd="qty">' +
+              '<div class="pdp-dd" data-dd="qty" data-initial="' + qty + '">' +
                 '<button class="pdp-dd__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">' +
-                  '<span class="pdp-dd__label">1</span>' +
+                  '<span class="pdp-dd__label">' + qty + '</span>' +
                   '<svg class="pdp-dd__caret" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
                 '</button>' +
                 '<ul class="pdp-dd__list" role="listbox" hidden></ul>' +
@@ -4088,6 +4185,110 @@
       recalcCartSubtotal();
       return line;
     }
+
+    function parsePrice(text) {
+      return parseFloat(text.replace(/[^\d,.-]/g, '').replace(',', '.'));
+    }
+
+    function flashAdded(btn, label) {
+      const original = btn.textContent;
+      btn.classList.add('is-added');
+      btn.disabled = true;
+      btn.textContent = label || 'Добавено ✓';
+      setTimeout(() => {
+        btn.classList.remove('is-added');
+        btn.disabled = false;
+        btn.textContent = original;
+      }, 900);
+    }
+
+    /* ── Cart add feedback — first add opens the drawer (full context);
+       once it's open, re-opening on every subsequent add is jarring, so
+       later adds surface a toast instead (uses .cs-toast--cart from the
+       design system). ── */
+    function positionToastStack() {
+      const stack = document.getElementById('cartToastStack');
+      const trigger = document.getElementById('cartTrigger');
+      if (!stack || !trigger) return;
+      const rect = trigger.getBoundingClientRect();
+      stack.style.top = (rect.bottom + 8) + 'px';
+      stack.style.right = (window.innerWidth - rect.right) + 'px';
+    }
+
+    function showCartToast(title, image) {
+      const stack = document.getElementById('cartToastStack');
+      if (!stack) return;
+      positionToastStack();
+      const toast = document.createElement('div');
+      toast.className = 'cs-toast cs-toast--cart';
+      toast.innerHTML =
+        '<img class="cs-toast-thumb" src="' + image + '" alt="">' +
+        '<div class="cs-toast-body">' +
+          '<div class="cs-toast-title">Добавено в количката</div>' +
+          '<div class="cs-toast-msg">' + title + '</div>' +
+        '</div>' +
+        '<button class="cs-toast-close" aria-label="Затвори">&times;</button>';
+      stack.appendChild(toast);
+
+      function dismiss() {
+        toast.classList.remove('is-visible');
+        toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+      }
+      requestAnimationFrame(() => toast.classList.add('is-visible'));
+      toast.querySelector('.cs-toast-close').addEventListener('click', e => {
+        e.stopPropagation();
+        dismiss();
+      });
+      toast.addEventListener('click', () => {
+        dismiss();
+        document.getElementById('cartTrigger').click();
+      });
+      setTimeout(dismiss, 3000);
+    }
+
+    function announceCartAdd(title, image) {
+      showCartToast(title, image);
+    }
+
+    /* ── Main buy box + sticky bar ATC → adds current product/variant/qty
+       as a cart line, then opens the drawer (first add) or toasts (later adds). ── */
+    function wireMainAtc(atcBtn, qtyScope) {
+      if (!atcBtn) return;
+      atcBtn.addEventListener('click', () => {
+        const qtyVal = qtyScope.querySelector('.cs-qty-val');
+        const qty = qtyVal ? parseInt(qtyVal.textContent, 10) || 1 : 1;
+        const title = document.querySelector('.pdp-title').textContent.trim();
+        const image = document.querySelector('.pdp-main-image').getAttribute('src');
+        const unitPrice = parsePrice(document.querySelector('.pdp-price-row .pdp-price').textContent);
+        addCartLine({ title, image, unitPrice, qty });
+        flashAdded(atcBtn, 'ДОБАВЕНО ✓');
+        announceCartAdd(title, image);
+      });
+    }
+    wireMainAtc(document.querySelector('.pdp-atc-btn'), document.querySelector('.pdp-atc-row'));
+    /* Sticky bar markup is further down the document (parsed after this
+       script runs), so its button doesn't exist yet at this point —
+       wire it once the full DOM is available. */
+    document.addEventListener('DOMContentLoaded', () => {
+      wireMainAtc(document.querySelector('.pdp-sticky-bar__atc'), document.querySelector('.pdp-sticky-bar__qty'));
+    });
+
+    /* ── "Вземи в Bundle" cards → toggle add/remove, same pattern as
+       the cart drawer upsell rows but with a text-label button. ── */
+    document.querySelectorAll('.pdp-bundle-card').forEach(card => {
+      const btn = card.querySelector('.card-footer .cs-btn');
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const title = card.querySelector('.card-title').textContent.trim();
+        const image = card.querySelector('.card-image img').getAttribute('src');
+        const priceEl = btn.querySelector('.btn-price');
+        const unitPrice = parsePrice(priceEl ? priceEl.textContent : btn.textContent);
+
+        addCartLine({ title, image, unitPrice });
+        announceCartAdd(title, image);
+      });
+    });
 
     document.querySelectorAll('.cs-upsell-row__add').forEach(btn => {
       btn.addEventListener('click', function () {
