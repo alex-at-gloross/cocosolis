@@ -1395,14 +1395,14 @@
       transform: translateX(100%);
       transition: transform var(--duration-slow) var(--ease-in-out);
       display: flex; flex-direction: column;
-      padding: var(--space-4) 0; overflow-y: auto;
+      padding: var(--space-4) var(--space-5); overflow-y: auto;
     }
     .cs-bundle-overlay.is-open { transform: translateX(0); }
     .cs-bundle-overlay__back {
       display: flex; align-items: center; gap: var(--space-2);
       background: none; border: none; padding: 0 0 var(--space-4); cursor: pointer;
       font: 600 var(--fs-caption)/1 var(--font-body); font-feature-settings: 'locl' 0;
-      color: var(--fg-primary); text-transform: uppercase; letter-spacing: .04em;
+      color: var(--fg-primary);
     }
     .cs-bundle-overlay__back svg { width: 14px; height: 14px; flex-shrink: 0; }
     .cs-bundle-overlay__item { display: flex; gap: var(--space-3); padding: var(--space-3) 0; }
