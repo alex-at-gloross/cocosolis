@@ -2086,20 +2086,37 @@
 
       <div class="cs-cart-drawer__body">
 
-        <!-- ── Zone 1 — Promo banner ──────────────────────────
+        <!-- ── Zone 1 — Promo carousel ──────────────────────────
              Client spec (see DESIGN/User-Flows/Flow-03) defines 4 states
              for this zone: {outside-promo, during-promo} × {logged-in, logged-out}.
-             Only the during-promo / logged-out default is built here.
+             Only the during-promo / logged-out default is built here, as
+             3 slides that advance (looping) on cart add/remove — see
+             recalcCartSubtotal() below.
              Dev handoff notes:
-             - Outside promo → block 1 rotates between 2-product and
-               3-product upsell messaging plus the Gelato Bag gift teaser.
              - Logged-in → block 2 swaps to "Ще спечелиш N точки с CLUB"
                instead of the sign-in/join CTA below. -->
-        <div class="cs-cart-notify">
-          <span class="cs-cart-notify__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2V7zM12 22V7M12 7C12 7 9 2 6.5 4S9 9 12 7zM12 7c0 0 3-5 5.5-3S15 9 12 7z"/></svg>
-          </span>
-          <span class="cs-cart-notify__text">Добави още 1 продукт по избор и вземи <strong>ПОДАРЪК несесер COCOSOLIS</strong>.</span>
+        <div class="cs-promo-carousel" id="promoCarousel">
+          <div class="cs-promo-carousel__track" id="promoTrack">
+            <div class="cs-promo-carousel__slide cs-promo-carousel__slide--a">
+              <div class="cs-promo-carousel__image"><img src="bundle.jpg" alt=""></div>
+              <div class="cs-promo-carousel__body">
+                <p class="cs-promo-carousel__line">Добави още 1 продукт и вземи <strong>9% отстъпка</strong> върху поръчката.</p>
+              </div>
+            </div>
+            <div class="cs-promo-carousel__slide cs-promo-carousel__slide--b">
+              <div class="cs-promo-carousel__image"><img src="bundle.jpg" alt=""></div>
+              <div class="cs-promo-carousel__body">
+                <p class="cs-promo-carousel__line">Добави още 1 продукт и вземи <strong>ПОДАРЪК несесер COCOSOLIS</strong>.</p>
+              </div>
+            </div>
+            <div class="cs-promo-carousel__slide cs-promo-carousel__slide--c">
+              <div class="cs-promo-carousel__image"><img src="bundle.jpg" alt=""></div>
+              <div class="cs-promo-carousel__body">
+                <h3 class="cs-promo-carousel__title">Твоят подарък 🍦</h3>
+                <p class="cs-promo-carousel__line">Вземи Gelato Bag при поръчка над 82,00 €.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="cs-cart-loyalty">
@@ -2162,7 +2179,8 @@
             <div class="cs-bundle-line__head">
               <div class="cs-bundle-line__image"><img src="bundle.jpg" alt="Glass Skin Duo"></div>
               <div class="cs-bundle-line__body">
-                <span class="cs-bundle-line__title">Glass Skin Duo <span class="cs-badge cs-badge--bundle" style="height:20px;padding:0 8px;font-size:10px;">Bundle</span></span>
+                <span class="cs-bundle-line__title">Glass Skin Duo</span>
+                <span class="cs-bundle-line__variant">Bundle</span>
                 <span class="cs-bundle-line__price" data-line-price>59,20 €</span>
                 <div class="cs-bundle-line__controls">
                   <div class="cs-bundle-line__qty">
@@ -2181,7 +2199,7 @@
               </div>
             </div>
             <button class="cs-bundle-line__trigger" id="cartBundleDrillTrigger">
-              Виж включеното в промо пакета
+              Виж какво включва
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l4 5-4 5"/></svg>
             </button>
           </div>
@@ -3926,6 +3944,44 @@
       return n.toFixed(2).replace('.', ',') + ' €';
     }
 
+    /* ── Zone 1 — promo carousel: slides vertically between its
+       3 messages, looping. Advances once per cart add/remove (see
+       recalcCartSubtotal), not on quantity-only changes — direction
+       is tied to the event: down on add, up on remove.
+       Real slides are flanked with clones of the last/first slide so
+       the track can always keep moving the same way on wrap, instead
+       of jumping backwards to loop — then snaps (no transition) to the
+       matching real slide once the clone is in view. ── */
+    const promoTrack = document.getElementById('promoTrack');
+    const promoRealCount = promoTrack ? promoTrack.children.length : 0;
+    let promoPos = 1; // 1..promoRealCount map 1:1 to the real slides; 0 and promoRealCount+1 are clones
+    if (promoTrack) {
+      const first = promoTrack.firstElementChild;
+      const last  = promoTrack.lastElementChild;
+      promoTrack.appendChild(first.cloneNode(true));
+      promoTrack.insertBefore(last.cloneNode(true), first);
+      promoTrack.style.transition = 'none';
+      promoTrack.style.transform = 'translateY(-' + (promoPos * promoTrack.firstElementChild.offsetHeight) + 'px)';
+      promoTrack.offsetHeight; // force reflow before re-enabling the transition
+      promoTrack.style.transition = '';
+      promoTrack.addEventListener('transitionend', () => {
+        if (promoPos === 0 || promoPos === promoRealCount + 1) {
+          promoPos = promoPos === 0 ? promoRealCount : 1;
+          const slideHeight = promoTrack.firstElementChild.offsetHeight;
+          promoTrack.style.transition = 'none';
+          promoTrack.style.transform = 'translateY(-' + (promoPos * slideHeight) + 'px)';
+          promoTrack.offsetHeight;
+          promoTrack.style.transition = '';
+        }
+      });
+    }
+    function advancePromoCarousel(direction) {
+      if (!promoTrack) return;
+      const slideHeight = promoTrack.firstElementChild.offsetHeight;
+      promoPos += direction;
+      promoTrack.style.transform = 'translateY(-' + (promoPos * slideHeight) + 'px)';
+    }
+
     function updateLinePrice(dd) {
       const line = dd.closest('.cs-cart-line, .cs-bundle-line');
       if (!line) return;
@@ -3947,6 +4003,10 @@
       const count = document.querySelectorAll('.cs-cart-line, .cs-bundle-line').length;
       document.getElementById('cartHeaderCount').textContent =
         count + (count === 1 ? ' продукт' : ' продукта');
+      if (recalcCartSubtotal._lastCount !== undefined && count !== recalcCartSubtotal._lastCount) {
+        advancePromoCarousel(count > recalcCartSubtotal._lastCount ? 1 : -1);
+      }
+      recalcCartSubtotal._lastCount = count;
       syncCartScrollbar();
     }
 
