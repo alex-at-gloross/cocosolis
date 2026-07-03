@@ -1003,7 +1003,7 @@
 
     @media (min-width: 768px) {
       .pdp-reviews__media.pdp-scroll-fade::after { display: none; }
-      .site-search__products-grid.pdp-scroll-fade::after { display: none; }
+      .site-search__products .pdp-scroll-fade::after { display: none; }
     }
 
     /* ── pdp-bundle — "Вземи в Bundle" carousel ────────────── */
@@ -1940,7 +1940,8 @@
                   </button>
                 </div>
               </div>
-              <div class="site-search__products-grid pdp-scroll-fade" id="searchProductsTrack">
+              <div class="pdp-scroll-fade">
+              <div class="site-search__products-grid" id="searchProductsTrack">
                 <a class="cs-card cs-product-card cs-product-card--flush" href="#">
                   <div class="card-image">
                     <div class="card-image-inner">
@@ -1982,6 +1983,7 @@
                   </div>
                 </a>
               </div>
+              </div><!-- /pdp-scroll-fade -->
               <div class="pdp-bundle-bar" id="searchProductsBar" style="display:none;">
                 <div class="pdp-bundle-bar-thumb" id="searchProductsBarThumb"></div>
               </div>
@@ -5168,8 +5170,7 @@
     (function () {
       const fades = document.querySelectorAll('.pdp-scroll-fade');
       fades.forEach(function (fadeEl) {
-        const track = fadeEl.classList.contains('pdp-reviews__media') ||
-          fadeEl.classList.contains('site-search__products-grid')
+        const track = fadeEl.classList.contains('pdp-reviews__media')
           ? fadeEl
           : fadeEl.querySelector(':scope > [class*="track"], :scope > .site-search__products-grid, :scope > .pdp-reviews__media');
         if (!track) return;

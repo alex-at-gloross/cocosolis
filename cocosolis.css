@@ -777,7 +777,8 @@
       color: var(--fg-muted);
     }
     /* ── Horizontal-scroll edge fade — hints at continued card content ── */
-    .pdp-scroll-fade { position: relative; }
+    /* overflow-x hidden clips cards to the fade edge; overflow-y visible keeps hover/shadow effects unclipped */
+    .pdp-scroll-fade { position: relative; overflow-x: hidden; overflow-y: visible; }
     .pdp-scroll-fade::after {
       content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 48px;
       pointer-events: none; z-index: 2; opacity: 1; transition: opacity .2s ease;
