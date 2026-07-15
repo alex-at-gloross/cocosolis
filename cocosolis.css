@@ -62,22 +62,22 @@
       /* Typography — Direction A: Montserrat (single system) */
       --font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       --font-display: var(--font-body);
-      --fw-heading: 700;
-      --fw-h3:      700;
-      --fw-h4:      800;
-      --fw-body-l:  500;
-      --fw-body-m:  500;
-      --fw-body-s:  600;
-      --fw-body-xs: 600;
+      --fw-heading: 600;
+      --fw-h3:      600;
+      --fw-h4:      600;
+      --fw-body-l:  400;
+      --fw-body-m:  400;
+      --fw-body-s:  500;
+      --fw-body-xs: 500;
 
       /* font-feature-settings: 'locl' 0 — disables cursive BG Cyrillic т/д forms in Montserrat */
 
       /* Type scale */
-      --fs-display: 58px;
-      --fs-h1:      44px;
-      --fs-h2:      32px;
-      --fs-h3:      26px;
-      --fs-h4:      20px;
+      --fs-display: 43.5px;
+      --fs-h1:      24.75px;
+      --fs-h2:      24px;
+      --fs-h3:      19.5px;
+      --fs-h4:      15px;
       --fs-body-l:  22px;
       --fs-body-m:  19px;
       --fs-body-s:  17px;
@@ -159,7 +159,7 @@
     .cs-btn {
       display: inline-flex; align-items: center; justify-content: center;
       gap: var(--space-2);
-      height: 48px; padding: 0 var(--space-6);
+      height: 40px; padding: 0 var(--space-6);
       font: 600 var(--fs-body-xs)/1 var(--font-body);
       font-feature-settings: 'locl' 0;
       letter-spacing: .85px; text-transform: uppercase;
@@ -247,9 +247,9 @@
     }
     .cs-btn--tertiary-inverse:hover { color: #fff; text-decoration-color: #fff; }
 
-    .cs-btn--sm  { height: 36px; padding: 0 var(--space-4); font-size: var(--fs-omnibus); }
-    .cs-btn--lg  { height: 56px; padding: 0 var(--space-8); font-size: var(--fs-body-xs); }
-    .cs-btn--full { width: 100%; }
+    .cs-btn--sm  { height: 32px; padding: 0 var(--space-4); font-size: var(--fs-omnibus); }
+    .cs-btn--lg  { height: 48px; padding: 0 var(--space-8); font-size: var(--fs-body-xs); }
+    .cs-btn--full { width: 100%; height: 40px; }
 
     /* ── Form inputs ─────────────────────────────────────── */
     .cs-field { display: flex; flex-direction: column; gap: var(--space-2); }
@@ -874,7 +874,7 @@
       }
       .pdp-ba-handle { transform: none; }
     }
-    .pdp-info { display: flex; flex-direction: column; padding-top: var(--space-2); }
+    .pdp-info { display: flex; flex-direction: column; padding-top: 0; }
     .pdp-eyebrow {
       font: 500 var(--fs-caption)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
       letter-spacing: var(--ls-caption); text-transform: uppercase; color: var(--fg-muted);
@@ -892,7 +892,7 @@
     .pdp-stars-icons { color: var(--color-accent); font-size: 15px; letter-spacing: 1px; }
     .pdp-stars-count { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); color: var(--fg-muted); }
     .pdp-desc {
-      font: var(--fw-body-s) var(--fs-body-s)/1.25 var(--font-body); font-feature-settings: 'locl' 0;
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.25 var(--font-body); font-feature-settings: 'locl' 0;
       color: var(--fg-secondary); margin: 0;
     }
     .pdp-desc-wrap {
@@ -908,7 +908,7 @@
       position: absolute; bottom: 0; right: 0;
       background: linear-gradient(to right, transparent, var(--bg-primary) 40%);
       padding: 0 0 0 var(--space-16);
-      font: var(--fw-body-s) var(--fs-body-s)/1.25 var(--font-body);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.25 var(--font-body);
       color: var(--link-color); text-decoration: underline; white-space: nowrap;
     }
     .pdp-desc-wrap:not(.pdp-desc-wrap--clamped) .pdp-read-more { display: none; }
@@ -921,11 +921,11 @@
     .pdp-benefits li {
       font: var(--fw-body-xs) var(--fs-body-xs)/1.25 var(--font-body); font-feature-settings: 'locl' 0;
       letter-spacing: var(--ls-body-xs);
-      color: var(--fg-secondary); position: relative; padding-left: var(--space-4);
+      color: var(--fg-secondary); position: relative; padding-left: var(--space-2);
     }
     .pdp-benefits li::before {
-      content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--color-bg-warm);
+      content: ''; position: absolute; left: 0; top: 7.5px; width: 3px; height: 3px;
+      border-radius: 50%; background: var(--fg-secondary);
     }
     .pdp-benefit-label { font-weight: 600; color: var(--fg-primary); }
     .pdp-benefit-note { color: var(--fg-muted); }
@@ -1063,9 +1063,7 @@
     .pdp-sticky-bar__fav { background: none; }
     .pdp-info-bar {
       display: flex; flex-direction: column; gap: var(--space-3);
-      padding: var(--space-4) var(--space-5);
-      background: var(--color-cream); border-radius: var(--radius-md);
-      margin-bottom: var(--space-5);
+      padding: var(--space-4) 0;
     }
     .pdp-info-bar-row {
       display: flex; align-items: center; gap: var(--space-3);
@@ -1076,6 +1074,7 @@
 
     /* ── PDP Bundle variant ──────────────────────────── */
     .pdp-bundle-list strong { color: var(--fg-primary); }
+    .pdp-bundle-list { margin-bottom: 0; }
     .pdp-price-row--promo { margin-bottom: var(--space-2); }
     .pdp-price-row--promo .pdp-price-old {
       font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0;
@@ -1165,7 +1164,7 @@
     .cs-qty {
       display: inline-flex; align-items: center; justify-content: space-between;
       gap: var(--space-2);
-      width: 96px; height: 48px; padding: 0 var(--space-2);
+      width: 96px; height: 40px; padding: 0 var(--space-2);
       background: var(--bg-primary);
       border: 1px solid var(--border-interactive); border-radius: var(--radius-md);
       flex-shrink: 0;
@@ -1496,7 +1495,7 @@
     @media (max-width: 767px) {
       :root {
         --fs-display: 46px;
-        --fs-h1:      35px;
+        --fs-h1:      26.25px;
         --fs-h2:      26px;
         --fs-h3:      21px;
         --fs-h4:      16px;
@@ -1518,6 +1517,7 @@
     /* ── Desktop — ≥1024px ──────────────────────────────── */
     @media (min-width: 1024px) {
       .pdp-wrap { grid-template-columns: min(585px, 50%) 1fr; gap: var(--space-10); padding: 0; }
+      .pdp-info { padding-top: var(--space-10); }
       .pdp-main-image-wrap { display: block; }
       .pdp-thumbs { display: flex; }
       .pdp-mobile-gallery { display: none; }

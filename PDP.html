@@ -1046,31 +1046,12 @@
     /* grid item must not expand beyond its 1fr column */
     .pdp-info { min-width: 0; }
 
-    /* ── Product title group ─────────────────────────────────── */
-    .pdp-title-group {
-      display: flex; flex-wrap: wrap; align-items: baseline;
-      gap: 0 var(--space-3);
-      margin: 0 0 var(--space-3);
-    }
-    .pdp-eyebrow {
-      flex: 0 0 100%;
-      font: 300 var(--fs-h1)/var(--lh-snug) var(--font-display);
-      color: var(--fg-secondary);
-      margin: 0;
-    }
+    /* ── Product title ────────────────────────────────────────── */
     .pdp-title {
-      flex: 0 0 100%;
-      font: 700 var(--fs-h1)/var(--lh-snug) var(--font-display);
+      font: var(--fw-heading) var(--fs-h1)/1.15 var(--font-display);
+      letter-spacing: -0.7px;
       color: var(--fg-primary);
-      margin: 0;
-    }
-    @media (max-width: 767px) {
-      .pdp-eyebrow,
-      .pdp-title { font-size: calc(var(--fs-h1) * .67); }
-    }
-    @media (min-width: 768px) {
-      .pdp-eyebrow,
-      .pdp-title { flex: 0 0 auto; }
+      margin: 0 0 var(--space-3);
     }
 
     @media (min-width: 768px) {
@@ -1710,13 +1691,10 @@
 
     /* ── pdp-info-bar ─────────────────────────────────────────── */
     .pdp-info-bar {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       gap: var(--space-3);
-      padding: var(--space-4) var(--space-5);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-md);
-      width: fit-content;
+      padding: 0;
     }
     .pdp-info-bar-row {
       display: flex;
@@ -2523,10 +2501,7 @@
         <!-- Right: Product info -->
         <div class="pdp-info">
 
-          <div class="pdp-title-group">
-            <div class="pdp-eyebrow">Solis</div>
-            <h1 class="pdp-title">Body Serums</h1>
-          </div>
+          <h1 class="pdp-title">SOLIS Body Serums</h1>
 
           <div class="cs-rating">
             <span class="cs-rating-stars">★★★★★</span>
@@ -2660,8 +2635,7 @@
                   <div class="card-badges"><span class="cs-badge cs-badge--discount">-20%</span></div>
                 </div>
                 <div class="card-body">
-                  <span class="card-eyebrow">Solis</span>
-                  <h3 class="card-title">Body Serum HOT+</h3>
+                  <h3 class="card-title">SOLIS Body Serum HOT+</h3>
                   <p class="card-desc">Топи мазнините, стяга бедрата</p>
                   <div class="cs-rating">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
@@ -2683,8 +2657,7 @@
                   <div class="card-badges"><span class="cs-badge cs-badge--discount">-15%</span></div>
                 </div>
                 <div class="card-body">
-                  <span class="card-eyebrow">Solis</span>
-                  <h3 class="card-title">Body Serum SKIN+</h3>
+                  <h3 class="card-title">SOLIS Body Serum SKIN+</h3>
                   <p class="card-desc">Намалява целулита, изглажда</p>
                   <div class="cs-rating">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
@@ -2706,8 +2679,7 @@
                   <div class="card-badges"><span class="cs-badge cs-badge--discount">-25%</span></div>
                 </div>
                 <div class="card-body">
-                  <span class="card-eyebrow">Solis</span>
-                  <h3 class="card-title">Body Serum SLIM+</h3>
+                  <h3 class="card-title">SOLIS Body Serum SLIM+</h3>
                   <p class="card-desc">Оформя корема и ръцете</p>
                   <div class="cs-rating">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
@@ -2729,8 +2701,7 @@
                   <div class="card-badges"><span class="cs-badge cs-badge--discount">-18%</span></div>
                 </div>
                 <div class="card-body">
-                  <span class="card-eyebrow">Solis</span>
-                  <h3 class="card-title">Body Serum LIFT+</h3>
+                  <h3 class="card-title">SOLIS Body Serum LIFT+</h3>
                   <p class="card-desc">Повдига бюста, стяга шията</p>
                   <div class="cs-rating">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
@@ -2752,8 +2723,7 @@
                   <div class="card-badges"><span class="cs-badge cs-badge--new">NEW</span></div>
                 </div>
                 <div class="card-body">
-                  <span class="card-eyebrow">Solis</span>
-                  <h3 class="card-title">Body Serum GLOW+</h3>
+                  <h3 class="card-title">SOLIS Body Serum GLOW+</h3>
                   <p class="card-desc">Сияние и хидратация за 24h</p>
                   <div class="cs-rating">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★☆</span>
@@ -2775,8 +2745,7 @@
                   <div class="card-badges"><span class="cs-badge cs-badge--bundle">Bundle</span></div>
                 </div>
                 <div class="card-body">
-                  <span class="card-eyebrow">Solis</span>
-                  <h3 class="card-title">Duo HOT+ & SKIN+</h3>
+                  <h3 class="card-title">SOLIS Duo HOT+ & SKIN+</h3>
                   <p class="card-desc">Пълна трансформация за 4 седм.</p>
                   <div class="cs-rating">
                     <span class="cs-rating-stars cs-rating-stars--sm">★★★★★</span>
