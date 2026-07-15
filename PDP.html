@@ -788,6 +788,7 @@
     }
     .pdp-acc-label {
       font: var(--fw-body-s) var(--fs-body-s)/1.4 var(--font-body);
+      font-weight: 600;
       font-feature-settings: 'locl' 0;
       flex: 1;
     }
@@ -817,11 +818,12 @@
     }
     .pdp-acc-content {
       padding-bottom: var(--space-6);
-      font: var(--fw-body-s) var(--fs-body-s)/1.25 var(--font-body);
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.25 var(--font-body);
       font-feature-settings: 'locl' 0;
+      letter-spacing: var(--ls-body-xs);
       color: var(--fg-secondary);
     }
-    .pdp-acc-content strong { font-weight: var(--fw-body-s); }
+    .pdp-acc-content strong { font-weight: var(--fw-body-xs); }
     .pdp-acc-content p + p { margin-top: var(--space-3); }
     .pdp-acc-content ul {
       list-style: none;
@@ -847,7 +849,9 @@
       top: 0.2em;
       width: 14px;
       height: 14px;
-      background: url('https://cocosolis.com/wp-content/themes/cocosolis/public/images/icons/check.3bcc93.svg') center/contain no-repeat;
+      background-color: var(--fg-secondary);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center/contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center/contain no-repeat;
       opacity: 0.5;
     }
     .pdp-acc-disclaimer { margin: 1rem 0; }
@@ -942,9 +946,9 @@
       overflow: hidden;
     }
     .pdp-ingr-icon img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .pdp-ingr-icon svg {
       width: 22px;
@@ -983,7 +987,6 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-5) var(--space-4);
       padding-bottom: var(--space-6);
-      border-top: 1px solid var(--border-default);
       padding-top: var(--space-5);
     }
     .pdp-ingr-benefit {
@@ -1010,9 +1013,21 @@
       color: var(--fg-secondary);
     }
     /* INCI sub-accordion */
-    .pdp-inci-acc { display: none; }
+    .pdp-inci-acc {
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--fg-primary);
+    }
     .pdp-inci-trigger {
-      display: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: 0 0 var(--space-3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
       color: var(--fg-secondary);
     }
     .pdp-inci-trigger-label {
@@ -1022,9 +1037,9 @@
     }
     .pdp-inci-trigger-icon {
       flex-shrink: 0;
-      width: 16px; height: 16px;
+      width: 12px; height: 12px;
       display: flex; align-items: center; justify-content: center;
-      color: var(--fg-muted);
+      color: var(--fg-primary);
       transition: transform var(--duration-base) var(--ease-out);
     }
     .pdp-inci-acc.is-open .pdp-inci-trigger-icon { transform: rotate(45deg); }
@@ -1036,7 +1051,7 @@
     .pdp-inci-acc.is-open .pdp-inci-body { grid-template-rows: 1fr; }
     .pdp-inci-inner { overflow: hidden; }
     .pdp-inci-text {
-      padding-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
       font: var(--fw-body-xs) 11px/1.6 var(--font-body);
       font-feature-settings: 'locl' 0;
       color: var(--fg-secondary);
@@ -1729,6 +1744,18 @@
     .pdp-faq__list { max-width: 1360px; margin: 0 auto; }
     @media (min-width: 768px) {
       .pdp-faq__inner { padding: 0 var(--space-6); }
+    }
+    /* PDP-only override: shared .cs-accordion component defaults to body-s;
+       FAQ + cart-drawer accordion body text on this page drops to body-xs
+       (triggers stay body-s). */
+    .pdp-faq .cs-accordion-body,
+    #cartDrawer .cs-accordion-body {
+      font: var(--fw-body-xs) var(--fs-body-xs)/1.6 var(--font-body);
+      letter-spacing: var(--ls-body-xs);
+    }
+    .pdp-faq .cs-accordion-trigger,
+    #cartDrawer .cs-accordion-trigger {
+      font-weight: 600;
     }
 
     /* ── Upsell — "Може да харесаш" ─────────────────────── */
@@ -2931,8 +2958,50 @@
                 <div class="pdp-acc-inner">
                   <div class="pdp-acc-content">
 
-                    <!-- INCI list -->
-                    <p class="pdp-inci-text">Olea Europaea* (Olive) Fruit Oil, Prunus Armeniaca* (Apricot) Kernel Oil, Adansonia Digitata* (Baobab) Seed Oil, Theobroma Cacao* (Cocoa) Seed Butter, Camellia Sinensis* (Green Tea) Leaf Extract, Carica Papaya* (Papaya) Fruit Extract, Garcinia Mangostana* (Mangosteen) Fruit Extract, Punica Granatum* (Pomegranate) Seed Oil, Terminalia Ferdinandiana* (Kakadu Plum) Fruit Extract, Hamamelis Virginiana* (Witch Hazel) Leaf Extract, Ascophyllum Nodosum* (Kelp) Extract, Kaolin (Australian Pink Clay), Tocopherol (Vitamin E), Parfum (Natural Fragrance). <em>*Certified organic ingredient.</em></p>
+                    <!-- Key ingredient highlights -->
+                    <div class="pdp-ingr-list">
+
+                      <div class="pdp-ingr-item">
+                        <div class="pdp-ingr-icon"><img src="Ingredients/ingredients-v2025-pink-pepperslim.png" alt="" loading="lazy"></div>
+                        <p class="pdp-ingr-desc"><strong>Активна съставка със сладка лупина®</strong>: Стимулира производството на висококачествен колаген, прави кожата по-стегната и еластична, ремоделира отпуснатата кожата.</p>
+                      </div>
+
+                      <div class="pdp-ingr-item">
+                        <div class="pdp-ingr-icon"><img src="Ingredients/ingredients-v2025-guarana.png" alt="" loading="lazy"></div>
+                        <p class="pdp-ingr-desc"><strong>Етерично масло от мандарина</strong>: Регенерира и изглажда кожата. Възстановява баланса й и предотвратява образуването на стрии.</p>
+                      </div>
+
+                      <div class="pdp-ingr-item">
+                        <div class="pdp-ingr-icon"><img src="Ingredients/ingredients-v2025-bodyferm.png" alt="" loading="lazy"></div>
+                        <p class="pdp-ingr-desc"><strong>Масло от шипка</strong>: Изсветлява и изравнява тона на кожата, заличава белезите. Прави я гладка и безупречна.</p>
+                      </div>
+
+                      <div class="pdp-ingr-item">
+                        <div class="pdp-ingr-icon"><img src="Ingredients/ingredients-v2025-prickly-pear-cactus.png" alt="" loading="lazy"></div>
+                        <p class="pdp-ingr-desc"><strong>Екстракт от невен</strong>: Успокоява и регенерира кожата, прави по-малко видими съществуващите стрии и белези.</p>
+                      </div>
+
+                      <div class="pdp-ingr-item">
+                        <div class="pdp-ingr-icon"><img src="Ingredients/ingredients-v2025-dermosculpt.png" alt="" loading="lazy"></div>
+                        <p class="pdp-ingr-desc"><strong>Масло от авокадо</strong>: Богато на есенциални мастни киселини и витамини, дълбоко хидратира кожата и помага за предотвратяване появата на стрии.</p>
+                      </div>
+
+                    </div>
+
+                    <!-- Full ingredients list (collapsible) -->
+                    <div class="pdp-inci-acc">
+                      <button class="pdp-inci-trigger" aria-expanded="false" aria-controls="acc-inci-full">
+                        <span class="pdp-inci-trigger-label">Пълен списък съставки</span>
+                        <span class="pdp-inci-trigger-icon" aria-hidden="true">
+                          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+                        </span>
+                      </button>
+                      <div class="pdp-inci-body" id="acc-inci-full">
+                        <div class="pdp-inci-inner">
+                          <p class="pdp-inci-text">Olea Europaea* (Olive) Fruit Oil, Prunus Armeniaca* (Apricot) Kernel Oil, Adansonia Digitata* (Baobab) Seed Oil, Theobroma Cacao* (Cocoa) Seed Butter, Camellia Sinensis* (Green Tea) Leaf Extract, Carica Papaya* (Papaya) Fruit Extract, Garcinia Mangostana* (Mangosteen) Fruit Extract, Punica Granatum* (Pomegranate) Seed Oil, Terminalia Ferdinandiana* (Kakadu Plum) Fruit Extract, Hamamelis Virginiana* (Witch Hazel) Leaf Extract, Ascophyllum Nodosum* (Kelp) Extract, Kaolin (Australian Pink Clay), Tocopherol (Vitamin E), Parfum (Natural Fragrance). <em>*Certified organic ingredient.</em></p>
+                        </div>
+                      </div>
+                    </div>
 
                     <!-- Benefits two-column grid -->
                     <div class="pdp-ingr-benefits">
@@ -3217,7 +3286,7 @@
       </div>
     </section>
 
-    <!-- Bundle & Save banner -->
+    <!-- Bundle & Save banner — hidden from prototype, keep in codebase for later
     <section class="bundle-save" aria-label="Bundle & Save промо">
       <div class="bundle-save__inner">
         <div class="bundle-save__text">
@@ -3230,6 +3299,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ── Proof: Клинични резултати / Ползи ──────── -->
     <section class="pdp-proof">
@@ -4541,6 +4611,15 @@
     /* ── PDP Accordions ──────────────────────────────────── */
     document.querySelectorAll('.pdp-acc-item').forEach(item => {
       const trigger = item.querySelector('.pdp-acc-trigger');
+      trigger.addEventListener('click', () => {
+        const open = item.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    /* ── Full ingredients list (INCI) sub-accordion ───────── */
+    document.querySelectorAll('.pdp-inci-acc').forEach(item => {
+      const trigger = item.querySelector('.pdp-inci-trigger');
       trigger.addEventListener('click', () => {
         const open = item.classList.toggle('is-open');
         trigger.setAttribute('aria-expanded', String(open));

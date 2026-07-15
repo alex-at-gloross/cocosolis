@@ -305,11 +305,12 @@
     /* ── Badges ──────────────────────────────────────────── */
     .cs-badge {
       display: inline-flex; align-items: center; gap: var(--space-1);
-      height: 30px; padding: 0 var(--space-3);
-      border-radius: var(--radius-sm);
-      font: 700 16px/1 var(--font-body);
+      width: fit-content;
+      padding: 6px var(--space-2);
+      border-radius: 8px;
+      font: 600 1rem/1 var(--font-body);
       font-feature-settings: 'locl' 0;
-      letter-spacing: 0.7px; text-transform: uppercase;
+      text-transform: uppercase;
       background: var(--color-bg-warm);
       color: #fff;
       border: none;
@@ -1084,7 +1085,7 @@
       font: 600 var(--fs-omnibus)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
       color: var(--fg-muted);
     }
-    .pdp-omnibus-note { margin: 0 0 var(--space-5); }
+    .pdp-omnibus-note { margin: 0 0 var(--space-3); }
     .pdp-omnibus-note strong { font-weight: inherit; color: inherit; }
     .pdp-omnibus-note svg { vertical-align: -2px; margin-right: var(--space-2); }
     .pdp-club-link { color: var(--fg-primary); font-weight: inherit; text-decoration: underline; text-underline-offset: 2px; }
