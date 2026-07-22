@@ -651,11 +651,6 @@
       width: 100%; height: 100%;
     }
     .cs-product-card .card-body { padding: var(--space-4) var(--space-4) var(--space-5); display: flex; flex-direction: column; flex: 1; }
-    .cs-product-card .card-eyebrow {
-      font: 500 var(--fs-caption)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
-      letter-spacing: var(--ls-caption); text-transform: uppercase; color: var(--fg-muted);
-      margin-bottom: var(--space-1);
-    }
     .cs-product-card .card-title {
       font: var(--fw-heading) var(--fs-body-m)/var(--lh-snug) var(--font-body);
       font-feature-settings: 'locl' 0;
@@ -688,12 +683,230 @@
       color: var(--fg-primary); margin-bottom: var(--space-4);
     }
     .cs-product-card .card-bottom { margin-top: auto; }
+    /* Rating now lives in card-bottom (grouped with price) so it holds a fixed
+       position regardless of card-desc line count — see .card-desc above it. */
+    .cs-product-card .card-bottom .cs-rating { margin-bottom: var(--space-3); }
 
     /* Product card — flush variant: no card bg/border, body flush-left, image rounded on all sides (works in any direction, incl. B's bordered-card override) */
     .cs-card.cs-product-card--flush { background: transparent; border: none; }
     .cs-card.cs-product-card--flush:hover { box-shadow: none; border: none; transform: none; }
     .cs-product-card--flush .card-body { padding-left: 0; background: transparent; }
     .cs-product-card--flush .card-image { border-radius: var(--radius-lg); overflow: hidden; }
+    /* card-body keeps its right padding for title/desc breathing room, but the
+       full-width ATC button should bleed to the true right edge (matching the
+       image above it, which has no inset) rather than stop short by that padding. */
+    .cs-product-card--flush .card-bottom .cs-btn--full {
+      width: calc(100% + var(--space-4));
+      margin-right: calc(-1 * var(--space-4));
+    }
+
+    /* ── Collection / PLP ──────────────────────────────────
+       Namespace: .plp-* (Product Listing Page) — generic on purpose so
+       Search-Results can reuse the same section/grid pattern later. ── */
+    .plp-hero {
+      position: relative;
+      background: var(--bg-primary);
+      overflow: hidden;
+      margin-bottom: var(--space-10);
+    }
+    .plp-hero__track {
+      display: flex;
+      aspect-ratio: 1 / 1;
+      overflow-x: scroll; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .plp-hero__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .plp-hero__track::-webkit-scrollbar { display: none; }
+    .plp-hero__slide { flex: 0 0 100%; scroll-snap-align: start; min-width: 0; height: 100%; position: relative; }
+    .plp-hero__slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    /* Dots reuse .cs-upsell-dots/.cs-upsell-dot as-is, sit in normal flow
+       below the image (not overlaid), sized up 2x for this larger context. */
+    .plp-hero__dots { padding: var(--space-5) 0 0; }
+    .plp-hero__dots.cs-upsell-dots .cs-upsell-dot { width: 6px; height: 6px; }
+    .plp-hero__dots.cs-upsell-dots .cs-upsell-dot.is-active { width: 12px; height: 12px; }
+
+    /* Sticky category selector (GISOU-style) — pins directly under the fixed
+       ann-bar+header stack, no gap, same "fixed offset per breakpoint" convention
+       as .pdp-gallery's sticky top in PDP.html. z-index sits below header(19)/
+       ann-bar(20) so it always tucks under them, never over.
+       #siteHeader and this nav are sibling children of .proto-page (see the
+       "Hide nav on scroll-down" script toggling #siteHeader.is-hidden), so the
+       general-sibling rules below can ride that same class straight through
+       CSS — no extra JS wiring needed. transform (not top) carries the slide so
+       it animates smoothly instead of fighting the sticky layout each frame;
+       duration/easing matches .site-header's own transform transition. */
+    .plp-category-nav {
+      position: sticky;
+      top: 92px; /* ann-bar 36 + mobile header 56 */
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: transform 0.3s ease;
+    }
+    /* Header auto-hide-on-scroll is desktop-only (≥1024px, see Collection.html)
+       — mobile/tablet keep the header permanently visible, so the nav just
+       sticks at a plain fixed top offset there, no slide-up case to handle.
+       The ≥1024px transform rule below is the only one that needs it. */
+    /* Scroll container is a separate element from the sticky nav itself so the
+       prev/next arrows can flank it as fixed siblings instead of scrolling
+       away with the chips. */
+    .plp-category-nav__scroll {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .plp-category-nav__scroll::-webkit-scrollbar { display: none; }
+    .plp-category-nav__list {
+      display: flex;
+      width: max-content;
+      margin: 0 auto;
+      gap: var(--space-5);
+      padding: var(--space-4) var(--space-4);
+    }
+    .plp-category-nav__link {
+      font: 600 var(--fs-caption)/1 var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--fg-secondary);
+      white-space: nowrap;
+      text-decoration: none;
+      padding-bottom: var(--space-2);
+      border-bottom: 2px solid transparent;
+      transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+    }
+    /* text-decoration:none needed here too, not just on the base rule — the
+       global `a:hover { text-decoration: underline }` (see top of this file)
+       otherwise wins since nothing else overrides it in this state. */
+    .plp-category-nav__link:hover { color: var(--fg-primary); text-decoration: none; }
+    .plp-category-nav__link.is-active { color: var(--fg-primary); border-bottom-color: currentColor; }
+
+    /* Prev/next arrows — same size/border/disabled-at-edges look as PDP.html's
+       .pdp-bundle-nav-btn carousel arrows. JS hides both entirely (.is-hidden)
+       when the chips already fit without overflow. */
+    .plp-category-nav__arrow {
+      flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 50%;
+      margin: 0 var(--space-2);
+      border: 1px solid var(--border-interactive);
+      background: var(--bg-primary); color: var(--fg-primary);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+    }
+    .plp-category-nav__arrow:hover { background: var(--bg-subtle); border-color: var(--border-strong); }
+    .plp-category-nav__arrow:disabled { opacity: .35; cursor: not-allowed; }
+    .plp-category-nav__arrow.is-hidden { display: none; }
+
+    /* scroll-margin-top ≈ fixed ann-bar+header stack height (matches .proto-page
+       padding-top per breakpoint) + .plp-category-nav's own real ~57px height
+       (32 list padding + 24 link box + 1 border) + 16px breathing room, so
+       #plp-cat-* anchor jumps land clear of both fixed bars with a visible gap. */
+    .plp-category { padding: var(--space-12) 0; scroll-margin-top: 165px; background: var(--bg-primary); }
+    .plp-category:first-of-type { padding-top: var(--space-6); }
+    /* Alternating zebra-stripe, mirroring the live site's category listing — applied
+       via an explicit modifier (not :nth-of-type) since standalone sections like
+       #mediaSlider can sit between category sections without breaking the pattern. */
+    .plp-category--alt { background: var(--color-cream); }
+    .plp-category__head { padding: 0 var(--space-4); margin-bottom: var(--space-6); text-align: center; }
+    .plp-category__title {
+      font: var(--fw-heading) var(--fs-display)/var(--lh-tight) var(--font-display);
+      /* Halved off --fs-display (the token itself is shared with Design-System.html's
+         showcase and other usages, so it's scaled down here rather than changed
+         globally). calc() keeps it tracking the token's own breakpoint overrides. */
+      font-size: calc(var(--fs-display) / 2);
+      color: var(--fg-primary); text-transform: uppercase; letter-spacing: 0.02em;
+      /* A long, unbroken Bulgarian category name (no spaces to wrap on) was
+         overflowing past the viewport edge on mobile, widening the whole page
+         and creating a horizontal white bar. hyphens:auto (needs the inherited
+         lang="bg" from <html>) breaks it at a syllable when supported;
+         overflow-wrap is the fallback for browsers/scripts without a Bulgarian
+         hyphenation dictionary — it still wraps, just without the hyphen. */
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      overflow-wrap: break-word;
+    }
+    /* Body Large token — same pairing Design-System.html documents for
+       "product description intros" (--fw-body-l / --fs-body-l). */
+    .plp-category__desc {
+      font: var(--fw-body-l) var(--fs-body-l)/1.7 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary); margin: var(--space-3) auto 0; max-width: 640px;
+    }
+
+    .plp-product-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4) var(--space-3);
+      padding: 0 var(--space-4);
+    }
+
+    /* Card is clickable to the PDP, but the ATC button must stay independently
+       clickable — nesting <button> inside <a> is invalid HTML, so the image
+       and body/text are wrapped in two separate .plp-card-link anchors instead,
+       leaving .card-bottom (price + button) as a plain sibling. */
+    .plp-card-link { display: block; color: inherit; text-decoration: none; }
+    .plp-card-link:hover { text-decoration: none; color: inherit; }
+
+    /* ── Media slider — "as seen in" press-logo strip ─────
+       Mirrors the live site's #mediaSlider (Splide marquee, warm-500 bg).
+       Reimplemented CSS-only (duplicated track + translateX loop) rather
+       than pulling in Splide.js, matching this project's no-external-JS convention. */
+    .plp-media-slider {
+      overflow: hidden;
+      background: var(--color-warm-500);
+      height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .plp-media-slider__track {
+      display: flex;
+      width: max-content;
+      animation: plp-media-scroll 26s linear infinite;
+    }
+    .plp-media-slider:hover .plp-media-slider__track,
+    .plp-media-slider:focus-within .plp-media-slider__track { animation-play-state: paused; }
+    .plp-media-slider__group { display: flex; align-items: center; flex-shrink: 0; }
+    .plp-media-slider__item { display: flex; align-items: center; flex-shrink: 0; margin-right: 2.5rem; }
+    .plp-media-slider__text {
+      font: 400 1.1rem/1 var(--font-body); font-feature-settings: 'locl' 0;
+      text-transform: uppercase; color: var(--fg-inverse); white-space: nowrap;
+    }
+    .plp-media-slider__logo { height: 20px; width: auto; display: block; }
+    @keyframes plp-media-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .plp-media-slider__track { animation: none; }
+    }
+
+    @media (min-width: 768px) {
+      .plp-category-nav { top: 96px; } /* ann-bar 36 + header 60 */
+      .plp-category-nav__list { gap: var(--space-8); }
+      .plp-category { scroll-margin-top: 169px; }
+      .plp-category__head { padding: 0 var(--space-6); }
+      .plp-product-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); padding: 0 var(--space-6); }
+      .plp-hero__track { aspect-ratio: auto; height: 640px; }
+    }
+    @media (min-width: 1024px) {
+      .plp-category-nav { top: 104px; } /* ann-bar 36 + header 68 */
+      /* Header auto-hides on scroll-down at this breakpoint only
+         (site-header.is-hidden, see the scroll script) — slide the nav up by
+         the header's own height so it re-lands flush under the ann-bar
+         instead of leaving a gap. Gated on .is-stuck (also toggled by that
+         script) so this only plays once the nav is actually pinned at the
+         viewport edge, not while still in normal flow further down the page. */
+      #siteHeader.is-hidden ~ .plp-category-nav.is-stuck { transform: translateY(-68px); }
+      .plp-category { scroll-margin-top: 177px; }
+      .plp-product-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 1440px) {
+      .plp-category__head, .plp-product-grid { max-width: 1360px; margin-left: auto; margin-right: auto; }
+    }
 
     /* State indicators */
     .ds-state-row { display: flex; gap: var(--space-5); align-items: center; flex-wrap: wrap; }
@@ -1082,7 +1295,7 @@
       color: var(--color-bg-warm); text-decoration: line-through;
     }
     .pdp-omnibus-note, .cs-omnibus {
-      font: 600 var(--fs-omnibus)/1.4 var(--font-body); font-feature-settings: 'locl' 0;
+      font: 600 var(--fs-omnibus)/1.5 var(--font-body); font-feature-settings: 'locl' 0;
       color: var(--fg-muted);
     }
     .pdp-omnibus-note { margin: 0 0 var(--space-3); }
@@ -1104,6 +1317,16 @@
     .cs-price-current { font: 600 var(--fs-h3)/1 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-primary); }
     .cs-price-original { font: var(--fw-body-s) var(--fs-body-s)/1 var(--font-body); font-feature-settings: 'locl' 0; color: var(--color-bg-warm); text-decoration: line-through; }
     .cs-omnibus { margin: var(--space-1) 0 0; }
+
+    /* Mobile: two-line price block — line 1 is [current price][omnibus icon],
+       line 2 is the strikethrough original price on its own row. Reordered
+       via flex `order` (not DOM order) so tablet/desktop keep the single-line
+       layout below. */
+    @media (max-width: 767px) {
+      .cs-price-current  { order: 1; }
+      .cs-omnibus-hint    { order: 2; }
+      .cs-price-original  { order: 3; flex-basis: 100%; }
+    }
 
     /* ── Accordion ───────────────────────────────────── */
     .cs-accordion-item {
@@ -1150,6 +1373,69 @@
       transition: color var(--duration-fast);
     }
     .cs-toast-close:hover { color: var(--fg-primary); }
+
+    /* ── Omnibus price-history hint — icon + toast tooltip ──
+       EU Omnibus directive: cards with a reduced price disclose the lowest
+       price in the last 30 days before the promotion. Reveals a .cs-toast
+       bubble on hover (desktop) or tap (mobile, toggled by csOmnibusToggle()
+       in a .is-open class — hover alone doesn't work on touch). */
+    .cs-omnibus-hint { position: relative; display: inline-flex; }
+    .cs-omnibus-hint__btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; padding: 0; border: none; border-radius: 50%;
+      background: var(--color-bg-warm); color: var(--color-white);
+      cursor: pointer; flex-shrink: 0;
+    }
+    .cs-omnibus-hint__btn:hover, .cs-omnibus-hint__btn:focus-visible { background: var(--color-warm-500); }
+    .cs-omnibus-hint__i { font: italic 800 11px/1 var(--font-body); color: inherit; }
+    .cs-omnibus-hint__panel {
+      position: absolute; z-index: 5; bottom: calc(100% + var(--space-2)); left: 50%;
+      width: max-content; max-width: min(240px, 90vw);
+      transform: translateX(-50%) translateY(4px);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), visibility var(--duration-fast);
+    }
+    .cs-omnibus-hint:hover .cs-omnibus-hint__panel,
+    .cs-omnibus-hint__btn:focus-visible ~ .cs-omnibus-hint__panel,
+    .cs-omnibus-hint.is-open .cs-omnibus-hint__panel {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .cs-omnibus-hint__backdrop { display: none; }
+    .cs-omnibus-hint__panel .cs-toast-msg {
+      font: 600 var(--fs-omnibus)/1.1 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted);
+    }
+
+    /* Mobile: the tooltip becomes a centered modal over a dim backdrop —
+       tapping the backdrop calls csOmnibusClose(). Hover-anchored positioning
+       doesn't hold up on small screens, and there's no hover to fall back on
+       for touch anyway. */
+    @media (max-width: 767px) {
+      .cs-omnibus-hint.is-open .cs-omnibus-hint__backdrop {
+        display: block; position: fixed; inset: 0; z-index: 50;
+        background: rgba(42, 31, 28, .45);
+      }
+      .cs-omnibus-hint__panel {
+        position: fixed; z-index: 51;
+        top: 50%; left: 50%; bottom: auto;
+        max-width: min(320px, calc(100vw - var(--space-8)));
+        transform: translate(-50%, -50%) scale(.96);
+      }
+      /* Touch can leave a synthetic :hover "stuck" on .cs-omnibus-hint after
+         the opening tap, which would keep the panel visible via the base
+         hover rule even after csOmnibusClose() removes .is-open. On mobile,
+         .is-open is the only thing allowed to show it. */
+      .cs-omnibus-hint:hover .cs-omnibus-hint__panel,
+      .cs-omnibus-hint__btn:focus-visible ~ .cs-omnibus-hint__panel {
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transform: translate(-50%, -50%) scale(.96);
+      }
+      .cs-omnibus-hint.is-open .cs-omnibus-hint__panel {
+        opacity: 1; visibility: visible; pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
 
     /* ── Threshold Progress Bar ──────────────────────── */
     .cs-threshold { padding: var(--space-4) var(--space-5); background: var(--color-bg-light); border: 1px solid var(--border-default); border-radius: var(--radius-md); }
@@ -1541,7 +1827,14 @@
     /* ── Design System chrome only (DS page scaffolding) ── */
     @media (max-width: 900px) {
       .ds-hamburger { display: flex; }
-      html, body { overflow-x: hidden; }
+      /* Scoped to :has(.ds-sidebar) — this is a shared stylesheet, and an
+         unscoped `html, body { overflow-x: hidden }` here was leaking into
+         every other prototype (Collection.html etc.) at mobile widths. Only
+         setting overflow-x (never overflow-y) makes overflow-y compute as
+         `auto` per spec, turning body into its own scroll container — which
+         broke position:sticky elsewhere on the page (e.g. .plp-category-nav
+         never engaging on mobile). */
+      html:has(.ds-sidebar), body:has(.ds-sidebar) { overflow-x: hidden; }
       .ds-sidebar {
         position: fixed; top: 0; left: 0; height: 100vh;
         width: min(280px, 80vw); min-width: 0;
