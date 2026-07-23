@@ -851,6 +851,183 @@
     .plp-card-link { display: block; color: inherit; text-decoration: none; }
     .plp-card-link:hover { text-decoration: none; color: inherit; }
 
+    /* ── PLP card slider — mini image slider inside each .plp-product-grid
+       card's .card-image, modeled on .plp-hero__track's scroll-snap +
+       pointer-drag pattern. Scoped to net-new .plp-card-slider* classes so
+       it cannot affect the other .cs-product-card reuse sites (site-search
+       suggest grid, PDP bundle carousel, PDP related-products) — none of
+       them get this markup. Cards using this structure have no
+       .card-image-inner, so the existing .cs-product-card:hover
+       .card-image-inner zoom (line 649) simply never matches them — no
+       override needed, the zoom is just structurally absent here. ── */
+    .plp-card-slider { position: absolute; inset: 0; }
+    .plp-card-slider__track {
+      display: flex; width: 100%; height: 100%;
+      overflow-x: scroll; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      cursor: grab; user-select: none;
+    }
+    .plp-card-slider__track::-webkit-scrollbar { display: none; }
+    .plp-card-slider__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .plp-card-slider__slide { flex: 0 0 100%; scroll-snap-align: start; min-width: 0; height: 100%; position: relative; }
+    .plp-card-slider__slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+
+    /* Dots reuse .cs-upsell-dot's own idle/active sizing+color (line 1728);
+       this wrapper only adds bottom-center overlay position + hover-reveal.
+       pointer-events:none keeps them indicator-only — never intercepts the
+       drag gesture (so .cs-upsell-dot's own cursor:pointer is moot here). */
+    .plp-card-slider__dots {
+      position: absolute; left: 0; right: 0; bottom: var(--space-3);
+      z-index: 2; display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    /* Desktop: reveal on hover/focus, same as before. */
+    @media (hover: hover) and (pointer: fine) {
+      .cs-product-card:hover .plp-card-slider__dots,
+      .cs-product-card:focus-within .plp-card-slider__dots { opacity: 1; }
+    }
+    /* Touch/mobile: no hover to reveal them, and showing dots permanently on
+       every one of the 108 cards was too noisy. Dots surface for the
+       duration of the hint animation below (.plp-card-slider--hint), and
+       separately while the user is actively touching that card
+       (.plp-card-slider--touch-active, toggled in JS by a document-level
+       pointerdown listener keyed off .cs-product-card — stays on while
+       tapping anywhere else in the same card, e.g. the ATC button, and only
+       clears once a pointerdown lands in a different card or outside any
+       card). Both fade out via the same opacity transition once cleared. */
+    .plp-card-slider--hint .plp-card-slider__dots,
+    .plp-card-slider--touch-active .plp-card-slider__dots { opacity: 1; }
+
+    /* Desktop affordance: prev/next arrows, top-right corner (badges already
+       own top-left, see .card-badges). Same circle/border look as
+       .plp-category-nav__arrow, just smaller for the card-image context.
+       Shares the exact same reveal triggers as .plp-card-slider__dots above
+       so both surface and fade together — hover/focus-within, hint, and
+       touch-active all toggle this the same way. */
+    .plp-card-slider__arrows {
+      position: absolute; top: var(--space-3); right: var(--space-3);
+      z-index: 2; display: flex; gap: var(--space-2);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .cs-product-card:hover .plp-card-slider__arrows,
+      .cs-product-card:focus-within .plp-card-slider__arrows { opacity: 1; }
+    }
+    .plp-card-slider--hint .plp-card-slider__arrows,
+    .plp-card-slider--touch-active .plp-card-slider__arrows { opacity: 1; }
+    .plp-card-slider__arrow {
+      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%; padding: 0;
+      border: 1px solid var(--border-interactive);
+      background: var(--bg-primary); color: var(--fg-primary);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+    }
+    .plp-card-slider__arrow:hover { background: var(--bg-subtle); border-color: var(--border-strong); }
+    .plp-card-slider__arrow:disabled { opacity: .35; cursor: not-allowed; }
+
+    /* One-shot "swipe nudge" hint (HM-style) — JS toggles
+       .plp-card-slider--hint on load and on first scroll-into-view per
+       .plp-category section, gated off after the user's first real drag. */
+    @keyframes plp-card-slider-hint {
+      0%   { transform: translateX(0); }
+      30%  { transform: translateX(-8%); }
+      55%  { transform: translateX(2%); }
+      100% { transform: translateX(0); }
+    }
+    /* 1800ms — 2x the original 900ms, slow enough for the user to actually
+       register the nudge instead of it flashing past. */
+    .plp-card-slider--hint .plp-card-slider__track { animation: plp-card-slider-hint 1800ms var(--ease-out) 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .plp-card-slider--hint .plp-card-slider__track { animation: none; }
+    }
+
+    /* ── PLP card variant selector (volume text + color swatches) and
+       card-scale ATC dropdown — net-new .plp-card-variants*/.plp-card-atc*
+       classes on ~22 of the 108 cards, scoped to Collection.html's card
+       context. Deliberately NOT reusing PDP.html's .pdp-vol-btn/.pdp-color-*/
+       .pdp-dd (cocosolis.css, PDP-scale rules further down) — those are
+       sized for a ~500px buy-box column, not a ~165px card, and volume here
+       must render as plain text, never a bordered/interactive pill. ── */
+    .plp-card-variants {
+      display: flex; flex-direction: column; gap: var(--space-1);
+      margin-bottom: var(--space-3);
+    }
+    /* Color row: swatches + truncating label side by side, swatches never
+       shrink (fixed size, fixed count), the label eats any leftover width
+       and ellipsizes instead of wrapping or overflowing the card. */
+    .plp-card-variants__color {
+      display: flex; align-items: center; gap: var(--space-2);
+      min-width: 0;
+    }
+    .plp-card-variants__swatches { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .plp-card-variants__swatch-btn {
+      display: flex; align-items: center; padding: 2px; border: none; background: transparent; cursor: pointer;
+    }
+    .plp-card-variants__swatch {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.10);
+      display: block;
+    }
+    .plp-card-variants__swatch-btn.is-active .plp-card-variants__swatch {
+      outline: 2px solid var(--color-bg-warm);
+      outline-offset: 2px;
+    }
+    .plp-card-variants__label {
+      font: var(--fw-body-xs) var(--fs-omnibus)/1.2 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-secondary);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      min-width: 0; /* lets it actually shrink+ellipsize instead of pushing the card wider */
+    }
+    .plp-card-variants__vol {
+      font: var(--fw-body-xs) var(--fs-omnibus)/1.2 var(--font-body); font-feature-settings: 'locl' 0;
+      color: var(--fg-muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* Card-scale ATC dropdown. Opens UPWARD (bottom: 100%+gap), unlike PDP's
+       .pdp-dd__list which opens downward into a full page of whitespace —
+       here the trigger sits flush at the bottom of the card, so opening
+       down would paint over the grid row below. Same hover-reveal idiom as
+       .cs-omnibus-hint (below). .cs-card has no overflow set anywhere, so
+       nothing clips this absolutely-positioned list. */
+    .plp-card-atc { position: relative; }
+    .plp-card-atc__list {
+      position: absolute; left: 0; right: 0; z-index: 6;
+      bottom: calc(100% + var(--space-2));
+      margin: 0; padding: var(--space-1) 0; list-style: none;
+      border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+      background: var(--color-white);
+      box-shadow: 0 -4px 16px rgba(0,0,0,.10);
+      opacity: 0; visibility: hidden; transform: translateY(4px);
+      transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), visibility var(--duration-fast);
+    }
+    .plp-card-atc__list:not([hidden]) { opacity: 1; visibility: visible; transform: translateY(0); }
+    .plp-card-atc__option {
+      padding: 0 var(--space-3); height: 36px; display: flex; align-items: center;
+      font: var(--fw-body-xs) var(--fs-body-xs)/1 var(--font-body);
+      color: var(--fg-secondary); cursor: pointer; background: var(--color-white);
+    }
+    .plp-card-atc__option:hover { background: var(--bg-subtle); color: var(--fg-primary); }
+    .plp-card-atc__option--active { color: var(--fg-primary); font-weight: 600; }
+
+    @media (hover: hover) and (pointer: fine) {
+      .plp-card-atc:hover .plp-card-atc__list { opacity: 1; visibility: visible; transform: translateY(0); }
+    }
+    /* Lifts the card above its grid siblings only while its own dropdown is
+       open, so the upward-opening list isn't painted over by a card in the
+       row above once :hover's translateY(-2px) promotes it to a new
+       stacking context. */
+    .cs-product-card:has(.plp-card-atc__list:not([hidden])) { position: relative; z-index: 4; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .plp-card-atc__list { transition: none; }
+    }
+
     /* ── Media slider — "as seen in" press-logo strip ─────
        Mirrors the live site's #mediaSlider (Splide marquee, warm-500 bg).
        Reimplemented CSS-only (duplicated track + translateX loop) rather
