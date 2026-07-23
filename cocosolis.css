@@ -330,6 +330,15 @@
         box-shadow var(--duration-base) var(--ease-out),
         border-color var(--duration-base) var(--ease-out),
         transform var(--duration-base) var(--ease-out);
+      /* As a .plp-product-grid item, a grid track's "auto" min-size (1fr
+         columns default to minmax(auto,1fr)) is driven by this item's
+         min-content, which recurses into descendants like
+         .plp-card-variants__label — a long, nowrap color name (e.g.
+         "Дълбоко виолетово") became that min-content floor and stretched
+         the whole column/card past the viewport instead of ellipsizing.
+         min-width:0 here removes the automatic minimum so the label's own
+         min-width:0 + ellipsis (line ~984) can actually take effect. */
+      min-width: 0;
     }
     .cs-card:hover {
       box-shadow: var(--shadow-md);
