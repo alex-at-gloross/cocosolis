@@ -812,11 +812,7 @@
     .plp-category-nav__arrow:disabled { opacity: .35; cursor: not-allowed; }
     .plp-category-nav__arrow.is-hidden { display: none; }
 
-    /* scroll-margin-top ≈ fixed ann-bar+header stack height (matches .proto-page
-       padding-top per breakpoint) + .plp-category-nav's own real ~57px height
-       (32 list padding + 24 link box + 1 border) + 16px breathing room, so
-       #plp-cat-* anchor jumps land clear of both fixed bars with a visible gap. */
-    .plp-category { padding: var(--space-12) 0; scroll-margin-top: 165px; background: var(--bg-primary); }
+    .plp-category { padding: var(--space-12) 0; background: var(--bg-primary); }
     .plp-category:first-of-type { padding-top: var(--space-6); }
     /* Alternating zebra-stripe, mirroring the live site's category listing — applied
        via an explicit modifier (not :nth-of-type) since standalone sections like
@@ -847,10 +843,20 @@
       color: var(--fg-secondary); margin: var(--space-3) auto 0; max-width: 640px;
     }
 
+    /* Anchor target lives here (after the .plp-category__head title block, not
+       on the outer .plp-category section) so #plp-cat-* jumps and the nav
+       scroll-spy below both key off the same point, independent of the
+       section's own top padding or the head's title/desc height at any
+       breakpoint. scroll-margin-top ≈ fixed ann-bar+header stack height
+       (matches .proto-page padding-top per breakpoint) + .plp-category-nav's
+       own real ~57px height (32 list padding + 24 link box + 1 border) + 16px
+       breathing room, so the jump lands clear of both fixed bars with a
+       visible gap. */
     .plp-product-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: var(--space-4) var(--space-3);
       padding: 0 var(--space-4);
+      scroll-margin-top: 165px;
     }
 
     /* Card is clickable to the PDP, but the ATC button must stay independently
@@ -1073,9 +1079,8 @@
     @media (min-width: 768px) {
       .plp-category-nav { top: 96px; } /* ann-bar 36 + header 60 */
       .plp-category-nav__list { gap: var(--space-8); }
-      .plp-category { scroll-margin-top: 169px; }
       .plp-category__head { padding: 0 var(--space-6); }
-      .plp-product-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); padding: 0 var(--space-6); }
+      .plp-product-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); padding: 0 var(--space-6); scroll-margin-top: 169px; }
       .plp-hero__track { aspect-ratio: auto; height: 640px; }
     }
     @media (min-width: 1024px) {
@@ -1087,8 +1092,7 @@
          script) so this only plays once the nav is actually pinned at the
          viewport edge, not while still in normal flow further down the page. */
       #siteHeader.is-hidden ~ .plp-category-nav.is-stuck { transform: translateY(-68px); }
-      .plp-category { scroll-margin-top: 177px; }
-      .plp-product-grid { grid-template-columns: repeat(4, 1fr); }
+      .plp-product-grid { grid-template-columns: repeat(4, 1fr); scroll-margin-top: 177px; }
     }
     @media (min-width: 1440px) {
       .plp-category__head, .plp-product-grid { max-width: 1360px; margin-left: auto; margin-right: auto; }

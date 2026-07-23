@@ -1344,8 +1344,9 @@
 
     <!-- Sticky category selector — GISOU-style. Pins under the fixed ann-bar+header
          stack once scrolled to it, stays put while scrolling; click scroll-jumps to
-         the matching #plp-cat-* section (native anchor + scroll-behavior:smooth +
-         that section's scroll-margin-top). Active state is scroll-spied in JS
+         the matching #plp-cat-* grid, just past that category's title/desc
+         (native anchor + scroll-behavior:smooth + that grid's scroll-margin-top).
+         Active state is scroll-spied in JS
          below, keyed off this nav's own live position, not a hardcoded offset.
          Arrows mirror PDP.html's .pdp-bundle-nav-btn carousel arrows (same size/
          border/disabled-at-edges look); the list itself keeps native touch/swipe
@@ -1373,9 +1374,9 @@
       </button>
     </nav>
 
-    <section class="plp-category" id="plp-cat-promo" aria-label="Промо пакети">
+    <section class="plp-category" aria-label="Промо пакети">
       <div class="plp-category__head"><h2 class="plp-category__title">Промо пакети</h2></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-promo">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Full Glow Kit" data-price="55.10" data-image="P1920577.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Full Glow Kit">
@@ -1952,9 +1953,9 @@
       </div>
     </section>
 
-    <section class="plp-category plp-category--alt" id="plp-cat-skin" aria-label="Кожа">
+    <section class="plp-category plp-category--alt" aria-label="Кожа">
       <div class="plp-category__head"><h2 class="plp-category__title">Кожа</h2><p class="plp-category__desc">Серията SKIN за перфектна кожа, без несъвършенства.</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-skin">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Dermosculpt Firming Cream" data-price="42.00" data-image="P1920734.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Dermosculpt Firming Cream">
@@ -2533,9 +2534,9 @@
       </div>
     </section>
 
-    <section class="plp-category" id="plp-cat-self-tanners" aria-label="Автобронзанти">
+    <section class="plp-category" aria-label="Автобронзанти">
       <div class="plp-category__head"><h2 class="plp-category__title">Автобронзанти</h2><p class="plp-category__desc">За перфектен тен, без да е необходимо слънце. Постигнете естествено изглеждащ, равномерен, наситен, бронзов тен.</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-self-tanners">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Sunny Honey Bali Bronzing Foam" data-price="34.90" data-image="P1931635.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Sunny Honey Bali Bronzing Foam">
@@ -3110,9 +3111,9 @@
       </div>
     </section>
 
-    <section class="plp-category plp-category--alt" id="plp-cat-hair" aria-label="Коса">
+    <section class="plp-category plp-category--alt" aria-label="Коса">
       <div class="plp-category__head"><h2 class="plp-category__title">Коса</h2><p class="plp-category__desc">Натурални продукти за силна, гъста и бляскава коса</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-hair">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Like A Virgin Hair Masque" data-price="27.00" data-image="P1920734.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Like A Virgin Hair Masque">
@@ -3662,9 +3663,9 @@
       </div>
     </section>
 
-    <section class="plp-category" id="plp-cat-men" aria-label="За мъже">
+    <section class="plp-category" aria-label="За мъже">
       <div class="plp-category__head"><h2 class="plp-category__title">За мъже</h2><p class="plp-category__desc">Терапия против косопад</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-men">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Men's Active Body Wash" data-price="18.00" data-image="P1931569.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Men's Active Body Wash">
@@ -4214,9 +4215,9 @@
       </div>
     </section>
 
-    <section class="plp-category plp-category--alt" id="plp-cat-glow" aria-label="Блясък">
+    <section class="plp-category plp-category--alt" aria-label="Блясък">
       <div class="plp-category__head"><h2 class="plp-category__title">Блясък</h2><p class="plp-category__desc">Натурални продукти за елегантен блясък и грижа за кожата</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-glow">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Golden Hour Body Oil" data-price="33.00" data-image="P1931569.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Golden Hour Body Oil">
@@ -4790,9 +4791,9 @@
       </div>
     </section>
 
-    <section class="plp-category" id="plp-cat-tan" aria-label="Тен">
+    <section class="plp-category" aria-label="Тен">
       <div class="plp-category__head"><h2 class="plp-category__title">Тен</h2><p class="plp-category__desc">Натурални, био масла за супер тен и сияйна кожа</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-tan">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Tan Extend Daily Lotion" data-price="28.00" data-image="P1931635.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Tan Extend Daily Lotion">
@@ -5342,9 +5343,9 @@
       </div>
     </section>
 
-    <section class="plp-category plp-category--alt" id="plp-cat-face" aria-label="Лице">
+    <section class="plp-category plp-category--alt" aria-label="Лице">
       <div class="plp-category__head"><h2 class="plp-category__title">Лице</h2><p class="plp-category__desc">Високоефективни натурални продукти за подмладена и сияйна кожа</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-face">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Pink Pepperslim Face Cream" data-price="32.00" data-image="P1920734.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Pink Pepperslim Face Cream">
@@ -5918,9 +5919,9 @@
       </div>
     </section>
 
-    <section class="plp-category" id="plp-cat-spf" aria-label="SPF">
+    <section class="plp-category" aria-label="SPF">
       <div class="plp-category__head"><h2 class="plp-category__title">SPF</h2><p class="plp-category__desc">Натурални, био слънцезащитни лосиони</p></div>
-      <div class="plp-product-grid">
+      <div class="plp-product-grid" id="plp-cat-spf">
 
         <div class="cs-card cs-product-card cs-product-card--flush" data-title="Daily Defense SPF30" data-price="24.00" data-image="P1931382.webp">
           <a class="plp-card-link" href="PDP.html" aria-label="Daily Defense SPF30">
@@ -6471,47 +6472,37 @@
     </section>
 
     <style>
-      /* ── Values (image + icon-grid row) — mirrors PDP.html's .pdp-why-use
-         split image/text layout; text side holds a grid of icon+name+desc
-         blocks (content from live site's #homeBenefits) instead of a checklist ── */
-      .plp-values { width: 100%; }
-      .plp-values__row { display: flex; flex-direction: column; background: var(--color-cream); }
-      /* Mobile: always stack image above text */
-      .plp-values__row .plp-values__media { order: -1; }
-      .plp-values__text {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: var(--space-12) var(--space-6);
-        background: var(--color-cream);
-      }
-      .plp-values__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-8) var(--space-6); }
-      /* Balance a trailing odd item by centering it across both columns */
-      .plp-values__grid > :last-child:nth-child(odd) { grid-column: span 2; }
-      .plp-values__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
-      .plp-values__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      /* ── Values — single 3-column icon-grid on white, content from
+         live site's #homeBenefits (image moved to .plp-newsletter's
+         matted background below) ── */
+      .plp-values { width: 100%; background: var(--bg-primary); padding: var(--space-12) var(--space-6); }
+      .plp-values__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8) var(--space-4); max-width: 1360px; margin: 0 auto; }
       .pdp-proof__value { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-4); }
       .pdp-proof__value-icon { display: block; width: 56px; height: 56px; flex-shrink: 0; color: var(--fg-primary); }
       .pdp-proof__value-name { font: var(--fw-body-s) var(--fs-body-s)/1.55 var(--font-body); font-feature-settings: 'locl' 0; color: var(--fg-primary); margin: 0; }
       .pdp-proof__value-desc { font: 400 var(--fs-body-xs)/var(--lh-body) var(--font-body); color: var(--fg-secondary); margin: 0; }
       @media (min-width: 768px) {
-        .plp-values__row { flex-direction: row; align-items: stretch; }
-        .plp-values__text {
-          flex: 0 0 50%;
-          min-width: 0;
-          padding: var(--space-16) var(--space-8);
-          padding-left: calc(max(0px, (100vw - 1360px) / 2) + var(--space-6));
-        }
-        .plp-values__media { flex: 0 0 50%; box-sizing: border-box; min-width: 0; order: 0; }
+        .plp-values { padding: var(--space-16) var(--space-8); }
+        .plp-values__grid { gap: var(--space-10) var(--space-8); }
       }
 
       /* ── Newsletter — bigger feature-section take on the footer's
          .pdp-footer__col-nl newsletter form. Same copy + fields (email input,
-         consent checkbox, CTA), scaled up into a full-bleed dark band that
-         sits as its own moment between Values and Reviews ── */
-      .plp-newsletter { width: 100%; background: var(--color-warm-500); padding: var(--space-16) 0; }
+         consent checkbox, CTA), scaled up into a full-bleed band that sits as
+         its own moment between Values and Reviews. Background is the same
+         image formerly used in .plp-values__media, matted with a warm-500
+         tint so it enriches the CTA without competing with the white text ── */
+      .plp-newsletter { width: 100%; position: relative; background: var(--color-warm-500); padding: var(--space-16) 0; overflow: hidden; }
+      .plp-newsletter::before {
+        content: ''; position: absolute; inset: 0;
+        background: url('home-benefits-image.jpg') center/cover no-repeat fixed;
+      }
+      .plp-newsletter::after {
+        content: ''; position: absolute; inset: 0;
+        background: color-mix(in srgb, var(--color-warm-500) 78%, transparent);
+      }
       .plp-newsletter__inner {
+        position: relative; z-index: 1;
         max-width: 640px; margin: 0 auto; padding: 0 var(--space-6);
         display: flex; flex-direction: column; align-items: center; text-align: center;
       }
@@ -6635,11 +6626,9 @@
       }
     </style>
 
-    <!-- ── Values — pdp-why-use split layout with an icon grid on the text side, content from live site's #homeBenefits ── -->
+    <!-- ── Values — single 3-column icon-grid on white, content from live site's #homeBenefits ── -->
     <section class="plp-values" aria-label="Защо да изберете COCOSOLIS">
-      <div class="plp-values__row">
-        <div class="plp-values__text">
-          <div class="plp-values__grid">
+      <div class="plp-values__grid">
 
             <div class="pdp-proof__value">
               <span class="pdp-proof__value-icon">
@@ -6676,11 +6665,6 @@
               <p class="pdp-proof__value-desc">Без наличие на парабени, оцветители, минерални и синтетични масла и разбира се, без тестване върху животни!</p>
             </div>
 
-          </div>
-        </div>
-        <div class="plp-values__media">
-          <img class="plp-values__img" src="home-benefits-image.jpg" alt="Ползи от продуктите на COCOSOLIS">
-        </div>
       </div>
     </section>
 
@@ -7597,10 +7581,15 @@
 
   <script>
     /* Category nav scroll-spy + stuck detection + horizontal auto-scroll.
-       Active link tracks whichever .plp-category section currently sits just
+       Active link tracks whichever .plp-product-grid currently sits just
        under the sticky nav's own bottom edge, read live via
        getBoundingClientRect() instead of a hardcoded offset, so it stays
        correct across breakpoints without duplicating the CSS top values above.
+       The #plp-cat-* id (and matching scroll-margin-top) lives on
+       .plp-product-grid rather than the outer .plp-category section — right
+       after the title/desc head block instead of above it — so this same
+       element is both what an anchor jump lands on and what decides the
+       active chip; the two can't drift apart across sections or breakpoints.
        Also toggles .is-stuck once the nav's rect.top reaches its own sticky
        `top` value — i.e. once it's actually pinned at the viewport edge, not
        just sitting in normal flow further down the page. cocosolis.css gates
@@ -7614,7 +7603,7 @@
       const nav = document.getElementById('plpCategoryNav');
       const scrollEl = document.getElementById('plpCategoryScroll');
       const links = Array.from(nav.querySelectorAll('.plp-category-nav__link'));
-      const sections = Array.from(document.querySelectorAll('.plp-category'));
+      const sections = Array.from(document.querySelectorAll('.plp-product-grid[id]'));
       let ticking = false;
       let activeId = null;
 
@@ -7645,8 +7634,8 @@
         const stuckTop = parseFloat(getComputedStyle(nav).top) || 0;
         nav.classList.toggle('is-stuck', rect.top <= stuckTop + 0.5);
 
-        // +24 covers the 16px breathing room .plp-category's scroll-margin-top
-        // leaves above a scrolled-to section, plus rounding slack — without it,
+        // +24 covers the 16px breathing room .plp-product-grid's scroll-margin-top
+        // leaves above a scrolled-to grid, plus rounding slack — without it,
         // a just-clicked section's top lands a few px *below* this line and
         // the active state stays stuck on the previous link.
         const line = rect.bottom + 24;
